@@ -1,0 +1,43 @@
+body html{
+    width:100%;
+}
+.content{
+    margin-top:100px;
+}
+
+.plandetail{
+    margin-top:100px;
+}
+
+.plancontent{
+    margin-top:50px;
+}
+.planabout{
+    text-align: center;
+}
+.aboutvideo{
+    margin-bottom:25px;
+}
+.bestactivities{
+    text-align: center;
+}
+.hidden {
+    display:none;
+}
+.iternary{
+    text-align: center;
+}
+.sightseeing{
+    text-align:center;
+    font-size: 14px;
+}
+.sightseeingtitle{
+    margin-bottom:20px;
+}
+
+.sightseeingrow{
+    margin-top:40px;
+}
+.sightseeingrow >.col-md-4:nth-child(3n+1){
+    clear:left;
+}

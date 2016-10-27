@@ -1,0 +1,22 @@
+{
+    "name":"Japan",
+    "abbr":"ja",
+    "captial":"Tokyo",
+    offical_lauguages:["Japaness"],
+    area:377972.28,
+    population:127110047,
+    currency:"Japan Yen",
+    "createdAt":"Tue Oct 25 2016 12:01:13 GMT+1100 (AEDT)",
+    "updatedAt":"Tue Oct 25 2016 12:01:13 GMT+1100 (AEDT)"
+}
+{
+    "name":"China",
+    "abbr":"cn",
+    captial:"Beijing",
+    offical_lauguages:["Standard Chinese"],
+    area:9596961,
+    population:1376049000,
+    currency:"China Yuan",
+    "createdAt":"Tue Oct 25 2016 12:01:13 GMT+1100 (AEDT)",
+    "updatedAt":"Tue Oct 25 2016 12:01:13 GMT+1100 (AEDT)"
+}
