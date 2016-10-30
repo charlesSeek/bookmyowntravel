@@ -76,15 +76,15 @@ class CountryMain extends Component{
     }
     
     countryDelete(id){
-        self = this;
         axios.delete("http://localhost:12000/countries/"+id)
         .then(response=>{
             if (response.data.success){
-                console.log("self:",self.state.countries);
-                var newCountries = self.state.countries.data.filter(country=>{
+                var newCountriesList = this.state.countries.data.filter(country=>{
                     return country._id != id;
                 })
-                self.setState({countries:newCountries});
+                var newCountries = this.state.countries;
+                newCountries.data = newCountriesList;
+                this.setState({countries:newCountries});
             }else{
                 alert(response.data.errMsg);
             }
