@@ -15,7 +15,7 @@ var CountrySchema = new mongoose.Schema({
       type:String,
       required:true
     },
-    offical_languages:Array,
+    languages:[String],
     area:Number,
     population:Number,
     currency:String,
@@ -26,8 +26,7 @@ var CountrySchema = new mongoose.Schema({
     updatedAt:{
         type:Date,
         default:Date.now()
-    }
-    
+    }    
 });
 
 module.exports = mongoose.model('country',CountrySchema);

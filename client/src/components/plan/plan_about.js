@@ -1,3 +1,6 @@
+/* 
+    the component of plan about info
+*/
 import React,{Component} from 'react';
 
 class PlanAbout extends Component{

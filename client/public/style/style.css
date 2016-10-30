@@ -1,7 +1,16 @@
 body html{
     width:100%;
+    padding:0px;
+    margin:0px
 }
+div .container{
+    margin-left:0px;
+    padding-left:5px;
+    width:100%;
+}
+
 .content{
+    width:100%;
     margin-top:100px;
 }
 
@@ -40,4 +49,64 @@ body html{
 }
 .sightseeingrow >.col-md-4:nth-child(3n+1){
     clear:left;
+}
+.budgetcost{
+    text-align: center;
+}
+.planhowgothere{
+    text-align: center;
+}
+.planairline{
+    margin-top:30px;
+}
+.planhowgetaround{
+    text-align: center;
+}
+.planhowgetaroundrow{
+    margin-top:30px;
+}
+.planhowgetaroundrow >.col-md-4:nth-child(3n+1){
+    clear:left;
+}
+.planwheretostay{
+    text-align: center;
+}
+.planimportantinfo{
+    text-align: center;
+}
+.input-search{
+    line-height: 2em;
+}
+/*.sidebar-fixed-left{
+    position:absolute;
+    left:0px;
+    margin-top:50px
+}
+.sidebar-nav-top{
+    margin-top:50px;
+    height:100vh;
+}*/
+
+.nav a{
+    color: black !important;
+    font-size: 1.0em !important;
+}
+
+.admin-home{
+    margin-top:100px;
+}
+.glyphicon-5x{
+    font-size:5em;
+}
+.huge{
+    font-size:4em;
+}
+.country-main{
+    margin-top: 100px;
+}
+.country-form{
+    margin-top:20px;
+}
+.add-button{
+    margin-top:10px;
 }

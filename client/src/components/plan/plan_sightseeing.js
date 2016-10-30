@@ -1,3 +1,6 @@
+/*
+    the component of plan sightseeing info
+*/
 import React,{Component} from 'react';
 
 class PlanSightseeing extends Component{
@@ -14,7 +17,7 @@ class PlanSightseeing extends Component{
                         <h3>Sightseeing suggestions for {this.props.plan.name}</h3>
                         {this.props.plan.sightseeing_touring_options.sightseeing.sightseeing_extra_website_link_list.map((link)=>{
                             return(
-                                <p><a href={this.website_link}>{link.text}</a></p>
+                                <p key={link.website_link}><a href={this.website_link}>{link.text}</a></p>
                             )
                         })}
                     </div>
@@ -26,7 +29,7 @@ class PlanSightseeing extends Component{
                         <h3>Travel {this.props.plan.name} on your own</h3>
                         {this.props.plan.sightseeing_touring_options.independent_touring.independent_touring_extra_website_link_list.map((link)=>{
                             return(
-                                <p><a href={this.website_link}>{link.text}</a></p>
+                                <p key={link.website_link}><a href={this.website_link}>{link.text}</a></p>
                             )
                         })}
                     </div>
@@ -38,7 +41,7 @@ class PlanSightseeing extends Component{
                         <h3>{this.props.plan.name} Day Tours & Short Tours</h3>
                         {this.props.plan.sightseeing_touring_options.organised_day_tours.organised_day_tours_extra_website_link_list.map((link)=>{
                             return(
-                                <p><a href={this.website_link}>{link.text}</a></p>
+                                <p key={link.website_link}><a href={this.website_link}>{link.text}</a></p>
                             )
                         })}
                     </div>
@@ -50,7 +53,7 @@ class PlanSightseeing extends Component{
                         <h3>Free things to do in {this.props.plan.name}</h3>
                         {this.props.plan.sightseeing_touring_options.free_activities.free_activities_extra_website_link_list.map((link)=>{
                             return(
-                                <p><a href={this.website_link}>{link.text}</a></p>
+                                <p key={link.website_link}><a href={this.website_link}>{link.text}</a></p>
                             )
                         })}
                     </div>
@@ -62,7 +65,7 @@ class PlanSightseeing extends Component{
                         <h3>Tour Operators with extended tours {this.props.plan.name}</h3>
                         {this.props.plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_extra_website_link_list.map((link)=>{
                             return(
-                                <p><a href={this.website_link}>{link.text}</a></p>
+                                <p key={link.website_link}><a href={this.website_link}>{link.text}</a></p>
                             )
                         })}
                     </div>
@@ -74,7 +77,7 @@ class PlanSightseeing extends Component{
                         <h3>Volunteer in {this.props.plan.name}</h3>
                         {this.props.plan.sightseeing_touring_options.volunteer.volunteer_extra_website_link_list.map((link)=>{
                             return(
-                                <p><a href={this.website_link}>{link.text}</a></p>
+                                <p key={link.website_link}><a href={this.website_link}>{link.text}</a></p>
                             )
                         })}
                     </div>

@@ -37,8 +37,10 @@ app.get('/continents/:id',continentController.getContinentById);
     countries CURD
 */
 app.get('/countries',countryController.getAllCountries);
-//app.get('/countries/:name',countryController.getOneCountryByName);
 app.get('/countries/:id',countryController.getOneCountryById);
+app.post('/countries',countryController.createNewOneCountry);
+app.put('/countries/:id',countryController.updateOneCountryById);
+app.delete('/countries/:id',countryController.deleteOneCountryById);
 
 
 /*

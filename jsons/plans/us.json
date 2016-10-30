@@ -429,7 +429,7 @@
                 "cruise_website":"http://www.seejapan.co.uk/jnto_consumer/plan-your-trip/transportation/international-ferries"
             }
         },
-        "how_to_go_around":{
+        "how_to_get_around":{
             travelling_options:[
                 {
                     "options_name":"Flying",
@@ -593,37 +593,37 @@
                     "website_link":"https://www.airbnb.com.au/s/Japan"
                 }
             ],
-            "holiday_houses":[
+            "holiday_houses_website_list":[
                 {
                     "text":"Japan Experience",
                     "website_link":"https://www.japan-experience.com/rent-a-house-in-japan"
                 }
             ],
-            "house_share":[
+            "house_share_website_list":[
                 {
                     "text":"Air BNB.com",
                     "website_link":"www.airbnb.com.au/s/Japan"
                 }
             ],
-            "motor_home":[
+            "motor_home_website_list":[
                 {
                     "text":"Japan Campers",
                     "website_link":"http://www.japancampers.com/"
                 }
             ],
-            "backpacker":[
+            "backpacker_website_list":[
                 {
                     "text":"YHA",
                     "website_link":"https://www.yha.com.au/travel-and-tours/travel-the-world/"
                 }
             ],
-            "couch_surfing":[
+            "couch_surfing_website_list":[
                 {
                     "text":"Couch Surfing.com",
                     "website_link":"https://www.couchsurfing.com/places/Africa"
                 }
             ],
-            "unusual_places":[
+            "unusual_places_website_list":[
                 {
                     "text":"Capsule Hotels",
                     "website_link":"https://www.lonelyplanet.com/japan/tokyo/travel-tips-and-articles/77098"
@@ -647,9 +647,21 @@
                 "text":"The voltage in Japan is 100 Volt, which is different from North America (120V), Central Europe (230V) and most other regions of the world. Japanese electrical plugs have two, non-polarized pins, as shown above. They fit into North American outlets",
                 "website_link":"https://www.tripadvisor.com.au/ShowTopic-g298184-i861-k2335733-Power_adaptors_from_Australia_to_Japan-Tokyo_Tokyo_Prefecture_Kanto.html"
             },
-            "Language":{
+            "language":{
                 "text":"The language spoken in Japan is Japanese",
                 "website_link":"https://en.wikipedia.org/wiki/Japanese_language"
+            },
+            "passport_visa":{
+                "text":"A valid passport with a minimum of 6 months validity from the date of return is required for all foreign travellers to Japan.A number of Asian and Indian Sub Continent countries do require visitors to obtain a Visa (an entry stamp). Regardless of your nationality it is also advisable to contact the relevant Embassy or Consulate for the most up to date information.",
+                "website_link":"http://www.melbourne.au.emb-japan.go.jp/consular/visa/faq.html"
+            },
+            "duty_free":{
+              "text":"In Japan, displaying your passport at any store that offers tax exemption will allow you to purchase goods without the 8% consumption tax.",
+              "website_link":"https://duty-free-japan.jp/en/"
+            },
+            "local_time":{
+                "text":"Japan Standard Time (JST) is 9 hours ahead of Coordinated Universal Time",
+                "website_link":"https://www.timeanddate.com/time/zones/jst"
             },
             "createdAt":"Tue Oct 25 2016 12:01:13 GMT+1100 (AEDT)",
             "updatedAt":"Tue Oct 25 2016 12:01:13 GMT+1100 (AEDT)"

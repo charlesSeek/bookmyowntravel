@@ -1,3 +1,6 @@
+/*
+    the component of plan see and do info
+*/
 import React,{Component} from 'react';
 
 class PlanSeeAndDo extends Component{
@@ -65,7 +68,7 @@ class PlanSeeAndDo extends Component{
                         <div className="row">
                             {this.props.plan.what_to_see_and_do.top_places.map((place)=>{
                                 return(
-                                    <div className="col-md-3 col-sm-6">
+                                    <div className="col-md-3 col-sm-6" key={place.top_place_name}>
                                         <a href={place.top_place_website_link}>
                                             <img src={place.top_place_image_link}/>
                                             <h4>{place.top_place_name}</h4>

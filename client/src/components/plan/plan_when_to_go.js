@@ -1,3 +1,6 @@
+/*
+    the component of plan when to go info
+*/
 import React,{Component} from 'react';
 
 class PlanWhenToGo extends Component{

@@ -1,9 +1,20 @@
+/*
+    the component of plan detail information
+    states: *Nav(the navbar active state)
+            isHidden*(the state whether hidden)
+*/
+
 import React,{Component} from 'react';
-import Header from '../header';
+import Header from '../includes/header';
 import PlanAbout from './plan_about';
 import PlanWhenToGo from './plan_when_to_go';
 import PlanSeeAndDo from './plan_see_and_do';
 import PlanSightseeing from './plan_sightseeing';
+import PlanBudgetCost from './plan_budget_cost';
+import PlanHowGetThere from './plan_how_get_there';
+import PlanHowGetAround from './plan_how_get_around';
+import PlanWhereToStay from './plan_where_to_stay';
+import PlanImportantInfo from './plan_important_info';
 import axios from 'axios'
 
 class PlanDetail extends Component{
@@ -13,6 +24,9 @@ class PlanDetail extends Component{
         .then((response)=>{
             this.setState({plan:response.data});
         })
+        .catch(function(err){
+           this.setState({errMsg:err}) 
+        });
     }
     componentWillMount(){
         this.state ={
@@ -21,223 +35,79 @@ class PlanDetail extends Component{
             seeAndDoNav:"none",
             sightseeingNav:"none",
             budgetCostNav:"none",
-            goThereNav:"none",
-            goAroundNav:"none",
+            getThereNav:"none",
+            getAroundNav:"none",
             stayNav:"none",
             importantInfoNav:"none",
             isHiddenAbout:false,
             isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:true,
+            isHiddenSeeAndDo:true,
             isHiddenSightseeing:true,
             isHiddenBudgetCost:true,
-            isHiddenGoThere:true,
-            isHiddenGoAround:true,
+            isHiddenGetThere:true,
+            isHiddenGetAround:true,
             isHiddenStay:true,
-            isHiddenImportantInfo:true
+            isHiddenImportantInfo:true,
+            errMsg:''
         }
     }
-    aboutNavClick(){
-        console.log("about");
+    setComponentState(aboutNav,whenToGoNav,seeAndDoNav,sightseeingNav,budgetCostNav,getThereNav,getAroundNav,stayNav,importantInfoNav,isHiddenAbout,isHiddenWhenToGo,isHiddenSeeAndDo,isHiddenSightseeing,isHiddenBudgetCost,isHiddenGetThere,isHiddenGetAround,isHiddenStay,isHiddenImportantInfo){
         this.setState({
-            aboutNav:"active",
-            whenToGoNav:"none",
-            seeAndDoNav:"none",
-            sightseeingNav:"none",
-            budgetCostNav:"none",
-            goThereNav:"none",
-            goAroundNav:"none",
-            stayNav:"none",
-            importantInfoNav:"none",
-            isHiddenAbout:false,
-            isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:true,
-            isHiddenSightseeing:true,
-            isHiddenBudgetCost:true,
-            isHiddenGoThere:true,
-            isHiddenGoAround:true,
-            isHiddenStay:true,
-            isHiddenImportantInfo:true
-        });
+            aboutNav:aboutNav,
+            whenToGoNav:whenToGoNav,
+            seeAndDoNav:seeAndDoNav,
+            sightseeingNav:sightseeingNav,
+            budgetCostNav:budgetCostNav,
+            getThereNav:getThereNav,
+            getAroundNav:getAroundNav,
+            stayNav:stayNav,
+            importantInfoNav:importantInfoNav,
+            isHiddenAbout:isHiddenAbout,
+            isHiddenWhenToGo:isHiddenWhenToGo,
+            isHiddenSeeAndDo:isHiddenSeeAndDo,
+            isHiddenSightseeing:isHiddenSightseeing,
+            isHiddenBudgetCost:isHiddenBudgetCost,
+            isHiddenGetThere:isHiddenGetThere,
+            isHiddenGetAround:isHiddenGetAround,
+            isHiddenStay:isHiddenStay,
+            isHiddenImportantInfo:isHiddenImportantInfo
+        })  
+    }
+    aboutNavClick(){
+        this.setComponentState("active","none","none","none","none","none","none","none","none",false,true,true,true,true,true,true,true,true);
     }
     whenToGoNavClick(){
-        console.log("when to go");
-        this.setState({
-            aboutNav:"none",
-            whenToGoNav:"active",
-            seeAndDoNav:"none",
-            sightseeingNav:"none",
-            budgetCostNav:"none",
-            goThereNav:"none",
-            goAroundNav:"none",
-            stayNav:"none",
-            importantInfoNav:"none",
-            isHiddenAbout:true,
-            isHiddenWhenToGo:false,
-            isHiddenSeeAndDO:true,
-            isHiddenSightseeing:true,
-            isHiddenBudgetCost:true,
-            isHiddenGoThere:true,
-            isHiddenGoAround:true,
-            isHiddenStay:true,
-            isHiddenImportantInfo:true
-        });
+        this.setComponentState("none","active","none","none","none","none","none","none","none",true,false,true,true,true,true,true,true,true);
     }
     seeAndDoNavClick(){
-        console.log("see and do");
-        this.setState({
-            aboutNav:"none",
-            whenToGoNav:"none",
-            seeAndDoNav:"active",
-            sightseeingNav:"none",
-            budgetCostNav:"none",
-            goThereNav:"none",
-            goAroundNav:"none",
-            stayNav:"none",
-            importantInfoNav:"none",
-            isHiddenAbout:true,
-            isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:false,
-            isHiddenSightseeing:true,
-            isHiddenBudgetCost:true,
-            isHiddenGoThere:true,
-            isHiddenGoAround:true,
-            isHiddenStay:true,
-            isHiddenImportantInfo:true
-        });
+        this.setComponentState("none","none","active","none","none","none","none","none","none",true,true,false,true,true,true,true,true,true);
     }
     sightseeingNavClick(){
-        this.setState({
-            aboutNav:"none",
-            whenToGoNav:"none",
-            seeAndDoNav:"none",
-            sightseeingNav:"active",
-            budgetCostNav:"none",
-            goThereNav:"none",
-            goAroundNav:"none",
-            stayNav:"none",
-            importantInfoNav:"none",
-            isHiddenAbout:true,
-            isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:true,
-            isHiddenSightseeing:false,
-            isHiddenBudgetCost:true,
-            isHiddenGoThere:true,
-            isHiddenGoAround:true,
-            isHiddenStay:true,
-            isHiddenImportantInfo:true
-        });
+        this.setComponentState("none","none","none","active","none","none","none","none","none",true,true,true,false,true,true,true,true,true);
     }
     budgetCostNavClick(){
-        this.setState({
-            aboutNav:"none",
-            whenToGoNav:"none",
-            seeAndDoNav:"none",
-            sightseeingNav:"none",
-            budgetCostNav:"active",
-            goThereNav:"none",
-            goAroundNav:"none",
-            stayNav:"none",
-            importantInfoNav:"none",
-            isHiddenAbout:true,
-            isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:true,
-            isHiddenSightseeing:true,
-            isHiddenBudgetCost:false,
-            isHiddenGoThere:true,
-            isHiddenGoAround:true,
-            isHiddenStay:true,
-            isHiddenImportantInfo:true
-        });
+        this.setComponentState("none","none","none","none","active","none","none","none","none",true,true,true,true,false,true,true,true,true);
     }
-    goThereNavClick(){
-        this.setState({
-            aboutNav:"none",
-            whenToGoNav:"none",
-            seeAndDoNav:"none",
-            sightseeingNav:"none",
-            budgetCostNav:"none",
-            goThereNav:"active",
-            goAroundNav:"none",
-            stayNav:"none",
-            importantInfoNav:"none",
-            isHiddenAbout:true,
-            isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:true,
-            isHiddenSightseeing:true,
-            isHiddenBudgetCost:true,
-            isHiddenGoThere:false,
-            isHiddenGoAround:true,
-            isHiddenStay:true,
-            isHiddenImportantInfo:true
-        });
+    getThereNavClick(){
+        this.setComponentState("none","none","none","none","none","active","none","none","none",true,true,true,true,true,false,true,true,true);
     }
-    goAroundNavClick(){
-        this.setState({
-            aboutNav:"none",
-            whenToGoNav:"none",
-            seeAndDoNav:"none",
-            sightseeingNav:"none",
-            budgetCostNav:"none",
-            goThereNav:"none",
-            goAroundNav:"active",
-            stayNav:"none",
-            importantInfoNav:"none",
-            isHiddenAbout:true,
-            isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:true,
-            isHiddenSightseeing:true,
-            isHiddenBudgetCost:true,
-            isHiddenGoThere:true,
-            isHiddenGoAround:false,
-            isHiddenStay:true,
-            isHiddenImportantInfo:true
-        });
+    getAroundNavClick(){
+        this.setComponentState("none","none","none","none","none","none","active","none","none",true,true,true,true,true,true,false,true,true);
     }
     stayNavClick(){
-        this.setState({
-            aboutNav:"none",
-            whenToGoNav:"none",
-            seeAndDoNav:"none",
-            sightseeingNav:"none",
-            budgetCostNav:"none",
-            goThereNav:"none",
-            goAroundNav:"none",
-            stayNav:"active",
-            importantInfoNav:"none",
-            isHiddenAbout:true,
-            isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:true,
-            isHiddenSightseeing:true,
-            isHiddenBudgetCost:true,
-            isHiddenGoThere:true,
-            isHiddenGoAround:true,
-            isHiddenStay:false,
-            isHiddenImportantInfo:true
-        });
+        this.setComponentState("none","none","none","none","none","none","none","active","none",true,true,true,true,true,true,true,false,true);
     }
     importantInfoNavClick(){
-        this.setState({
-            aboutNav:"none",
-            whenToGoNav:"none",
-            seeAndDoNav:"none",
-            sightseeingNav:"none",
-            budgetCostNav:"none",
-            goThereNav:"none",
-            goAroundNav:"none",
-            stayNav:"none",
-            importantInfoNav:"active",
-            isHiddenAbout:true,
-            isHiddenWhenToGo:true,
-            isHiddenSeeAndDO:true,
-            isHiddenSightseeing:true,
-            isHiddenBudgetCost:true,
-            isHiddenGoThere:true,
-            isHiddenGoAround:true,
-            isHiddenStay:true,
-            isHiddenImportantInfo:false
-        });
+        this.setComponentState("none","none","none","none","none","none","none","none","active",true,true,true,true,true,true,true,true,false);
     }
     render(){
+        if (this.state.errMsg!=''){
+            return(
+                <div>
+                    <h1>{this.state.errMsg}</h1>
+                </div>
+            )
+        }
         if (this.state.plan==undefined){
             return(
                 <div>Loading data...</div>
@@ -254,8 +124,8 @@ class PlanDetail extends Component{
                             <li role="presentation" className={this.state.seeAndDoNav}><a href="#" onClick={this.seeAndDoNavClick.bind(this)}>See and do</a></li>
                             <li role="presentation" className={this.state.sightseeingNav}><a href="#" onClick={this.sightseeingNavClick.bind(this)}>Sightseeing</a></li>
                             <li role="presentation" className={this.state.budgetCostNav}><a href="#" onClick={this.budgetCostNavClick.bind(this)}>budget Cost</a></li>
-                            <li role="presentation" className={this.state.goThereNav}><a href="#" onClick={this.goThereNavClick.bind(this)}>Go there</a></li>
-                            <li role="presentation" className={this.state.goAroundNav}><a href="#" onClick={this.goAroundNavClick.bind(this)}>Go around</a></li>
+                            <li role="presentation" className={this.state.getThereNav}><a href="#" onClick={this.getThereNavClick.bind(this)}>Get there</a></li>
+                            <li role="presentation" className={this.state.getAroundNav}><a href="#" onClick={this.getAroundNavClick.bind(this)}>Get around</a></li>
                             <li role="presentation" className={this.state.stayNav}><a href="#" onClick={this.stayNavClick.bind(this)}>Stay</a></li>
                             <li role="presentation" className={this.state.importantInfoNav}><a href="#" onClick={this.importantInfoNavClick.bind(this)}>Important info</a></li>
                         </ul>
@@ -267,11 +137,26 @@ class PlanDetail extends Component{
                         <div className={this.state.isHiddenWhenToGo?'hidden':''}>
                             <PlanWhenToGo plan={this.state.plan.data}/>
                         </div>
-                        <div className={this.state.isHiddenSeeAndDO?'hidden':''}>
+                        <div className={this.state.isHiddenSeeAndDo?'hidden':''}>
                             <PlanSeeAndDo plan={this.state.plan.data}/>
                         </div>
                         <div className={this.state.isHiddenSightseeing?'hidden':''}>
                             <PlanSightseeing plan={this.state.plan.data}/>
+                        </div>
+                        <div className={this.state.isHiddenBudgetCost?'hidden':''}>
+                            <PlanBudgetCost plan={this.state.plan.data}/>
+                        </div>
+                        <div className={this.state.isHiddenGetThere?'hidden':''}>
+                            <PlanHowGetThere plan={this.state.plan.data}/>
+                        </div>
+                        <div className={this.state.isHiddenGetAround?'hidden':''}>
+                            <PlanHowGetAround plan={this.state.plan.data}/>
+                        </div>
+                        <div className={this.state.isHiddenStay?'hidden':''}>
+                            <PlanWhereToStay plan={this.state.plan.data}/>
+                        </div>
+                        <div className={this.state.isHiddenImportantInfo?'hidden':''}>
+                            <PlanImportantInfo plan={this.state.plan.data}/>
                         </div>
                         
                     </div>
