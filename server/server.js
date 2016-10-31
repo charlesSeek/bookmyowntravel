@@ -48,6 +48,7 @@ app.delete('/countries/:id',countryController.deleteOneCountryById);
 */
 app.get('/plans',planController.getAllPlans);
 app.get('/plans/:id',planController.getOnePlanById);
+app.get('/plansList',planController.getAllPlansList);
 
 
 

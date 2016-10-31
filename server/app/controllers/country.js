@@ -25,7 +25,7 @@ exports.getOneCountryById = function(req,res){
             else
                 res.json({"success":true,"data":country});
         }
-    })
+    })    
 }
 
 //function to get a country by abbr name

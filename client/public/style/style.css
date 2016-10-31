@@ -101,7 +101,7 @@ div .container{
 .huge{
     font-size:4em;
 }
-.country-main{
+.country-home{
     margin-top: 100px;
 }
 .country-form{
@@ -121,4 +121,18 @@ div .container{
 }
 .country-update-form{
     margin-top:100px;
+}
+.plan-home{
+    margin-top:100px;
+}
+.plan-progress-bar{
+    margin-top: 100px;
+}
+.plan-progress-bar p{
+    display:inline-block;
+    padding:15px;
+    border-bottom: 4px solid lightgrey;
+}
+.border-bottom-green {
+    border-bottom: 4px solid green !important;
 }

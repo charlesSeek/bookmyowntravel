@@ -1,8 +1,11 @@
-import React,{Component} from 'react';
+import React,{Component,PropTypes} from 'react';
 import Header from '../../includes/header';
 import axios from 'axios';
 
 class CountryUpdate extends Component{
+    static contextTypes = {
+        router: PropTypes.object
+    }
     
     componentWillMount(){
         this.state = {
@@ -14,15 +17,20 @@ class CountryUpdate extends Component{
         const id = this.props.params.id;
         axios.get("http://localhost:12000/countries/"+id)
         .then((response)=>{
-            const country = response.data.data;
-            const {name} = country;
-            const {abbr} = country;
-            const {captial} = country;
-            const {area} = country;
-            const {population} = country;
-            const {currency} = country;
-            const {languages} = country;
-            this.setState({name,abbr,captial,area,population,currency,languages})
+            if (response.data.success){
+                const country = response.data.data;
+                const {name} = country;
+                const {abbr} = country;
+                const {captial} = country;
+                const {area} = country;
+                const {population} = country;
+                const {currency} = country;
+                const {languages} = country;
+                this.setState({name,abbr,captial,area,population,currency,languages})
+            }else{
+                alert(response.data.errMsg);
+            }
+            
         })
         .catch(err=>{
             alert(err.toString());
@@ -65,6 +73,7 @@ class CountryUpdate extends Component{
     }
     countryUpdateSubmit(event){
         event.preventDefault();
+        const _id = this.props.params.id;
         const name = this.state.name;
         const abbr = this.state.abbr;
         const captial = this.state.captial;
@@ -72,8 +81,29 @@ class CountryUpdate extends Component{
         const population = this.state.population;
         const currency = this.state.currency;
         const languages = this.state.languages;
-        console.log({name,abbr,captial,area,population,currency,languages});
+        const updatedAt = Date();
+        console.log({_id,name,abbr,captial,area,population,currency,languages});
+        axios.put("http://localhost:12000/countries/"+_id,{_id,name,abbr,captial,area,population,currency,languages,updatedAt})
+        .then((response)=>{
+            if (response.data.success){
+                this.context.router.push('/admin/country/'+_id);
+            }else{
+                alert(response.data.errMsg);
+            }
+        })
+        .catch(err=>{
+            alert(err.toString());
+        })
+    }
+    removeLanguage(event){
+        const tagName = event.target.name;
+        const num = tagName.substring(9);
+        const languages = this.state.languages;
+        const newLanguages = languages.filter((language,index)=>{
+            return index !=num;
+        });
         
+        this.setState({languages:newLanguages});
     }
     render(){
         if (this.state.name == undefined){
@@ -90,7 +120,7 @@ class CountryUpdate extends Component{
                         <div className="form-group">
                             <label className="col-sm-4 control-label">Coutry Name</label>
                             <div className="col-sm-8">
-                                <input type="text" className="form-control" value={this.state.name} required/>
+                                <input type="text" className="form-control" value={this.state.name} readOnly required/>
                             </div>
                         </div>
                         <div className="form-group">
@@ -126,13 +156,13 @@ class CountryUpdate extends Component{
                         
                         {this.state.languages.map((language,index)=>{
                             return(
-                                <div className="form-group" key={language}>
+                                <div className="form-group" key={"language"+index}>
                                     <label className="col-sm-4 control-label">Official Language {index+1}</label>
                                     <div className="col-sm-6">
                                         <input name={"language_"+index} type="text" className="form-control" ref={"language"+"_"+index} value={this.state.languages[index]} onChange={this.countryLanguagesChange.bind(this)} required/>
                                     </div>
                                     <div className="col-sm-2">
-                                        <button className="btn btn-success">REMOVE</button>
+                                        <button type="button" name={"language_"+index} className="btn btn-success" onClick={this.removeLanguage.bind(this)}>REMOVE</button>
                                     </div>
                                 </div>
                             )
@@ -147,7 +177,7 @@ class CountryUpdate extends Component{
                             <div className="col-sm-offset-4 col-sm-8">
                                 <button type="submit" className="btn btn-default">Update</button>
                                 &nbsp;&nbsp;
-                                <button type="reset" className="btn btn-default" >Cancel</button>
+                                <button type="reset" className="btn btn-default" onClick={()=>this.context.router.push('/admin/country/')}>Cancel</button>
                             </div>
                         </div>
                     </form>

@@ -46,7 +46,7 @@ class MainContent extends Component{
                     <img className="image-responsive" src={plan.about.about_image_link}/>
                     <hr/>
                     <p>{plan.about.about_description}</p>
-                    <a className='btn btn-primary' href={"/plans/"+plan._id}>Plan Detail<span className='glyphicon glyphicon-chevron-right'></span></a>
+                    <a className='btn btn-primary' href={"/plan/"+plan._id}>Plan Detail<span className='glyphicon glyphicon-chevron-right'></span></a>
                     <hr/>
                 </div>
             );
