@@ -1,5 +1,6 @@
 'use strict';
 var Country = require('../models/country');
+var _ = require('underscore');
 
 //function to get all countries info
 exports.getAllCountries = function(req,res){
@@ -76,22 +77,21 @@ exports.updateOneCountryById = function(req,res){
     if(id){
         Country.findById(id,function(err,country){
             if (err){
-                res.status(500).json({"success":true,"errMsg":err})
+                res.status(500).json({"success":false,"errMsg":err})
             }else{
                 if (!country){
                     res.status(404).json({"success":false,"errMsg":"can not find the country by id"})
                 }else{
                     var countryObj = req.body;
-                    var country = new Country(countryObj);
-                    country.isNew = false;
-                    country.save(function(err){
+                    var _country = _.extend(country,countryObj);
+                    _country.save(function(err,country){
                         if (err){
                             res.status(500).json({"success":false,"errMsg":err})
                         }else{
-                            res.json({"success":true})
+                            res.json({"success":true,data:country})
                         }
                             
-                    })
+                    },{versionKey: false})
                 }
             }
         })

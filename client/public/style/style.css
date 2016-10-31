@@ -110,3 +110,15 @@ div .container{
 .add-button{
     margin-top:10px;
 }
+.countries-table{
+    margin-top:40px;
+}
+.country-info{
+    margin-top: 100px;
+}
+.language-inline{
+    display:inline;
+}
+.country-update-form{
+    margin-top:100px;
+}

@@ -5,7 +5,7 @@ class CountryMain extends Component{
     componentDidMount(){
         axios.get("http://localhost:12000/countries")
         .then((response)=>{
-            this.setState({countries:response.data})
+            this.setState({countries:response.data.data})
         })
         .catch((err)=>{
             this.setState({errMsg:err});
@@ -60,7 +60,7 @@ class CountryMain extends Component{
         .then(response=>{
            if (response.data.success){
                var countries = this.state.countries;
-               countries.data.push(response.data.data);
+               countries.push(response.data.data);
                this.setState({
                     countries:countries,
                     isHiddenForm:true,
@@ -109,8 +109,9 @@ class CountryMain extends Component{
             <div className="container country-main">
                 <h2>Admin Country</h2>
                 <div className={this.state.isHiddenCreateButton?'hidden':''}>
-                   <button type="button" className="btn btn-default btn-block" onClick={this.createButtonClick.bind(this)}>Create New One</button>
+                   <button type="button" className="btn btn-success btn-block" onClick={this.createButtonClick.bind(this)}>New One</button>
                 </div>
+                <div className="divider"></div>
                 <div className={this.state.isHiddenForm?'hidden':''}>
                     <form className="form-horizontal" onSubmit={this.newCountrySubmit.bind(this)}>
                         <div className="form-group">
@@ -162,7 +163,7 @@ class CountryMain extends Component{
                         })}
                         <div className="form-group">    
                             <div className="col-sm-8 col-sm-offset-4">
-                                 <button type="button" className="btn btn-default btn-block" onClick={this.addLanguage.bind(this)}>Add a language</button>
+                                 <button type="button" className="btn btn-success btn-block" onClick={this.addLanguage.bind(this)}>Add a language</button>
                             </div>
                         </div>
                                 
@@ -175,7 +176,7 @@ class CountryMain extends Component{
                         </div>
                     </form>
                 </div>
-                <div className="container">
+                <div className="container countries-table">
                     <table className="table table-hover">
                         <thead>
                             <tr>
@@ -191,7 +192,7 @@ class CountryMain extends Component{
                             </tr>
                         </thead>
                         <tbody>
-                            {this.state.countries.data.map((country)=>{
+                            {this.state.countries.map((country)=>{
                                 return(
                                     <tr key={country._id}>
                                         <td>{country.name}</td>
@@ -200,8 +201,8 @@ class CountryMain extends Component{
                                         <td>{country.area}</td>
                                         <td>{country.population}</td>
                                         <td>{country.currency}</td>
-                                        <td><a href={"/admin/country/+country._id"}><i className="glyphicon glyphicon-play-circle"></i></a></td>
-                                        <td><a href={"/admin/country/update/+country._id"}><i className="glyphicon glyphicon-edit"></i></a></td>
+                                        <td><a href={"/admin/country/"+country._id}><i className="glyphicon glyphicon-play-circle"></i></a></td>
+                                        <td><a href={"/admin/country/update/"+country._id}><i className="glyphicon glyphicon-edit"></i></a></td>
                                         <td><a href="#" value={country._id} onClick={()=>this.countryDelete(country._id)}><i className="glyphicon glyphicon-remove-circle"></i></a></td>
                                     </tr>
                                 )
