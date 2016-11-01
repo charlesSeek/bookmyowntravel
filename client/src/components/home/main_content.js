@@ -37,7 +37,7 @@ class MainContent extends Component{
     }
     renderPlans(){
        return this.state.plans.map((plan)=>{
-           if (plan.about!=undefined)
+           if (plan.status=="committed")
             return(
                 <div key={plan._id}>
                     <h3>Plan in {plan.name}</h3>

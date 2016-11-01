@@ -662,8 +662,7 @@
             "local_time":{
                 "text":"Japan Standard Time (JST) is 9 hours ahead of Coordinated Universal Time",
                 "website_link":"https://www.timeanddate.com/time/zones/jst"
-            },
-            "createdAt":"Tue Oct 25 2016 12:01:13 GMT+1100 (AEDT)",
-            "updatedAt":"Tue Oct 25 2016 12:01:13 GMT+1100 (AEDT)"
-        }
+            }
+        },
+        "status":"committed"
 }

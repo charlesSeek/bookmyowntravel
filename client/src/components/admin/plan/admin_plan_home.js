@@ -55,7 +55,8 @@ class AdminPlanHome extends Component {
         const continent = this.refs.continent.value;
         const createdAt = Date();
         const updatedAt = Date();
-        axios.post("http://localhost:12000/plans",{name,continent,createdAt,updatedAt})
+        const status = "processing";
+        axios.post("http://localhost:12000/plans",{name,continent,createdAt,updatedAt,status})
         .then((response)=>{
             if (response.data.success){
                 console.log("id:",response.data.data._id);
@@ -133,6 +134,7 @@ class AdminPlanHome extends Component {
                                     <th>Continent</th>
                                     <th>Created At</th>
                                     <th>Updated At</th>
+                                    <th>Status</th>
                                     <th>View</th>
                                     <th>Update</th>
                                     <th>Delete</th>
@@ -146,6 +148,7 @@ class AdminPlanHome extends Component {
                                             <td>{plan.continent}</td>
                                             <td>{plan.createdAt}</td>
                                             <td>{plan.updatedAt}</td>
+                                            <td>{plan.status}</td>
                                             <td><a href={"/plan/"+plan._id}><i className="glyphicon glyphicon-play-circle"></i></a></td>
                                             <td><a href={"/admin/plan/update/about/"+plan._id}><i className="glyphicon glyphicon-edit"></i></a></td>
                                             <td><a href="#" ><i className="glyphicon glyphicon-remove-circle"></i></a></td>

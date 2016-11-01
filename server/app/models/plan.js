@@ -21,7 +21,8 @@ var PlanSchema = new mongoose.Schema({
     updatedAt:{
         type:Date,
         default:Date.now()
-    }
+    },
+    status:String
     
 });
 module.exports = mongoose.model('plan',PlanSchema);

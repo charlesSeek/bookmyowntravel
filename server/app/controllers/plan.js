@@ -30,12 +30,14 @@ exports.getAllPlansList = function(req,res){
                 var updatedMonth = plan.updatedAt.getMonth()+1;
                 var updatedDay = plan.updatedAt.getDate();
                 var updatedAt = updatedYear+"-"+updatedMonth+"-"+updatedDay;
+                var status = plan.status;
                 return {
                     _id: _id,
                     name: name,
                     continent: continent,
                     createdAt: createdAt,
-                    updatedAt: updatedAt
+                    updatedAt: updatedAt,
+                    status:status
                 }
             })
             res.json({"success":true,data:plansList});
