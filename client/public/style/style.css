@@ -136,3 +136,6 @@ div .container{
 .border-bottom-green {
     border-bottom: 4px solid green !important;
 }
+.new-plan-about {
+    margin-top:20px;
+}

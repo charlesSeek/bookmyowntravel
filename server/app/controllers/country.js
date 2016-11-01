@@ -108,13 +108,18 @@ exports.deleteOneCountryById = function(req,res){
             if (err){
                 res.status(500).json({"success":true,"errMsg":err})
             }else{
-                Country.remove({_id:id},function(err,country){
-                    if (err){
-                        res.status(500).json({"success":true,"errMsg":err})
-                    }else{
-                        res.json({"success":true})
-                    }
-                })
+                if (country){
+                     Country.remove({_id:id},function(err,country){
+                        if (err){
+                            res.status(500).json({"success":true,"errMsg":err})
+                        }else{
+                            res.json({"success":true})
+                        }
+                    })
+                }else{
+                    res.json({"success":false,"errMsg":"can not find the country by id"})
+                }
+               
             }
         })
     }else{

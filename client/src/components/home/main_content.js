@@ -19,7 +19,7 @@ class MainContent extends Component{
             console.log(response)
             this.setState({plans:response.data.data});
         })
-        .catch(function(err){
+        .catch(err=>{
             this.setState({errMsg:err})
         })
     }
@@ -37,6 +37,7 @@ class MainContent extends Component{
     }
     renderPlans(){
        return this.state.plans.map((plan)=>{
+           if (plan.about!=undefined)
             return(
                 <div key={plan._id}>
                     <h3>Plan in {plan.name}</h3>

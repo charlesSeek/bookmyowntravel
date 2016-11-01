@@ -6,6 +6,10 @@ class CountryHome extends Component{
     componentDidMount(){
         axios.get("http://localhost:12000/countries")
         .then((response)=>{
+            const countries = response.data.data;
+            countries.sort(function(a,b){
+               return a.name > b.name; 
+            });
             this.setState({countries:response.data.data})
         })
         .catch((err)=>{
@@ -80,11 +84,9 @@ class CountryHome extends Component{
         axios.delete("http://localhost:12000/countries/"+id)
         .then(response=>{
             if (response.data.success){
-                var newCountriesList = this.state.countries.data.filter(country=>{
+                const newCountries = this.state.countries.filter(country=>{
                     return country._id != id;
                 })
-                var newCountries = this.state.countries;
-                newCountries.data = newCountriesList;
                 this.setState({countries:newCountries});
             }else{
                 alert(response.data.errMsg);
