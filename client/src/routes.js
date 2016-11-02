@@ -8,7 +8,7 @@ import CountryHome from './components/admin/country/country_home';
 import CountryDetail from './components/admin/country/country_detail';
 import CountryUpdate from './components/admin/country/country_update';
 import AdminPlanHome from './components/admin/plan/admin_plan_home';
-import AdminPlanNew from './components/admin/plan/admin_plan_new';
+import AdminPlanNewAbout from './components/admin/plan/admin_plan_new_about';
 
 export default(
     <Route path="/" component={App}>
@@ -19,6 +19,7 @@ export default(
         <Route path="/admin/country/:id" component={CountryDetail}/>
         <Route path="/admin/country/update/:id" component={CountryUpdate}/>
         <Route path="/admin/plan" component={AdminPlanHome}/>
-        <Route path="/admin/plan/new" component={AdminPlanNew}/>
+        <Route path="/admin/plan/new/about/:id" component={AdminPlanNewAbout}/>
+        <Route path="/admin/plan/new/whenGo/:id" component={AdminPlanNewAbout}/>
     </Route>
 )

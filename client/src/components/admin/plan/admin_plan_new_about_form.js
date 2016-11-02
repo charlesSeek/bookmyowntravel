@@ -1,13 +1,20 @@
-import React,{Component} from 'react';
+import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
 
 class AdminPlanNewAboutForm extends Component{
+    static contextTypes = {
+        router: PropTypes.object
+    }
     componentWillMount(){
         this.state = {
-            countries: undefined
+            countries: undefined,
+            name:'',
+            continent:'',
+            errMsg:''
         }
     }
     componentDidMount(){
+        const id = this.props.id;
         axios.get("http://localhost:12000/countries")
         .then((response)=>{
             if (response.data.success){
@@ -16,6 +23,23 @@ class AdminPlanNewAboutForm extends Component{
             }else{
                 alert(resposnse.data.errMsg);
             }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()})
+            alert(err.toString);
+        });
+        axios.get("http://localhost:12000/plans/"+id)
+        .then((response)=>{
+            if (response.data.success){
+                console.log("data:",response.data.data);
+                const name = response.data.data.name;
+                const continent = response.data.data.continent;
+                this.setState({name,continent});
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
         })
     }
     onNewPlanAboutSubmit(event){
@@ -28,8 +52,6 @@ class AdminPlanNewAboutForm extends Component{
         let tourism_office = {};
         let entry_requirements = {};
         let top_blogs = {};
-        const name = this.refs.name.value;
-        const continent = this.refs.continent.value;
         const about_description = this.refs.about_description.value;
         const about_image_link = this.refs.about_image_link.value;
         const video1_name = this.refs.about_video1_name.value;
@@ -58,11 +80,28 @@ class AdminPlanNewAboutForm extends Component{
         entry_requirements = {entry_requirements_image_link,entry_requirements_website_link};
         top_blogs = {image_link:top_blogs_image_link,website_link:top_blogs_website_link};
         about = {about_description,about_image_link,about_video_1,about_video_2,about_video_3,about_extra_videos,map_geolocation,tourism_office,entry_requirements,top_blogs};
-        const plan = {name,continent,about};
+        const plan = {about};
         console.log("plan:",plan);
+        axios.put("http://localhost:12000/plans/"+this.props.id,plan)
+        .then(response=>{
+            if (response.data.success){
+                console.log('push id:',this.props.id);
+                this.context.router.push('/admin/plan/new/whenGo/'+this.props.id)
+            }else
+                alert(response.data.errMsg);
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
+        })
     }
     render(){
-        if (this.state.countries==undefined){
+        if (this.state.errMsg){
+            return(
+                <div>{this.state.errMsg}</div>
+            )
+        }
+        if (this.state.countries==undefined||this.state.name==''){
             return(
                 <div>Loading country data...</div>
             )
@@ -77,13 +116,7 @@ class AdminPlanNewAboutForm extends Component{
                             <label className="control-label">Country Name(Area Name)</label>
                         </div>
                         <div className="col-md-8">
-                            <select className="form-control" ref="name" required>
-                                {this.state.countries.map((country)=>{
-                                    return(
-                                        <option key={country.name}>{country.name}</option>
-                                    )
-                                })}
-                            </select>
+                            <input type="text" className="form-control" value={this.state.name} readOnly/>
                         </div>
                     </div>
                             
@@ -93,15 +126,7 @@ class AdminPlanNewAboutForm extends Component{
                             <label className="control-label">Continent Name</label>
                         </div>
                         <div className="col-md-8">
-                            <select className="form-control" ref="continent" required>
-                                <option>Asia</option>
-                                <option>Europen</option>
-                                <option>North Africa</option>
-                                <option>South Africa</option>
-                                <option>Africa</option>
-                                <option>Oceania</option>
-                                <option>Antarctica</option>
-                            </select>
+                            <input type="text" className="form-control" value={this.state.continent} readOnly/>
                         </div>
                     </div>
                     

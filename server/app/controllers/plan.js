@@ -1,4 +1,5 @@
 var Plan = require('../models/plan');
+var _ = require('underscore');
 
 //function to get all plans
 exports.getAllPlans = function(req,res){

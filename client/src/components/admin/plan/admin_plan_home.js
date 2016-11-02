@@ -60,7 +60,8 @@ class AdminPlanHome extends Component {
         .then((response)=>{
             if (response.data.success){
                 console.log("id:",response.data.data._id);
-                this.context.router.push('/admin/plan/new');
+                const id = response.data.data._id;
+                this.context.router.push('/admin/plan/new/about/'+id);
             }else{
                 alert(response.data.errMsg);
             }
@@ -108,8 +109,8 @@ class AdminPlanHome extends Component {
                                     <select className="form-control" ref="continent" required>
                                         <option>Asia</option>
                                         <option>Europen</option>
-                                        <option>North Africa</option>
-                                        <option>South Africa</option>
+                                        <option>North America</option>
+                                        <option>South America</option>
                                         <option>Africa</option>
                                         <option>Oceania</option>
                                         <option>Antarctica</option>
