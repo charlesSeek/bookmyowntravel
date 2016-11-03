@@ -11,7 +11,7 @@ class AdminPlanNewSightseeingForm extends Component{
             errMsg:'',
             sightseeing_list:[1],
             independent_touring_list:[1],
-            organised_day_tour_list:[1],
+            organised_day_tours_list:[1],
             organised_extended_tours_list:[1],
             free_activities_list:[1],
             volunteer_list:[1]
@@ -49,11 +49,11 @@ class AdminPlanNewSightseeingForm extends Component{
         this.setState({independent_touring_list})
     }
     onNewOrganisedDayTourExtraWebsiteLink(){
-        let index = this.state.organised_day_tour_list.length;
+        let index = this.state.organised_day_tours_list.length;
         index++;
-        let organised_day_tour_list = this.state.organised_day_tour_list;
-        organised_day_tour_list.push(index);
-        this.setState({organised_day_tour_list})
+        let organised_day_tours_list = this.state.organised_day_tours_list;
+        organised_day_tours_list.push(index);
+        this.setState({organised_day_tours_list})
     }
     onNewOrganisedExtendedToursExtraWebsiteLink(){
         let index = this.state.organised_extended_tours_list.length;
@@ -76,6 +76,111 @@ class AdminPlanNewSightseeingForm extends Component{
         volunteer_list.push(index);
         this.setState({volunteer_list})
     }
+    onNewPlanSightseeingSubmit(event){
+        event.preventDefault();
+        
+        //sightseeing
+        const sightseeing_image_link = this.refs.sightseeing_image_link.value;
+        const sightseeing_website_link = this.refs.sightseeing_website_link.value;
+        let sightseeing_extra_website_link_list = [];
+        for (let i=1;i<=this.state.sightseeing_list.length;i++){
+            const name = "sightseeing_extra_website_link_"+i+"_text";
+            const link = "sightseeing_extra_website_link_"+i+"_website_link";
+            const text = this.refs[name].value;
+            const website_link = this.refs[link].value;
+            sightseeing_extra_website_link_list.push({text,website_link});
+        }
+        const sightseeing = {sightseeing_image_link,sightseeing_website_link,sightseeing_extra_website_link_list};
+        
+        //independent touring
+        const independent_touring_image_link = this.refs.independent_touring_image_link.value;
+        const independent_touring_website_link = this.refs.independent_touring_website_link.value;
+        let independent_touring_extra_website_link_list = [];
+        for (let i=1;i<=this.state.independent_touring_list.length;i++){
+            const name = "independent_touring_extra_website_link_"+i+"_text";
+            const link = "independent_touring_extra_website_link_"+i+"_website_link";
+            const text = this.refs[name].value;
+            const website_link = this.refs[link].value;
+            independent_touring_extra_website_link_list.push({text,website_link});
+        }
+        const independent_touring = {independent_touring_image_link,independent_touring_website_link,independent_touring_extra_website_link_list};
+        
+        //organised day tours
+        const organised_day_tours_image_link = this.refs.organised_day_tours_image_link.value;
+        const organised_day_tours_website_link = this.refs.sightseeing_website_link.value;
+        let organised_day_tours_extra_website_link_list = [];
+        for (let i=1;i<=this.state.organised_day_tours_list.length;i++){
+            const name = "organised_day_tours_extra_website_link_"+i+"_text";
+            const link = "organised_day_tours_extra_website_link_"+i+"_website_link";
+            const text = this.refs[name].value;
+            const website_link = this.refs[link].value;
+            organised_day_tours_extra_website_link_list.push({text,website_link});
+        }
+        const organised_day_tours = {organised_day_tours_image_link,organised_day_tours_website_link,organised_day_tours_extra_website_link_list};
+        
+        //organised extended tours
+        const organised_extended_tours_image_link = this.refs.organised_extended_tours_image_link.value;
+        const organised_extended_tours_website_link = this.refs.organised_extended_tours_website_link.value;
+        let organised_extended_tours_extra_website_link_list = [];
+        for (let i=1;i<=this.state.organised_extended_tours_list.length;i++){
+            const name = "organised_extended_tours_extra_website_link_"+i+"_text";
+            const link = "organised_extended_tours_extra_website_link_"+i+"_website_link";
+            const text = this.refs[name].value;
+            const website_link = this.refs[link].value;
+            organised_extended_tours_extra_website_link_list.push({text,website_link});
+        }
+        const organised_extended_tours = {organised_extended_tours_image_link,organised_extended_tours_website_link,organised_extended_tours_extra_website_link_list};
+        
+        //free activities
+        const free_activities_image_link = this.refs.free_activities_image_link.value;
+        const free_activities_website_link = this.refs.free_activities_website_link.value;
+        let free_activities_extra_website_link_list = [];
+        for (let i=1;i<=this.state.free_activities_list.length;i++){
+            const name = "free_activities_extra_website_link_"+i+"_text";
+            const link = "free_activities_extra_website_link_"+i+"_website_link";
+            const text = this.refs[name].value;
+            const website_link = this.refs[link].value;
+            free_activities_extra_website_link_list.push({text,website_link});
+        }
+        const free_activities = {free_activities_image_link,free_activities_website_link,free_activities_extra_website_link_list};
+        
+        //volunteer
+        const volunteer_image_link = this.refs.volunteer_image_link.value;
+        const volunteer_website_link = this.refs.volunteer_website_link.value;
+        let volunteer_extra_website_link_list = [];
+        for (let i=1;i<=this.state.volunteer_list.length;i++){
+            const name = "volunteer_extra_website_link_"+i+"_text";
+            const link = "volunteer_extra_website_link_"+i+"_website_link";
+            const text = this.refs[name].value;
+            const website_link = this.refs[link].value;
+            volunteer_extra_website_link_list.push({text,website_link});
+        }
+        const volunteer = {volunteer_image_link,volunteer_website_link,volunteer_extra_website_link_list};
+        
+        const sightseeing_touring_options = {
+            sightseeing,
+            independent_touring,
+            organised_day_tours,
+            organised_extended_tours,
+            free_activities,
+            volunteer
+        }
+        //console.log({sightseeing_touring_options})
+        const id = this.props.id;
+        axios.put("http://localhost:12000/plans/"+id,{sightseeing_touring_options})
+        .then(response=>{
+            if (response.data.success){
+                this.context.router.push('/admin/plan/new/budgetCost/'+id);
+            }else {
+                this.setState({errMsg:response.data.errMsg});
+                alert(response.data.errMsg);
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
+        })
+    }
     render(){
         if (this.state.errMsg!=''){
             return(
@@ -89,7 +194,7 @@ class AdminPlanNewSightseeingForm extends Component{
         }
         return(
             <div className="container new-plan-sightseeing">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.onNewPlanSightseeingSubmit.bind(this)}>
             
                     {/*sightseeing */}
                     <div className="panel panel-default">
@@ -190,7 +295,7 @@ class AdminPlanNewSightseeingForm extends Component{
                                                     <label className="control-label">website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" ref={"independent_extra_website_link_"+num+"_website_link"} placeholder="please input the website link" required/>
+                                                    <input className="form-control" type="text" ref={"independent_touring_extra_website_link_"+num+"_website_link"} placeholder="please input the website link" required/>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,7 +321,7 @@ class AdminPlanNewSightseeingForm extends Component{
                                     <label className="control-label">organised day tours image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" ref="organised_day_tour_image_link" placeholder="please input the  image link" required/>
+                                    <input className="form-control" type="text" ref="organised_day_tours_image_link" placeholder="please input the  image link" required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -224,10 +329,10 @@ class AdminPlanNewSightseeingForm extends Component{
                                     <label className="control-label">independent touring website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" ref="organised_day_tour_website_link" placeholder="please input the  website link" required/>
+                                    <input className="form-control" type="text" ref="organised_day_tours_website_link" placeholder="please input the  website link" required/>
                                 </div>
                             </div>
-                            {this.state.organised_day_tour_list.map(num=>{
+                            {this.state.organised_day_tours_list.map(num=>{
                                 return(
                                     <div className="panel panel-default" key={"extra_website_"+num}>
                                         <div className="panel-heading">
@@ -239,7 +344,7 @@ class AdminPlanNewSightseeingForm extends Component{
                                                     <label className="control-label">text</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" ref={"organised_day_tour_extra_website_link_"+num+"_text"} placeholder="please input the text" required/>
+                                                    <input className="form-control" type="text" ref={"organised_day_tours_extra_website_link_"+num+"_text"} placeholder="please input the text" required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -247,7 +352,7 @@ class AdminPlanNewSightseeingForm extends Component{
                                                     <label className="control-label">website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" ref={"organised_day_tour_extra_website_link_"+num+"_website_link"} placeholder="please input the website link" required/>
+                                                    <input className="form-control" type="text" ref={"organised_day_tours_extra_website_link_"+num+"_website_link"} placeholder="please input the website link" required/>
                                                 </div>
                                             </div>
                                         </div>
