@@ -36,16 +36,17 @@ class AdminPlanNewBudgetCostForm extends Component{
         flight_list.push(index);
         this.setState({flight_list});
     }
-    onNewPlanBudgetCostSubmit(){
+    onNewPlanBudgetCostSubmit(event){
+        event.preventDefault();
         const cost_description = this.refs.cost_description.value;
-        const check_prices_webiste_link = this.refs.check_prices_webiste_link.value;
+        const check_prices_website_link = this.refs.check_prices_webiste_link.value;
         const currency_text = this.refs.currency_text.value;
         const currency_website_link = this.refs.currency_website_link.value;
         const currency = {currency_text,currency_website_link};
         
         //flight_indication
         let flight_indication = [];
-        for (let i=1;i<=flight_list;i++){
+        for (let i=1;i<=this.state.flight_list.length;i++){
             const name = "from_"+i;
             const cost = "cost_description_"+i;
             const From = this.refs[name].value;
@@ -54,8 +55,58 @@ class AdminPlanNewBudgetCostForm extends Component{
         }
         
         //accomodation indication
+        const hotel_name = this.refs.hotel_name.value;
+        const hotel_cost = this.refs.hotel_cost.value;
+        let hotel = {name:hotel_name,description:hotel_cost};
+        const mid_range_hotel_name = this.refs.mid_range_hotel_name.value;
+        const mid_range_hotel_cost = this.refs.mid_range_hotel_cost.value;
+        let mid_range_hotel ={name: mid_range_hotel_name,description:mid_range_hotel_cost};
+        const budget_hotel_name = this.refs.budget_hotel_name.value;
+        const budget_hotel_cost = this.refs.budget_hotel_cost.value;
+        let budget_hotel = {name:budget_hotel_name,description:budget_hotel_cost};
+        const luxury_hotel_name = this.refs.luxury_hotel_name.value;
+        const luxury_hotel_cost = this.refs.luxury_hotel_cost.value;
+        let luxury_hotel = {name:luxury_hotel_name,description:luxury_hotel_cost};
+        let accomodation_indication = {hotel,mid_range_hotel,budget_hotel,luxury_hotel};
         
+        //transport indication
+        const day_tour_name = this.refs.day_tour_name.value;
+        const day_tour_cost = this.refs.day_tour_cost.value;
+        let day_tour = {name:day_tour_name,description:day_tour_cost};
+        const day_rail_pass_name = this.refs.day_rail_pass_name.value;
+        const day_rail_pass_cost  = this.refs.day_rail_pass_cost.value;
+        let day_rail_pass = {name:day_rail_pass_name,description:day_rail_pass_cost};
+        let transport_indication = {day_tour,day_rail_pass};
         
+        //meal indication
+        const breakfast_name = this.refs.breakfast_name.value;
+        const breakfast_cost = this.refs.breakfast_cost.value;
+        let breakfast = {name:breakfast_name,description:breakfast_cost};
+        const lunch_name = this.refs.lunch_name.value;
+        const lunch_cost = this.refs.lunch_cost.value;
+        let lunch = {name:lunch_name,description:lunch_cost};
+        const dinner_name = this.refs.dinner_name.value;
+        const dinner_cost = this.refs.dinner_cost.value;
+        let dinner = {name:dinner_name,description:dinner_cost};
+        let meal_indication = {breakfast,lunch,dinner};  
+    
+        let average_prices_and_costs = {flight_indication,accomodation_indication,transport_indication,meal_indication}
+        
+        const budget_and_costs = {cost_description,average_prices_and_costs,currency,check_prices_website_link};
+        const id = this.props.id;
+        axios.put("http://localhost:12000/plans/"+id,{budget_and_costs})
+        .then(response=>{
+            if (response.data.success){
+                this.context.router.push('/admin/plan/new/getThere/'+id);
+            }else{
+                this.setState({errMsg:response.data.errMsg});
+                alert(response.data.errMsg);
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
+        })
     }
     render(){
         if (this.state.errMsg!=''){
@@ -133,7 +184,7 @@ class AdminPlanNewBudgetCostForm extends Component{
                                                     <label className="control-label">cost description</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input type="text" className="form-control" ref={"cost_description"+num} placeholder="please input the flight cost description" required/>
+                                                    <input type="text" className="form-control" ref={"cost_description_"+num} placeholder="please input the flight cost description" required/>
                                                 </div>
                                             </div>
                                         </div>
