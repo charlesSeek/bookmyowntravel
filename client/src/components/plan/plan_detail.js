@@ -19,14 +19,8 @@ import axios from 'axios'
 
 class PlanDetail extends Component{
     componentDidMount(){
-        var id = this.props.params.id;
-        axios.get("http://localhost:12000/plans/"+id)
-        .then((response)=>{
-            this.setState({plan:response.data});
-        })
-        .catch((err)=>{
-           this.setState({errMsg:err.toString()}) 
-        });
+        const id = this.props.params.id;
+        this.setState({id});
     }
     componentWillMount(){
         this.state ={
@@ -48,7 +42,8 @@ class PlanDetail extends Component{
             isHiddenGetAround:true,
             isHiddenStay:true,
             isHiddenImportantInfo:true,
-            errMsg:''
+            errMsg:'',
+            id:''
         }
     }
     setComponentState(aboutNav,whenToGoNav,seeAndDoNav,sightseeingNav,budgetCostNav,getThereNav,getAroundNav,stayNav,importantInfoNav,isHiddenAbout,isHiddenWhenToGo,isHiddenSeeAndDo,isHiddenSightseeing,isHiddenBudgetCost,isHiddenGetThere,isHiddenGetAround,isHiddenStay,isHiddenImportantInfo){
@@ -108,9 +103,9 @@ class PlanDetail extends Component{
                 </div>
             )
         }
-        if (this.state.plan==undefined){
+        if (this.state.id==''){
             return(
-                <div>Loading data...</div>
+                <div>Loading plan data...</div>
             )
         } 
         return(
@@ -132,32 +127,32 @@ class PlanDetail extends Component{
                     </div>
                     <div className="container plancontent">
                         <div className={this.state.isHiddenAbout?'hidden':''}>
-                            <PlanAbout plan={this.state.plan.data} />
+                            <PlanAbout id={this.state.id} />
                         </div>
-                        <div className={this.state.isHiddenWhenToGo?'hidden':''}>
-                            <PlanWhenToGo plan={this.state.plan.data}/>
+                            {/*<div className={this.state.isHiddenWhenToGo?'hidden':''}>
+                            <PlanWhenToGo id={this.state.id}/>
                         </div>
                         <div className={this.state.isHiddenSeeAndDo?'hidden':''}>
-                            <PlanSeeAndDo plan={this.state.plan.data}/>
+                            <PlanSeeAndDo id={this.state.id}/>
                         </div>
                         <div className={this.state.isHiddenSightseeing?'hidden':''}>
-                            <PlanSightseeing plan={this.state.plan.data}/>
+                            <PlanSightseeing id={this.state.id}/>
                         </div>
                         <div className={this.state.isHiddenBudgetCost?'hidden':''}>
-                            <PlanBudgetCost plan={this.state.plan.data}/>
+                            <PlanBudgetCost id={this.state.id}/>
                         </div>
                         <div className={this.state.isHiddenGetThere?'hidden':''}>
-                            <PlanHowGetThere plan={this.state.plan.data}/>
+                            <PlanHowGetThere id={this.state.id}/>
                         </div>
                         <div className={this.state.isHiddenGetAround?'hidden':''}>
-                            <PlanHowGetAround plan={this.state.plan.data}/>
+                            <PlanHowGetAround id={this.state.id}/>
                         </div>
                         <div className={this.state.isHiddenStay?'hidden':''}>
-                            <PlanWhereToStay plan={this.state.plan.data}/>
+                            <PlanWhereToStay id={this.state.id}/>
                         </div>
                         <div className={this.state.isHiddenImportantInfo?'hidden':''}>
-                            <PlanImportantInfo plan={this.state.plan.data}/>
-                        </div>
+                            <PlanImportantInfo id={this.state.id}/>
+                        </div>*/}
                         
                     </div>
                 </div>
