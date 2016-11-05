@@ -116,6 +116,171 @@ class AdminPlanNewStayForm extends Component{
         unusual_places_list.push(index);
         this.setState({unusual_places_list});     
     }
+    onNewStaySubmit(event){
+        event.preventDefault();
+        //description
+        const description = this.refs.description.value;
+        
+        //hotel compare website
+        let hotel_compare_website_list = [];
+        for (let i=1;i<=this.state.hotel_compare_list.length;i++){
+            const hotel_compare_website_text_name = "hotel_compare_website_text_"+i;
+            const hotel_compare_website_text = this.refs[hotel_compare_website_text_name].value;
+            const hotel_compare_website_link_name = "hotel_compare_website_link_"+i;
+            const hotel_compare_website_link = this.refs[hotel_compare_website_link_name].value;
+            hotel_compare_website_list.push({
+                text: hotel_compare_website_text,
+                website_link: hotel_compare_website_link
+            })
+        }
+        
+        //hotel direct website
+        let hotel_direct_website_list = [];
+        for (let i=1;i<=this.state.hotel_direct_list.length;i++){
+            const hotel_direct_website_text_name = "hotel_direct_website_text_"+i;
+            const hotel_direct_website_text = this.refs[hotel_direct_website_text_name].value;
+            const hotel_direct_website_link_name = "hotel_direct_website_link_"+i;
+            const hotel_direct_website_link = this.refs[hotel_direct_website_link_name].value;
+            hotel_direct_website_list.push({
+                text: hotel_direct_website_text,
+                website_link: hotel_direct_website_link
+            })
+        }
+        
+        //slef contained website list
+        let self_contained_apartment_website_list = [];
+        for (let i=1;i<=this.state.self_contained_list.length;i++){
+            const self_contained_website_text_name = "self_contained_website_text_"+i;
+            const self_contained_website_text = this.refs[self_contained_website_text_name].value;
+            const self_contained_website_link_name = "self_contained_website_link_"+i;
+            const self_contained_website_link = this.refs[self_contained_website_link_name].value;
+            self_contained_apartment_website_list.push({
+                text: self_contained_website_text,
+                website_link: self_contained_website_link
+            })
+        }
+        
+        //villas website
+        let villas_website_list = [];
+        for (let i=1;i<=this.state.villas_list.length;i++){
+            const villas_website_text_name = "villas_website_text_"+i;
+            const villas_website_text = this.refs[villas_website_text_name].value;
+            const villas_website_link_name = "villas_website_link_"+i;
+            const villas_website_link = this.refs[villas_website_link_name].value;
+            villas_website_list.push({
+                text: villas_website_text,
+                website_link: villas_website_link
+            })
+        }
+        
+        //bed and breakfast guest house
+        let bed_website_list = [];
+        for (let i=1;i<=this.state.bed_list.length;i++){
+            const bed_website_text_name = "bed_website_text_"+i;
+            const bed_website_text = this.refs[bed_website_text_name].value;
+            const bed_website_link_name = "bed_website_link_"+i;
+            const bed_website_link = this.refs[bed_website_link_name].value;
+            bed_website_list.push({
+                text: bed_website_text,
+                website_link: bed_website_link
+            })
+        }
+        
+        //holiday houses website
+        let holiday_houses_website_list = [];
+        for (let i=1;i<=this.state.holiday_houses_list.length;i++){
+            const holiday_houses_website_text_name = "holiday_houses_website_text_"+i;
+            const holiday_houses_website_text = this.refs[holiday_houses_website_text_name].value;
+            const holiday_houses_website_link_name = "holiday_houses_website_link_"+i;
+            const holiday_houses_website_link = this.refs[holiday_houses_website_link_name].value;
+            holiday_houses_website_list.push({
+                text: holiday_houses_website_text,
+                website_link: holiday_houses_website_link
+            })
+        }
+        
+        //house share website
+        let house_share_website_list = [];
+        for (let i=1;i<=this.state.house_share_list.length;i++){
+            const house_share_website_text_name = "house_share_website_text_"+i;
+            const house_share_website_text = this.refs[house_share_website_text_name].value;
+            const house_share_website_link_name = "house_share_website_link_"+i;
+            const house_share_website_link = this.refs[house_share_website_link_name].value;
+            house_share_website_list.push({
+                text: house_share_website_text,
+                website_link: house_share_website_link
+            })
+        }
+        
+        //motor home website
+        let motor_home_website_list = [];
+        for (let i=1;i<=this.state.house_share_list.length;i++){
+            const motor_home_website_text_name = "motor_home_website_text_"+i;
+            const motor_home_website_text = this.refs[motor_home_website_text_name].value;
+            const motor_home_website_link_name = "motor_home_website_link_"+i;
+            const motor_home_website_link = this.refs[motor_home_website_link_name].value;
+            motor_home_website_list.push({
+                text: motor_home_website_text,
+                website_link: motor_home_website_link
+            })
+        }
+        
+        //backpacker website
+        let backpacker_website_list = [];
+        for (let i=1;i<=this.state.backpacker_list.length;i++){
+            const backpacker_website_text_name = "backpacker_website_text_"+i;
+            const backpacker_website_text = this.refs[backpacker_website_text_name].value;
+            const backpacker_website_link_name = "backpacker_website_link_"+i;
+            const backpacker_website_link = this.refs[backpacker_website_link_name].value;
+            backpacker_website_list.push({
+                text: backpacker_website_text,
+                website_link: backpacker_website_link
+            })
+        }
+        
+        //couch surfing website
+        let couch_surfing_website_list = [];
+        for (let i=1;i<=this.state.couch_surfing_list.length;i++){
+            const couch_surfing_website_text_name = "couch_surfing_website_text_"+i;
+            const couch_surfing_website_text = this.refs[couch_surfing_website_text_name].value;
+            const couch_surfing_website_link_name = "couch_surfing_website_link_"+i;
+            const couch_surfing_website_link = this.refs[couch_surfing_website_link_name].value;
+            couch_surfing_website_list.push({
+                text: couch_surfing_website_text,
+                website_link: couch_surfing_website_link
+            })
+        }
+        
+        //unusual places website
+        let unusual_places_website_list = [];
+        for (let i=1;i<=this.state.unusual_places_list.length;i++){
+            const unusual_places_website_text_name = "unusual_places_website_text_"+i;
+            const unusual_places_website_text = this.refs[unusual_places_website_text_name].value;
+            const unusual_places_website_link_name = "unusual_places_website_link_"+i;
+            const unusual_places_website_link = this.refs[unusual_places_website_link_name].value;
+            unusual_places_website_list.push({
+                text: unusual_places_website_text,
+                website_link: unusual_places_website_link
+            })
+        }
+        
+        const where_to_stay = {description,hotel_compare_website_list,hotel_direct_website_list,self_contained_apartment_website_list,villas_website_list,bed_website_list,holiday_houses_website_list,house_share_website_list,motor_home_website_list,backpacker_website_list,couch_surfing_website_list,unusual_places_website_list};
+        console.log(where_to_stay);
+        const id = this.props.id;
+        axios.put("http://localhost:12000/plans/"+id,{where_to_stay})
+        .then(response=>{
+            if (response.data.success){
+                this.context.router.push("/admin/plan/new/importantInfo/"+id);
+            }else{
+                this.setState({errMsg:response.data.errMsg});
+                alert(response.data.errMsg);
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
+        })
+    }
     render(){
         if (this.state.errMsg!=''){
             return(
@@ -129,7 +294,7 @@ class AdminPlanNewStayForm extends Component{
         }
         return(
             <div className="container plan-stay">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.onNewStaySubmit.bind(this)}>
             
                     {/*description*/}
                     <div className="form-group">
@@ -245,7 +410,7 @@ class AdminPlanNewStayForm extends Component{
                                                 <label className="control-label">website link</label>
                                             </div>
                                             <div className="col-md-8">
-                                                <input type="text" className="form-control" ref={"self_contained_department_website_link_"+num} placeholder="please input the self contained apartment website link" required/>
+                                                <input type="text" className="form-control" ref={"self_contained_website_link_"+num} placeholder="please input the self contained apartment website link" required/>
                                             </div>
                                         </div>
                                     </div>
@@ -303,9 +468,9 @@ class AdminPlanNewStayForm extends Component{
                             {this.state.name} bed and breakfast guest house website
                         </div>
                         <div className="panel-body">
-                            {this.state.villas_list.map(num=>{
+                            {this.state.bed_list.map(num=>{
                             return (
-                                <div className="panel panel-default" key={"villas_website_"+num}>
+                                <div className="panel panel-default" key={"bed_website_"+num}>
                                     <div className="panel-heading">
                                         bed and breakfast guest house website {num}
                                     </div>
@@ -323,7 +488,7 @@ class AdminPlanNewStayForm extends Component{
                                                 <label className="control-label">website link</label>
                                             </div>
                                             <div className="col-md-8">
-                                                <input type="text" className="form-control" ref={"villas_website_link_"+num} placeholder="please input the bed and breakfast guest house website link" required/>
+                                                <input type="text" className="form-control" ref={"bed_website_link_"+num} placeholder="please input the bed and breakfast guest house website link" required/>
                                             </div>
                                         </div>
                                     </div>
