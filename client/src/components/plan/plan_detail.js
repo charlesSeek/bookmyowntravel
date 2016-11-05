@@ -24,8 +24,8 @@ class PlanDetail extends Component{
         .then((response)=>{
             this.setState({plan:response.data});
         })
-        .catch(function(err){
-           this.setState({errMsg:err}) 
+        .catch((err)=>{
+           this.setState({errMsg:err.toString()}) 
         });
     }
     componentWillMount(){
