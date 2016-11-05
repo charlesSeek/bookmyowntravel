@@ -11,7 +11,7 @@ var PlanSchema = new mongoose.Schema({
     sightseeing_touring_options:Object,
     budget_and_costs:Object,
     how_to_get_there:Object,
-    how_to_go_around:Object,
+    how_to_get_around:Object,
     where_to_stay:Object,
     important_information:Object,
     createdAt:{

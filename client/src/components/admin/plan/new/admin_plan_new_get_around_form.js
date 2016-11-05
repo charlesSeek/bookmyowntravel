@@ -37,7 +37,7 @@ class AdminPlanNewGetAroundForm extends Component{
     onNewExtraWebsite(event){
         const tagName = event.target.name;
         const index = tagName.substring(13);
-        console.log(index);
+        //console.log(index);
         let extraWebsiteArray = this.state.options_list[index];
         let len = extraWebsiteArray.length;
         len++;
@@ -49,9 +49,42 @@ class AdminPlanNewGetAroundForm extends Component{
     onNewOptionSubmit(event){
         event.preventDefault();
         let travelling_options = [];
-        for (let i=0;i<options_list.length;i++){
-            const 
+        for (let i=0;i<this.state.options_list.length;i++){
+            const name = "option_name_"+i;
+            const options_name = this.refs[name].value;
+            const image_link_name = "option_image_link_"+i;
+            const options_image_link = this.refs[image_link_name].value;
+            const website_link_name = "option_website_link_"+i;
+            const options_website_link = this.refs[website_link_name].value;
+            const description_name = "option_description_"+i;
+            const options_description = this.refs[description_name].value;
+            let options_extra_website_link_list = [];
+            for (let j=1;j<=this.state.options_list[i].length;j++){
+                const text_name = "option_extra_website_"+i+"_"+j;
+                const text = this.refs[text_name].value;
+                const extra_website_link_name = "option_extra_website_link_"+i+"_"+j;
+                const website_link = this.refs[extra_website_link_name].value;
+                options_extra_website_link_list.push({text,website_link});
+            }
+            travelling_options.push({options_name,options_image_link,options_website_link,options_description,options_extra_website_link_list});
         }
+        //console.log(travelling_options);
+        const id = this.props.id;
+        const how_to_get_around = {travelling_options};
+        console.log({how_to_get_around});
+        axios.put("http://localhost:12000/plans/"+id,{how_to_get_around})
+        .then(response=>{
+            if (response.data.success){
+                this.context.router.push("/admin/plan/new/stay/"+id);
+            }else{
+                this.setState({errMsg:response.data.errMsg});
+                alert(response.data.errMsg);
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
+        })
     }
     render(){
         if (this.state.errMsg!=''){
@@ -141,8 +174,16 @@ class AdminPlanNewGetAroundForm extends Component{
                             </div>
                         )
                     })}
-                    <div className="col-md-12">
-                        <button className="btn btn-success btn-block" onClick={this.onNewOption.bind(this)}>Add A New option</button>
+                    <div className="form-group">
+                        <div className="col-md-12">
+                            <button className="btn btn-success btn-block" onClick={this.onNewOption.bind(this)}>Add A New option</button>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <div className="col-md-8">
+                            <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
+                            <button type="reset" className="btn btn-danger">Cancel</button>
+                        </div>
                     </div>
                 </form>
             </div>
