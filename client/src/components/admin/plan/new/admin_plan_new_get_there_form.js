@@ -55,6 +55,88 @@ class AdminPlanNewGetThereForm extends Component{
     onNewPlanGetThereSubmit(event){
         event.preventDefault();
         
+        //international_airports
+        let international_airports = [];
+        for (let i=1;i<=this.state.airport_list.length;i++){
+            const name = "international_airport_name_"+i;
+            const airport_name = this.refs[name].value;
+            const lat_name = "lat_"+i;
+            const lat = this.refs[lat_name].value;
+            const lon_name = "long_"+i;
+            const lon = this.refs[lon_name].value;
+            const geo_location = {lat,lon};
+            const airport_website_link_name = "international_airport_website_link_"+i;
+            const airport_website_link = this.refs[airport_website_link_name].value;
+            international_airports.push({airport_name,geo_location,airport_website_link});
+        }
+        
+        //flights
+        const full_service_airlines_image_link = this.refs.full_service_airlines_image_link.value;
+        const full_service_website_link = this.refs.full_service_airlines_website_link.value;
+        const full_service_text = this.refs.full_service_airlines_text.value;
+        let full_service_airline_list_website = [];
+        for (let i=1;i<=this.state.full_service_airlines_list.length;i++){
+            const full_service_airlines_name = "full_service_airlines_name_"+i;
+            const full_service_name = this.refs[full_service_airlines_name].value;
+            const full_service_website_link_name = "full_service_airlines_website_link_"+i;
+            const full_service_extra_website_link = this.refs[full_service_website_link_name].value;
+            full_service_airline_list_website.push({
+                name:full_service_name,
+                website_link:full_service_extra_website_link
+            });
+        }
+        const full_service_airlines = {
+            full_service_airlines_image_link:full_service_airlines_image_link,
+            website_link:full_service_website_link,
+            text:full_service_text,
+            full_service_airline_list_website:full_service_airline_list_website
+        };
+        
+        const budget_airlines_image_link = this.refs.budget_airlines_image_link.value;
+        const budget_website_link = this.refs.budget_airlines_website_link.value;
+        const budget_text = this.refs.budget_airlines_text.value;
+        let budget_airline_list_website = [];
+        for (let i=1;i<=this.state.budget_airlines_list.length;i++){
+            const budget_airlines_name = "budget_airlines_name_"+i;
+            const budget_name = this.refs[budget_airlines_name].value;
+            const budget_website_link_name = "budget_airlines_website_link_"+i;
+            const budget_extra_website_link = this.refs[budget_website_link_name].value;
+            budget_airline_list_website.push({
+                name:budget_name,
+                website_link:budget_extra_website_link
+            });
+        }
+        const budget_airlines = {
+            budget_airlines_image_link:budget_airlines_image_link,
+            website_link:budget_website_link,
+            text:budget_text,
+            budget_airline_list_website:budget_airline_list_website
+        };
+        const flights = {full_service_airlines,budget_airlines}
+        
+        //cruise
+        const cruise_image_link = this.refs.cruise_image_link.value;
+        const website_link = this.refs.cruise_website_link.value;
+        const text = this.refs.cruise_text.value;
+        const cruise_website = this.refs.cruise_extra_website_link.value;
+        const cruise = {cruise_image_link,website_link,text,cruise_website};
+        
+        const how_to_get_there = {international_airports,flights,cruise};
+        const id = this.props.id;
+        axios.put("http://localhost:12000/plans/"+id,{how_to_get_there})
+        .then(response=>{
+            if (response.data.success){
+                this.context.router.push('/admin/plan/new/getAround/'+id)
+            }else{
+                this.setState({errMsg:response.data.errMsg});
+                alert(response.data.errMsg);
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
+        })
+        
     }
     render(){
         if (this.state.errMsg!=''){
