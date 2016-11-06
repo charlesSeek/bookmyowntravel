@@ -129,7 +129,7 @@ class PlanDetail extends Component{
                         <div className={this.state.isHiddenAbout?'hidden':''}>
                             <PlanAbout id={this.state.id} />
                         </div>
-                            {/*<div className={this.state.isHiddenWhenToGo?'hidden':''}>
+                        <div className={this.state.isHiddenWhenToGo?'hidden':''}>
                             <PlanWhenToGo id={this.state.id}/>
                         </div>
                         <div className={this.state.isHiddenSeeAndDo?'hidden':''}>
@@ -152,7 +152,7 @@ class PlanDetail extends Component{
                         </div>
                         <div className={this.state.isHiddenImportantInfo?'hidden':''}>
                             <PlanImportantInfo id={this.state.id}/>
-                        </div>*/}
+                        </div>
                         
                     </div>
                 </div>

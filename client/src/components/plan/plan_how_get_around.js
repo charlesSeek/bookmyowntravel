@@ -2,16 +2,49 @@
     the component of how get around info
 */
 import React,{Component} from 'react';
+import axios from 'axios';
 
 class PlanHowGetAround extends Component{
+    componentWillMount(){
+        this.state = {
+            plan:undefined,
+            errMsg:''
+        }
+        
+    }
+    componentDidMount(){
+        const id = this.props.id;
+        axios.get("http://localhost:12000/plans/"+id)
+        .then(response=>{
+            if (response.data.success){
+                const plan = response.data.data;
+                this.setState({plan})
+            }else{
+                const errMsg = response.data.errMsg;
+                this.setState({errMsg});
+                alert(errMsg);
+                
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
+        })
+    }
     render(){
+        if (this.state.plan==undefined){
+            return(<div>Loading data...</div>)
+        }
+        if (!this.state.plan.hasOwnProperty('how_to_get_around')){
+            return(<div>No data</div>)
+        }
         return(
             <div className="container planhowgetaround">
-                <h2>Travelling Within {this.props.plan.name}</h2>
+                <h2>Travelling Within {this.state.plan.name}</h2>
                 <div className="row planhowgetaroundrow">
-                    {this.props.plan.how_to_get_around.travelling_options.map((option)=>{
+                    {this.state.plan.how_to_get_around.travelling_options.map((option,index)=>{
                         return(
-                            <div className="col-md-4 col-sm-6" key={option.option_name}>
+                            <div className="col-md-4 col-sm-6" key={"option_"+index}>
                                 <a href={option.options_website_link}>
                                     <img src={option.options_image_link}/>
                                 </a>

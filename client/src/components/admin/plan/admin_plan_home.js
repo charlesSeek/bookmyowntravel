@@ -16,7 +16,7 @@ class AdminPlanHome extends Component {
         }
     }
     componentDidMount(){
-        axios.get("http://localhost:12000/plansList")
+        axios.get("http://localhost:12000/plans")
         .then((response)=>{
             if (response.data.success){
                 const plans = response.data.data;
@@ -70,7 +70,30 @@ class AdminPlanHome extends Component {
             alert(err.toString());
         })
     }
+    onDeletePlan(id){
+        axios.delete("http://localhost:12000/plans/"+id)
+        .then(response=>{
+            if (response.data.success){
+                const newPlans = this.state.plans.filter(plan=>{
+                    return plan._id!=id;
+                })
+                this.setState({plans:newPlans});
+            }else{
+                const errMsg = response.data.errMsg;
+                this.setState({errMsg});
+                alert(errMsg);
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            alert(err.toString());
+        })
+        
+    }
     render(){
+        if (this.state.errMsg!=''){
+            return (<div>{this.state.errMsg}</div>)
+        }
         if (this.state.plans==undefined||this.state.countries==undefined){
             return(
                 <div>Data Loading...</div>
@@ -139,20 +162,24 @@ class AdminPlanHome extends Component {
                                     <th>View</th>
                                     <th>Update</th>
                                     <th>Delete</th>
+                                    <th>Download</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {this.state.plans.map((plan)=>{
+                                    const datastr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(plan));
+                                    const countryName= plan.name;
                                     return(
                                         <tr key={plan._id}>
                                             <td>{plan.name}</td>
                                             <td>{plan.continent}</td>
-                                            <td>{plan.createdAt}</td>
-                                            <td>{plan.updatedAt}</td>
+                                            <td>{plan.createdAt.substring(0,10)}</td>
+                                            <td>{plan.updatedAt.substring(0,10)}</td>
                                             <td>{plan.status}</td>
                                             <td><a href={"/plan/"+plan._id}><i className="glyphicon glyphicon-play-circle"></i></a></td>
                                             <td><a href={"/admin/plan/update/about/"+plan._id}><i className="glyphicon glyphicon-edit"></i></a></td>
-                                            <td><a href="#" ><i className="glyphicon glyphicon-remove-circle"></i></a></td>
+                                            <td><a href="#" name={plan._id} onClick={()=>this.onDeletePlan(plan._id)}><i className="glyphicon glyphicon-remove-circle" ></i></a></td>
+                                            <td><a href={datastr} download={countryName+".json"}><i className="glyphicon glyphicon-download-alt"></i></a></td>
                                         </tr>
                                     )
                                 })}

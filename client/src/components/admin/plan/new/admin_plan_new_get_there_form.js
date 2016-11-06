@@ -95,13 +95,13 @@ class AdminPlanNewGetThereForm extends Component{
         const budget_airlines_image_link = this.refs.budget_airlines_image_link.value;
         const budget_website_link = this.refs.budget_airlines_website_link.value;
         const budget_text = this.refs.budget_airlines_text.value;
-        let budget_airline_list_website = [];
+        let budget_airlines_list_website = [];
         for (let i=1;i<=this.state.budget_airlines_list.length;i++){
             const budget_airlines_name = "budget_airlines_name_"+i;
             const budget_name = this.refs[budget_airlines_name].value;
             const budget_website_link_name = "budget_airlines_website_link_"+i;
             const budget_extra_website_link = this.refs[budget_website_link_name].value;
-            budget_airline_list_website.push({
+            budget_airlines_list_website.push({
                 name:budget_name,
                 website_link:budget_extra_website_link
             });
@@ -110,7 +110,7 @@ class AdminPlanNewGetThereForm extends Component{
             budget_airlines_image_link:budget_airlines_image_link,
             website_link:budget_website_link,
             text:budget_text,
-            budget_airline_list_website:budget_airline_list_website
+            budget_airlines_list_website:budget_airline_list_website
         };
         const flights = {full_service_airlines,budget_airlines}
         
