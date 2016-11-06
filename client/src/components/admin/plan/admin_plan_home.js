@@ -167,7 +167,7 @@ class AdminPlanHome extends Component {
                             </thead>
                             <tbody>
                                 {this.state.plans.map((plan)=>{
-                                    const datastr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(plan));
+                                    const datastr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(plan,null,4));
                                     const countryName= plan.name;
                                     return(
                                         <tr key={plan._id}>
