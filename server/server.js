@@ -11,6 +11,14 @@ var app = express();
 //log all request in the apache combined format to stdout
 app.use(morgan('combined'));
 
+//enable cross domain
+app.use('/', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+ });
+
+
 //mongodb config
 var dbUrl = 'mongodb://127.0.0.1/bookmyowntravel';
 mongoose.connect(dbUrl);
