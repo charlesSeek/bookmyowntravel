@@ -2,9 +2,6 @@ import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
 
 class PlanAboutUpdateForm extends Component{
-    static contextTypes = {
-        router: PropTypes.object
-    }
     componentWillMount(){
         this.state = {
             countries: undefined,
