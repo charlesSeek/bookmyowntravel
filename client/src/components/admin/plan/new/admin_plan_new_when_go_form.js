@@ -89,7 +89,7 @@ class AdminPlanNewWhenGoForm extends Component{
                                     <label className="control-label">description</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" ref='description' placeholder="please input the description of best time to go" required/>
+                                    <textarea rows="5" className="form-control" type="text" ref='description' placeholder="please input the description of best time to go" required></textarea>
                                 </div>
                             </div>
                             <div className="form-group">

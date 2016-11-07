@@ -137,7 +137,7 @@ class AdminPlanNewGetAroundForm extends Component{
                                             <label className="control-label">Option description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" ref={"option_description_"+index} placeholder="please input the option description link" required/>
+                                            <textarea rows="5" type="text" className="form-control" ref={"option_description_"+index} placeholder="please input the option description link" required></textarea>
                                         </div>
                                     </div>
                                     {this.state.options_list[index].map(num=>{

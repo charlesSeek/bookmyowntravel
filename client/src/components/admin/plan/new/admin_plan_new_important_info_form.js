@@ -129,7 +129,7 @@ class AdminPlanNewImportantInfoForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="security_and_safe_text" placeholder="please input security and safe info description" required/>
+                                <textarea rows="5" type="text" className="form-control" ref="security_and_safe_text" placeholder="please input security and safe info description" required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -154,7 +154,7 @@ class AdminPlanNewImportantInfoForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="health_and_vaccination_text" placeholder="please input health and vaccination info" required/>
+                                <textarea rows="5" type="text" className="form-control" ref="health_and_vaccination_text" placeholder="please input health and vaccination info" required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -179,7 +179,7 @@ class AdminPlanNewImportantInfoForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="telphone_and_internet_text" placeholder="please input telphone and internet info" required/>
+                                <textarea rows="5" type="text" className="form-control" ref="telphone_and_internet_text" placeholder="please input telphone and internet info" required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -204,7 +204,7 @@ class AdminPlanNewImportantInfoForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="electrical_text" placeholder="please input electrical info" required/>
+                                <textarea rows="5" type="text" className="form-control" ref="electrical_text" placeholder="please input electrical info" required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -229,7 +229,7 @@ class AdminPlanNewImportantInfoForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="language_text" placeholder="please input language info" required/>
+                                <textarea rows="5" type="text" className="form-control" ref="language_text" placeholder="please input language info" required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -254,7 +254,7 @@ class AdminPlanNewImportantInfoForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="passport_and_visa_text" placeholder="please input passport and visa info" required/>
+                                <textarea rows="5" type="text" className="form-control" ref="passport_and_visa_text" placeholder="please input passport and visa info" required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -279,7 +279,7 @@ class AdminPlanNewImportantInfoForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="duty_free_text" placeholder="please input duty free info" required/>
+                                <textarea rows="5" type="text" className="form-control" ref="duty_free_text" placeholder="please input duty free info" required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -304,7 +304,7 @@ class AdminPlanNewImportantInfoForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="local_time_text" placeholder="please input local time info" required/>
+                                <textarea rows="5" type="text" className="form-control" ref="local_time_text" placeholder="please input local time info" required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
