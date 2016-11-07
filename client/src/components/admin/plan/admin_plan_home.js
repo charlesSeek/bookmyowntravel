@@ -177,7 +177,7 @@ class AdminPlanHome extends Component {
                                             <td>{plan.updatedAt.substring(0,10)}</td>
                                             <td>{plan.status}</td>
                                             <td><a href={"/plan/"+plan._id}><i className="glyphicon glyphicon-play-circle"></i></a></td>
-                                            <td><a href={"/admin/plan/update/about/"+plan._id}><i className="glyphicon glyphicon-edit"></i></a></td>
+                                            <td><a href={"/admin/plan/update/"+plan._id}><i className="glyphicon glyphicon-edit"></i></a></td>
                                             <td><a href="#" name={plan._id} onClick={()=>this.onDeletePlan(plan._id)}><i className="glyphicon glyphicon-remove-circle" ></i></a></td>
                                             <td><a href={datastr} download={countryName+".json"}><i className="glyphicon glyphicon-download-alt"></i></a></td>
                                         </tr>

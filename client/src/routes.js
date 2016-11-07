@@ -17,6 +17,7 @@ import AdminPlanNewGetThere from './components/admin/plan/new/admin_plan_new_get
 import AdminPlanNewGetAround from './components/admin/plan/new/admin_plan_new_get_around';
 import AdminPlanNewStay from './components/admin/plan/new/admin_plan_new_stay';
 import AdminPlanNewImportantInfo from './components/admin/plan/new/admin_plan_new_important_info';
+import PlanUpdateHome from './components/admin/plan/update/plan_update_home';
 
 
 export default(
@@ -37,5 +38,6 @@ export default(
         <Route path="/admin/plan/new/getAround/:id" component={AdminPlanNewGetAround}/>
         <Route path="/admin/plan/new/stay/:id" component={AdminPlanNewStay}/>
         <Route path="/admin/plan/new/importantInfo/:id" component={AdminPlanNewImportantInfo}/>
+        <Route path="/admin/plan/update/:id" component={PlanUpdateHome}/>
     </Route>
 )

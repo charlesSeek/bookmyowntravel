@@ -139,3 +139,12 @@ div .container{
 .new-plan-about {
     margin-top:20px;
 }
+.plan-update-home{
+    margin-top: 100px;
+}
+.success-msg{
+    color: green;
+}
+error-msg{
+    color:red;
+}
