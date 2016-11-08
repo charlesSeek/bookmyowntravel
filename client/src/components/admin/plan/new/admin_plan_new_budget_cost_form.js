@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewBudgetCostForm extends Component{
     static contextTypes = {
@@ -14,7 +15,9 @@ class AdminPlanNewBudgetCostForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 const name = response.data.data.name;
@@ -94,7 +97,9 @@ class AdminPlanNewBudgetCostForm extends Component{
         
         const budget_and_costs = {cost_description,average_prices_and_costs,currency,check_prices_website_link};
         const id = this.props.id;
-        axios.put("http://localhost:12000/plans/"+id,{budget_and_costs})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,{budget_and_costs})
         .then(response=>{
             if (response.data.success){
                 this.context.router.push('/admin/plan/new/getThere/'+id);

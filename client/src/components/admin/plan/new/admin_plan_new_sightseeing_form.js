@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewSightseeingForm extends Component{
     static contextTypes = {
@@ -19,7 +20,9 @@ class AdminPlanNewSightseeingForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 const name = response.data.data.name;
@@ -167,7 +170,9 @@ class AdminPlanNewSightseeingForm extends Component{
         }
         //console.log({sightseeing_touring_options})
         const id = this.props.id;
-        axios.put("http://localhost:12000/plans/"+id,{sightseeing_touring_options})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,{sightseeing_touring_options})
         .then(response=>{
             if (response.data.success){
                 this.context.router.push('/admin/plan/new/budgetCost/'+id);

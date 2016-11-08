@@ -4,20 +4,6 @@ import AdminPlanProgressBar from './admin_plan_progress_bar';
 import AdminPlanNewAboutForm from './admin_plan_new_about_form';
 
 class AdminPlanNewAbout extends Component{
-    
-    /*componentWillMount(){
-       this.state = {
-           isHiddenAboutForm:false,
-           isHiddenWhenToGoForm:true,
-           isHiddenSeeAndDo:true,
-           isHiddenSightseeingForm:true,
-           isHiddenBudgetCostForm:true,
-           isHiddenGetThereForm:true,
-           isHiddenGetAroundForm:true,
-           isHiddenStayForm:true,
-           isHiddenImportantInfoForm:true
-       }
-    }*/
     render(){
         return(
             <div className="container">

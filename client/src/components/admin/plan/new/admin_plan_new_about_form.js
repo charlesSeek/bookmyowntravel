@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewAboutForm extends Component{
     static contextTypes = {
@@ -15,7 +16,9 @@ class AdminPlanNewAboutForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/countries")
+        const host = config.API_SERVER;
+        const country_url = 'http://'+host+':12000/countries';
+        axios.get(country_url)
         .then((response)=>{
             if (response.data.success){
                 const countries = response.data.data;
@@ -28,7 +31,8 @@ class AdminPlanNewAboutForm extends Component{
             this.setState({errMsg:err.toString()})
             alert(err.toString);
         });
-        axios.get("http://localhost:12000/plans/"+id)
+        const plan_url = 'http://'+host+':12000/plans/'+id;
+        axios.get(plan_url)
         .then((response)=>{
             if (response.data.success){
                 console.log("data:",response.data.data);
@@ -82,7 +86,10 @@ class AdminPlanNewAboutForm extends Component{
         about = {about_description,about_image_link,about_video_1,about_video_2,about_video_3,about_extra_videos,map_geolocation,tourism_office,entry_requirements,top_blogs};
         const plan = {about};
         console.log("plan:",plan);
-        axios.put("http://localhost:12000/plans/"+this.props.id,plan)
+        const id = this.props.id;
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,plan)
         .then(response=>{
             if (response.data.success){
                 console.log('push id:',this.props.id);

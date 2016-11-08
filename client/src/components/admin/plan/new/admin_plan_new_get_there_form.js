@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewGetThereForm extends Component{
     static contextTypes = {
@@ -16,7 +17,9 @@ class AdminPlanNewGetThereForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 const name = response.data.data.name;
@@ -110,7 +113,7 @@ class AdminPlanNewGetThereForm extends Component{
             budget_airlines_image_link:budget_airlines_image_link,
             website_link:budget_website_link,
             text:budget_text,
-            budget_airlines_list_website:budget_airline_list_website
+            budget_airlines_list_website:budget_airlines_list_website
         };
         const flights = {full_service_airlines,budget_airlines}
         
@@ -123,7 +126,9 @@ class AdminPlanNewGetThereForm extends Component{
         
         const how_to_get_there = {international_airports,flights,cruise};
         const id = this.props.id;
-        axios.put("http://localhost:12000/plans/"+id,{how_to_get_there})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,{how_to_get_there})
         .then(response=>{
             if (response.data.success){
                 this.context.router.push('/admin/plan/new/getAround/'+id)

@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class PlanAboutUpdateForm extends Component{
     componentWillMount(){
@@ -13,7 +14,9 @@ class PlanAboutUpdateForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/countries")
+        const host = config.API_SERVER;
+        const country_url = 'http://'+host+':12000/countries';
+        axios.get(country_url)
         .then((response)=>{
             if (response.data.success){
                 const countries = response.data.data;
@@ -26,7 +29,8 @@ class PlanAboutUpdateForm extends Component{
             this.setState({errMsg:err.toString()})
             alert(err.toString);
         });
-        axios.get("http://localhost:12000/plans/"+id)
+        const plan_url = 'http://'+host+':12000/plans/'+id;
+        axios.get(plan_url)
         .then((response)=>{
             if (response.data.success){
                 //console.log("data:",response.data.data);
@@ -148,7 +152,9 @@ class PlanAboutUpdateForm extends Component{
     onUpdatePlanAboutSubmit(event){
         event.preventDefault();
         const id = this.props.id;
-        axios.put("http://localhost:12000/plans/"+id,this.state.plan)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,this.state.plan)
         .then(response=>{
             if (response.data.success){
                 this.setState({isHiddenSuccessMsg:false});

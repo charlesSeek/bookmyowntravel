@@ -1,7 +1,7 @@
 import React,{Component,PropTypes} from 'react';
 import Header from '../../includes/header';
 import axios from 'axios';
-
+import config from '../../../config';
 class AdminPlanHome extends Component {
     static contextTypes = {
         router: PropTypes.object
@@ -16,7 +16,9 @@ class AdminPlanHome extends Component {
         }
     }
     componentDidMount(){
-        axios.get("http://localhost:12000/plans")
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans';
+        axios.get(url)
         .then((response)=>{
             if (response.data.success){
                 const plans = response.data.data;
@@ -29,8 +31,8 @@ class AdminPlanHome extends Component {
         .catch(err=>{
             alert(err.toString());
         });
-        
-        axios.get("http://localhost:12000/countries")
+        const country_url = "http://"+host+":12000/countries";
+        axios.get(country_url)
         .then((response)=>{
             if (response.data.success){
                 const countries = response.data.data;
@@ -56,7 +58,9 @@ class AdminPlanHome extends Component {
         const createdAt = Date();
         const updatedAt = Date();
         const status = "processing";
-        axios.post("http://localhost:12000/plans",{name,continent,createdAt,updatedAt,status})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans';
+        axios.post(url,{name,continent,createdAt,updatedAt,status})
         .then((response)=>{
             if (response.data.success){
                 console.log("id:",response.data.data._id);
@@ -71,7 +75,9 @@ class AdminPlanHome extends Component {
         })
     }
     onDeletePlan(id){
-        axios.delete("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.delete(url)
         .then(response=>{
             if (response.data.success){
                 const newPlans = this.state.plans.filter(plan=>{

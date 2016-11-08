@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewSeeDoForm extends Component{
     static contextTypes = {
@@ -14,7 +15,9 @@ class AdminPlanNewSeeDoForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 this.setState({name:response.data.data.name})
@@ -98,7 +101,9 @@ class AdminPlanNewSeeDoForm extends Component{
             };
             console.log({what_to_see_and_do:seeDo})
             const id = this.props.id;
-            axios.put("http://localhost:12000/plans/"+id,{what_to_see_and_do:seeDo})
+            const host = config.API_SERVER;
+            const url = 'http://'+host+':12000/plans/'+id;
+            axios.put(url,{what_to_see_and_do:seeDo})
             .then(response=>{
                 if (response.data.success){
                     this.context.router.push('/admin/plan/new/sightseeing/'+id);

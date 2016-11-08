@@ -3,7 +3,7 @@
 */
 import React,{Component} from 'react';
 import axios from 'axios';
-
+import config from '../../config';
 class PlanBudgetCost extends Component{
     componentWillMount(){
         this.state = {
@@ -14,7 +14,9 @@ class PlanBudgetCost extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 const plan = response.data.data;

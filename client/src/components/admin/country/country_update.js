@@ -1,6 +1,7 @@
 import React,{Component,PropTypes} from 'react';
 import Header from '../../includes/header';
 import axios from 'axios';
+import config from '../../../config';
 
 class CountryUpdate extends Component{
     static contextTypes = {
@@ -15,7 +16,9 @@ class CountryUpdate extends Component{
     }
     componentDidMount(){
         const id = this.props.params.id;
-        axios.get("http://localhost:12000/countries/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/countries'+id;
+        axios.get(url)
         .then((response)=>{
             if (response.data.success){
                 const country = response.data.data;
@@ -83,7 +86,9 @@ class CountryUpdate extends Component{
         const languages = this.state.languages;
         const updatedAt = Date();
         console.log({_id,name,abbr,captial,area,population,currency,languages});
-        axios.put("http://localhost:12000/countries/"+_id,{_id,name,abbr,captial,area,population,currency,languages,updatedAt})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/countries/'+id;
+        axios.put(url,{_id,name,abbr,captial,area,population,currency,languages,updatedAt})
         .then((response)=>{
             if (response.data.success){
                 this.context.router.push('/admin/country/'+_id);

@@ -1,10 +1,13 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import Header from '../../includes/header';
+import config from '../../../config';
 
 class CountryHome extends Component{
     componentDidMount(){
-        axios.get("http://localhost:12000/countries")
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/countries';
+        axios.get(url)
         .then((response)=>{
             const countries = response.data.data;
             countries.sort(function(a,b){
@@ -61,7 +64,9 @@ class CountryHome extends Component{
             currency: currency,
             languages: languages
         }
-        axios.post("http://localhost:12000/countries",country)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/countries';
+        axios.post(url,country)
         .then(response=>{
            if (response.data.success){
                var countries = this.state.countries;
@@ -81,7 +86,9 @@ class CountryHome extends Component{
     }
     
     countryDelete(id){
-        axios.delete("http://localhost:12000/countries/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/countries/'+id;
+        axios.delete(url)
         .then(response=>{
             if (response.data.success){
                 const newCountries = this.state.countries.filter(country=>{
@@ -107,7 +114,6 @@ class CountryHome extends Component{
                 <div className="country-main">Loading countries data...</div>
             )
         }
-        //console.log('countries',this.state.countries);
         return(
             <div className="container">
                 <Header/>

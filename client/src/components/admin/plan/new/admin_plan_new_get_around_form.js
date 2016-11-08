@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewGetAroundForm extends Component{
     static contextTypes = {
@@ -14,7 +15,9 @@ class AdminPlanNewGetAroundForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 const name = response.data.data.name;
@@ -72,7 +75,9 @@ class AdminPlanNewGetAroundForm extends Component{
         const id = this.props.id;
         const how_to_get_around = {travelling_options};
         console.log({how_to_get_around});
-        axios.put("http://localhost:12000/plans/"+id,{how_to_get_around})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,{how_to_get_around})
         .then(response=>{
             if (response.data.success){
                 this.context.router.push("/admin/plan/new/stay/"+id);

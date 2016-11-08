@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewWhenGoForm extends Component{
     static contextTypes = {
@@ -13,7 +14,9 @@ class AdminPlanNewWhenGoForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 this.setState({name:response.data.data.name})
@@ -48,7 +51,9 @@ class AdminPlanNewWhenGoForm extends Component{
         const public_holiday_website_link = this.refs.public_holiday_website_link.value;
         when_to_go = {best_time_to_go,high_seasons,low_seasons,average_temperature_website_link,public_holiday_website_link};
         const id = this.props.id;
-        axios.put("http://localhost:12000/plans/"+id,{when_to_go})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,{when_to_go})
         .then(response=>{
             if (response.data.success){
                 this.context.router.push('/admin/plan/new/seeDo/'+id);

@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewStayForm extends Component{
     static contextTypes = {
@@ -24,7 +25,9 @@ class AdminPlanNewStayForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 const name = response.data.data.name;
@@ -267,7 +270,9 @@ class AdminPlanNewStayForm extends Component{
         const where_to_stay = {description,hotel_compare_website_list,hotel_direct_website_list,self_contained_apartment_website_list,villas_website_list,bed_website_list,holiday_houses_website_list,house_share_website_list,motor_home_website_list,backpacker_website_list,couch_surfing_website_list,unusual_places_website_list};
         console.log(where_to_stay);
         const id = this.props.id;
-        axios.put("http://localhost:12000/plans/"+id,{where_to_stay})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,{where_to_stay})
         .then(response=>{
             if (response.data.success){
                 this.context.router.push("/admin/plan/new/importantInfo/"+id);

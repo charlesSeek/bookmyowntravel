@@ -4,6 +4,7 @@
 
 import React,{Component} from 'react';
 import axios from 'axios';
+import config from '../../config';
 
 class MainContent extends Component{
     componentWillMount(){
@@ -14,7 +15,9 @@ class MainContent extends Component{
         };
     }
     componentDidMount(){
-        axios.get('http://localhost:12000/plans')
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans';
+        axios.get(url)
         .then((response)=>{
             console.log(response)
             this.setState({plans:response.data.data});

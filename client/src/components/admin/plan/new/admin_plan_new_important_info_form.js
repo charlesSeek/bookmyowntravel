@@ -1,5 +1,6 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
+import config from '../../../../config';
 
 class AdminPlanNewImportantInfoForm extends Component{
     static contextTypes = {
@@ -13,7 +14,9 @@ class AdminPlanNewImportantInfoForm extends Component{
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/plans/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.get(url)
         .then(response=>{
             if (response.data.success){
                 const name = response.data.data.name;
@@ -89,7 +92,9 @@ class AdminPlanNewImportantInfoForm extends Component{
         const important_information = {security_and_safe,health_and_vaccination,telphone_and_internet,electrical,language,passport_visa,duty_free,local_time};
         //console.log(important_information);
         const id = this.props.id;
-        axios.put("http://localhost:12000/plans/"+id,{important_information:important_information,status:"committed"})
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans/'+id;
+        axios.put(url,{important_information:important_information,status:"committed"})
         .then(response=>{
             if (response.data.success){
                 this.context.router.push("/admin/plan/");

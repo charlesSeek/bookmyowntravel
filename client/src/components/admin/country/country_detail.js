@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Header from '../../includes/header';
 import axios from 'axios';
+import config from '../../../config';
 
 class CountryDetail extends Component{
     componentWillMount(){
@@ -10,7 +11,9 @@ class CountryDetail extends Component{
     }
     componentDidMount(){
         var id = this.props.params.id;
-        axios.get("http://localhost:12000/countries/"+id)
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/countries/'+id;
+        axios.get(url)
         .then((response)=>{
             this.setState({
                 country:response.data.data
