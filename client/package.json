@@ -5,9 +5,11 @@
   "main": "index.js",
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "webpack": "node_modules/.bin/webpack",
+    "webpack:watch":"npm run webpack -- --watch",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "webpack-dev-server":"node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +26,12 @@
     "react-addons-test-utils": "^0.14.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
+  },
+  "babel":{
+      "presets":[
+          "es2015",
+          "react"
+      ]
   },
   "dependencies": {
     "axios": "^0.15.2",

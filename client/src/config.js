@@ -1,3 +1,3 @@
 module.exports = {
-    'API_SERVER':'35.160.68.59'
+    'API_SERVER':'localhost'
 }
