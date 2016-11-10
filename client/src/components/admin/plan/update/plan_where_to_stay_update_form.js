@@ -206,6 +206,183 @@ class PlanWhereToStayUpdateForm extends Component{
         plan.where_to_stay.unusual_places_website_list[index].website_link = website_link;
         this.setState({plan});
     }
+    removeHotelCompareWebsite(num){
+        let plan = this.state.plan;
+        let newHotelCompareWebsiteList= plan.where_to_stay.hotel_compare_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.hotel_compare_website_list = newHotelCompareWebsiteList;
+        this.setState({plan});
+    }
+    addNewHotelCompareWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.hotel_compare_website_list.push(website);
+        this.setState({plan});
+    }
+    removeHotelDirectWebsite(num){
+        let plan = this.state.plan;
+        let newHotelDirectWebsiteList= plan.where_to_stay.hotel_direct_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.hotel_direct_website_list = newHotelDirectWebsiteList;
+        this.setState({plan});
+    }
+    addNewHotelDirectWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.hotel_direct_website_list.push(website);
+        this.setState({plan});
+    }
+    removeSelfContainedWebsite(num){
+        let plan = this.state.plan;
+        let newSelfContainedWebsiteList= plan.where_to_stay.self_contained_apartment_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.self_contained_apartment_website_list = newSelfContainedWebsiteList;
+        this.setState({plan});
+    }
+    addNewSelfContainedWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.self_contained_apartment_website_list.push(website);
+        this.setState({plan});
+    }
+    removeVillasWebsite(num){
+        let plan = this.state.plan;
+        let newVillasWebsiteList= plan.where_to_stay.villas_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.villas_website_list = newVillasWebsiteList;
+        this.setState({plan});
+    }
+    addNewVillasWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.villas_website_list.push(website);
+        this.setState({plan});
+    }
+    removeBedWebsite(num){
+        let plan = this.state.plan;
+        let newBedWebsiteList= plan.where_to_stay.bed_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.bed_website_list = newBedWebsiteList;
+        this.setState({plan});
+    }
+    addNewBedWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.bed_website_list.push(website);
+        this.setState({plan});
+    }
+    removeHolidayHousesWebsite(num){
+        let plan = this.state.plan;
+        let newHolidayHousesWebsiteList= plan.where_to_stay.holiday_houses_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.holiday_houses_website_list = newHolidayHousesWebsiteList;
+        this.setState({plan});
+    }
+    addNewHolidayHousesWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.holiday_houses_website_list.push(website);
+        this.setState({plan});
+    }
+    removeHouseShareWebsite(num){
+        let plan = this.state.plan;
+        let newHouseShareWebsiteList= plan.where_to_stay.house_share_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.house_share_website_list = newHouseShareWebsiteList;
+        this.setState({plan});
+    }
+    addNewHouseShareWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.house_share_website_list.push(website);
+        this.setState({plan});
+    }
+    removeMotorHomeWebsite(num){
+        let plan = this.state.plan;
+        let newMotorHomeWebsiteList= plan.where_to_stay.motor_home_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.motor_home_website_list = newMotorHomeWebsiteList;
+        this.setState({plan});
+    }
+    addNewMotorHomeWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.motor_home_website_list.push(website);
+        this.setState({plan});
+    }
+    removeBackpackerWebsite(num){
+        let plan = this.state.plan;
+        let newBackpackerWebsiteList= plan.where_to_stay.backpacker_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.backpacker_website_list = newBackpackerWebsiteList;
+        this.setState({plan});
+    }
+    addNewBackpackerWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.backpacker_website_list.push(website);
+        this.setState({plan});
+    }
+    removeCouchSurfingWebsite(num){
+        let plan = this.state.plan;
+        let newCouchSurfingWebsiteList= plan.where_to_stay.couch_surfing_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.couch_surfing_website_list = newCouchSurfingWebsiteList;
+        this.setState({plan});
+    }
+    addNewCouchSurfingWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.couch_surfing_website_list.push(website);
+        this.setState({plan});
+    }
+    removeUnusualPlacesWebsite(num){
+        let plan = this.state.plan;
+        let newUnusualPlacesWebsiteList= plan.where_to_stay.unusual_places_website_list.filter((website,index)=>{
+            return index !=num;
+        })
+        plan.where_to_stay.unusual_places_website_list = newUnusualPlacesWebsiteList;
+        this.setState({plan});
+    }
+    addNewUnusualPlacesWebsite(){
+        let plan = this.state.plan;
+        const website = {"text":"","website_link":""};
+        plan.where_to_stay.unusual_places_website_list.push(website);
+        this.setState({plan});
+    }
+    onUpdateStaySubmit(event){
+        event.preventDefault();
+        const id = this.props.id;
+        const host = config.API_SERVER;
+        const url = "http://"+host+":12000/plans/"+id;
+        const plan = this.state.plan;
+        axios.put(url,plan)
+        .then(response=>{
+            if (response.data.success){
+                this.setState({isHiddenSuccessMsg:false});
+            }else{
+                const errMsg = response.data.errMsg;
+                this.setState({errMsg});
+                this.setState({isHiddenErrMsg:false});
+                //alert(errMsg)
+            }
+        })
+        .catch(err=>{
+            this.setState({errMsg:err.toString()});
+            this.setState({isHiddenErrMsg:false});
+            //alert(err.toString());
+        })
+    }
     render(){
         if (this.state.errMsg){
             return(
@@ -219,7 +396,7 @@ class PlanWhereToStayUpdateForm extends Component{
         }
         return(
             <div className="container plan-update-stay">
-                <form className="form-horizontal">
+                <form className="form-horizontal" onSubmit={this.onUpdateStaySubmit.bind(this)}>
             
                     {/*description*/}
                     <div className="form-group">
@@ -261,12 +438,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeHotelCompareWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeHotelCompareWebsite(num)}>Remove a Hotel Compare Website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New Hotel Compare Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewHotelCompareWebsite.bind(this)}>Add a New Hotel Compare Website</button>
                             </div>
                         </div>
                     </div>
@@ -282,7 +462,7 @@ class PlanWhereToStayUpdateForm extends Component{
                             return (
                                 <div className="panel panel-default" key={"hotel_direct_website_"+num}>
                                     <div className="panel-heading">
-                                        hotel direct website {num}
+                                        hotel direct website {num+1}
                                     </div>
                                     <div className="panel-body">
                                         <div className="form-group">
@@ -301,12 +481,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeDirectWebsiteWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeHotelDirectWebsite(num)}>Remove a Hotel Direct Website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New Hotel direct Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewHotelDirectWebsite.bind(this)}>Add a New Hotel direct Website</button>
                             </div>
                         </div>
                     </div>
@@ -341,12 +524,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeSelfContainedWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeSelfContainedWebsite(num)}>Remove a self contained Website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New self contained apartment Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewSelfContainedWebsite.bind(this)}>Add a New self contained  Website</button>
                             </div>
                         </div>
                     </div>
@@ -381,12 +567,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeVillasWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeVillasWebsite(num)}>Remove a villas Website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New Villas Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewVillasWebsite.bind(this)}>Add a New Villas Website</button>
                             </div>
                         </div>
                     </div>
@@ -421,12 +610,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeBedWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeBedWebsite(num)}>Remove a bed and breakfast guest house Website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New Bed and Breakfast Guest House Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewBedWebsite.bind(this)}>Add a New Bed and Breakfast Guest House Website</button>
                             </div>
                         </div>
                     </div>
@@ -461,12 +653,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeHolidayHousesWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeHolidayHousesWebsite(num)}>Remove a holiday houses website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New Holiday Houses Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewHolidayHousesWebsite.bind(this)}>Add a New Holiday Houses Website</button>
                             </div>
                         </div>
                     </div>
@@ -501,12 +696,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeHouseShareWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeHouseShareWebsite(num)}>Remove a house share website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New House Share Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewHouseShareWebsite.bind(this)}>Add a New House Share Website</button>
                             </div>
                         </div>
                     </div>
@@ -541,12 +739,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeMotorHomeWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeMotorHomeWebsite(num)}>Remove a motor home website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New Motor Home Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewMotorHomeWebsite.bind(this)}>Add a New Motor Home Website</button>
                             </div>
                         </div>
                     </div>
@@ -581,12 +782,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeBackpackerWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeBackpackerWebsite(num)}>Remove a backpacker website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New backpacker Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewBackpackerWebsite.bind(this)}>Add a New backpacker Website</button>
                             </div>
                         </div>
                     </div>
@@ -621,12 +825,15 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeCouchSurfingWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeCouchSurfingWebsite(num)}>Remove a couch surfing website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New Couch Surfing Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewCouchSurfingWebsite.bind(this)}>Add a New Couch Surfing Website</button>
                             </div>
                         </div>
                     </div>
@@ -661,15 +868,31 @@ class PlanWhereToStayUpdateForm extends Component{
                                                 <input type="text" className="form-control" value={website.website_link} name={name} onChange={this.onChangeUnusualPlacesWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
+                                        <div className="col-md-12">
+                                            <button className="btn btn-success btn-block" onClick={()=>this.removeUnusualPlacesWebsite(num)}>Remove a unusual place website</button>
+                                        </div>
                                     </div>
                                 </div>
                             )
                             })}
                             <div className="col-md-12">
-                                <button className="btn btn-success btn-block">Add a New Unusual Places Website</button>
+                                <button className="btn btn-success btn-block" onClick={this.addNewUnusualPlacesWebsite.bind(this)}>Add a New Unusual Places Website</button>
                             </div>
                         </div>
                     </div>
+                    
+                    {/*Message field*/}
+                    <div className={this.state.isHiddenErrMsg?'hidden':''}>
+                        <div className="col-md-12">
+                            <h4 className="error-msg">{this.state.errMsg}</h4>
+                        </div>
+                    </div>
+                    <div className={this.state.isHiddenSuccessMsg?'hidden':''}>
+                        <div className="col-md-12">
+                            <h4 className="success-msg">The plan info has successfully updated</h4>
+                        </div>
+                    </div>
+                            
                     <div className="form-group">
                         <div className="col-md-8">
                             <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
