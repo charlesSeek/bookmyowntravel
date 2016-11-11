@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var continentController = require('./app/controllers/continent');
 var countryController = require('./app/controllers/country');
 var planController = require('./app/controllers/plan');
+var imageController = require('./app/controllers/image');
 
 var app = express();
 
@@ -62,7 +63,11 @@ app.post('/plans',planController.createNewOnePlan);
 app.put('/plans/:id',planController.updateOnePlanById);
 app.delete('/plans/:id',planController.deleteOnePlanById);
 
-
+/*
+    image CURD
+*/
+app.get('/images',imageController.getAllImages);
+app.get('/images/:id',imageController.getOneImageById);
 
 
 app.listen(port,function(){
