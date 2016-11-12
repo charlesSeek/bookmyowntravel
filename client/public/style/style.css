@@ -174,3 +174,10 @@ error-msg{
     padding:10px;
     background-color: gray;
 }
+.image-dropzone{
+    margin-left:50px;
+    margin-top:80px;
+}
+.image-list{
+    margin-top:40px;
+}

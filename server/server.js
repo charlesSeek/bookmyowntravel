@@ -68,6 +68,12 @@ app.delete('/plans/:id',planController.deleteOnePlanById);
 */
 app.get('/images',imageController.getAllImages);
 app.get('/images/:id',imageController.getOneImageById);
+app.post('/amazon-s3-url',imageController.getAmazonS3Url);
+app.post('/images',imageController.createNewImageInfo);
+
+/*
+    get Amazon S3 file put url
+*/
 
 
 app.listen(port,function(){

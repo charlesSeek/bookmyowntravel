@@ -8,8 +8,9 @@ var ImageSchema = new mongoose.Schema({
     },
     description:String,
     image_category:String,
-    country_option:String,
+    country_category:String,
     hashtags: [String],
+    image_s3_url:String,
     createdAt:{
         type:Date,
         default:Date.now()
