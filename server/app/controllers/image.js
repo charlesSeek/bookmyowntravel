@@ -1,11 +1,15 @@
 var Image = require('../models/image');
 var _ = require('underscore');
 var aws = require('aws-sdk');
+var config = require('../../config');
+const accessKeyId = config.accessKeyId;
+const secretAccessKey = config.secretAccessKey;
+const region = config.region;
 
 aws.config.update({
-    accessKeyId: 'AKIAJRZW2IIRT4CIKMNQ',
-    secretAccessKey: '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',
-    region:'us-west-2'
+    accessKeyId: accessKeyId,
+    secretAccessKey: secretAccessKey,
+    region:region
 });
 
 exports.getAllImages = function(req,res){
