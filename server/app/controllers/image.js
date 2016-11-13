@@ -64,7 +64,7 @@ exports.createNewImageInfo = function(req,res){
     }
 }
 
-exports.getAmazonS3Url = function(req,res){
+exports.getAmazonS3putObjectUrl = function(req,res){
     const path = req.body.path;
     const filename = path+'/'+req.body.filename;
     const filetype = req.body.filetype;
@@ -72,6 +72,7 @@ exports.getAmazonS3Url = function(req,res){
     const params = {
             Bucket: 'shuchengc',
             Key: filename,
+            ACL:'public-read',
             Expires: 60,
             ContentType: filetype
     };
@@ -83,5 +84,16 @@ exports.getAmazonS3Url = function(req,res){
                 res.json({"success":true,"data":data});
             }
     });
+}
+
+exports.getAmazonS3getObjectUrl = function(req,res){
+    const filename = req.body.filename;
+    s3 = new aws.S3();
+    const params ={
+        Bucket:'shuchengc',
+        Key:filename
+    };
+    const url = s3.getSignedUrl('getObject',params);
+    res.json({"success":true,"data":url});
 }
 

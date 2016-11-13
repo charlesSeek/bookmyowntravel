@@ -5,6 +5,9 @@ import config from '../../../config';
 import Dropzone from 'react-dropzone';
 
 class AdminImageHome extends Component{
+    static contextTypes = {
+        router: PropTypes.object
+    }
     componentWillMount(){
         this.state = {
             errMsg:'',
@@ -15,14 +18,17 @@ class AdminImageHome extends Component{
             hashtags:[],
             imageFile:{},
             imagePreview:'',
-            isHiddenImage:true,
+            isHiddenImageList:false,
             isHiddenText:false,
-            isShowErrMsg:false
+            isShowErrMsg:false,
+            isHiddenImage:true,
+            uploadMsg:''
         }
     }
     componentDidMount(){
         const host = config.API_SERVER;
         const image_url = 'http://'+host+':12000/images';
+        const s3_get_url = 'http://'+host+':12000/amazon-s3-get-url';
         axios.get(image_url)
         .then((response)=>{
             if (response.data.success){
@@ -33,6 +39,7 @@ class AdminImageHome extends Component{
         .catch(err=>{
             alert(err.toString());
         });
+    
         const country_url = 'http://'+host+':12000/countries';
         axios.get(country_url)
         .then((response)=>{
@@ -49,7 +56,8 @@ class AdminImageHome extends Component{
     createButtonClick(){
         this.setState({
             isHiddenForm:false,
-            isHiddenCreateButton:true
+            isHiddenCreateButton:true,
+            isHiddenImageList:true
         });
     }
     addHashTag(){
@@ -84,8 +92,19 @@ class AdminImageHome extends Component{
         const url = "http://"+host+":12000/images";
         axios.post(url,image)
         .then(response=>{
-            if (response.data.success)
-                console.log("success");
+            if (response.data.success){
+                let newImages = this.state.images;
+                newImages.push(image);
+                this.setState({
+                    isHiddenForm:true,
+                    isHiddenCreateButton:false,
+                    isHiddenImageList:false,
+                    isHiddenText:false,
+                    isShowErrMsg:false,
+                    isHiddenImage:true,
+                    images:newImages
+                })
+            }
             else
                 console.log("failure");
         })
@@ -120,15 +139,27 @@ class AdminImageHome extends Component{
             };
             axios.put(s3Url,file,options)
             .then(response=>{
-                console.log(response)
+                this.setState({uploadMsg:'upload successfully!'})
             })
             .catch(err=>{
-                console.log(err.toString());
+                
+                this.setState({uploadMsg:'upload failed:'+err.toString()})
             })
             
         })
         .catch(err=>{
             console.log(err.toString());
+        })
+    }
+    onCancelClick(){
+        this.setState({
+            isHiddenForm:true,
+            isHiddenCreateButton:false,
+            isHiddenImageList:false,
+            isHiddenText:false,
+            isShowErrMsg:false,
+            isHiddenImage:true,
+            
         })
     }
     render(){
@@ -212,6 +243,11 @@ class AdminImageHome extends Component{
                                 </div>
                             </div>
                             <div className="form-group">
+                                <div className="col-md-12">
+                                    <label className="control-label">{this.state.uploadMsg}</label>
+                                </div>
+                            </div>
+                            <div className="form-group">
                                 <div className="col-md-2">
                                     <label className="control-label">Image Hashtags</label>
                                 </div>
@@ -232,12 +268,12 @@ class AdminImageHome extends Component{
                             <div className="form-group">
                                 <div className="col-md-8">
                                     <button type="submit" className="btn btn-success">Save </button>&nbsp;&nbsp;
-                                    <button type="reset" className="btn btn-danger">Cancel</button>
+                                    <button type="button" className="btn btn-danger" onClick={this.onCancelClick.bind(this)}>Cancel</button>
                                 </div>
                             </div>
                         </form>
                     </div>
-                    <div className="image-list">
+                    <div className={this.state.isHiddenImageList?"hidden":"image-list"}>
                         <div className="row">
                             {this.state.images.map(image=>{
                                 return(
