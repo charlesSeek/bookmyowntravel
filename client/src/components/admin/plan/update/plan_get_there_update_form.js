@@ -46,53 +46,10 @@ class PlanGetThereUpdateForm extends Component{
             alert(err.toString());
         })
     }
-    onChangeAirportName(event){
-        const airport_name = event.target.value;
-        const index = event.target.name;
+    onChangeInternationalAirportMapLink(event){
+        const international_airport_map_link = event.target.value;
         let plan = this.state.plan;
-        plan.how_to_get_there.international_airports[index].airport_name = airport_name;
-        this.setState({plan})
-    }
-    onChangeAirportLat(event){
-        const lat = event.target.value;
-        const index = event.target.name;
-        let plan = this.state.plan;
-        plan.how_to_get_there.international_airports[index].geo_location.lat = lat;
-        this.setState({plan})
-    }
-    onChangeAirportLon(event){
-        const lon = event.target.value;
-        const index = event.target.name;
-        let plan = this.state.plan;
-        plan.how_to_get_there.international_airports[index].geo_location.lon = lon;
-        this.setState({plan})
-    }
-    onChangeAirportWebsiteLink(event){
-        const airport_website_link = event.target.value;
-        const index = event.target.name;
-        let plan = this.state.plan;
-        plan.how_to_get_there.international_airports[index].airport_website_link = airport_website_link;
-        this.setState({plan})
-    }
-    addNewAirport(){
-        let plan = this.state.plan;
-        const airport = {
-            "airport_name":"",
-            "geo_location":{
-                "lat":"",
-                "lon":""
-            },
-            "airport_website_link":""
-        }
-        plan.how_to_get_there.international_airports.push(airport);
-        this.setState({plan});
-    }
-    removeAirport(num){
-        let plan = this.state.plan;
-        const newInternationalAirports = plan.how_to_get_there.international_airports.filter((airport,index)=>{
-            return index != num;
-        })
-        plan.how_to_get_there.international_airports = newInternationalAirports;
+        plan.how_to_get_there.international_airport_map_link = international_airport_map_link;
         this.setState({plan});
     }
     onChangeFullServiceAirlinesImageLink(event){
@@ -255,61 +212,12 @@ class PlanGetThereUpdateForm extends Component{
                 <form className="form-horizontal" onSubmit={this.onUpdateGetThereSubmit.bind(this)}>
             
                     {/* international airport */}
-                    <div className="panel panel-default">
-                        <div className="panel-heading">
-                            {this.state.name} international airport
+                    <div className="form-group">
+                        <div className="col-md-4">
+                            <label className="control-label">international airport map link</label>
                         </div>
-                        <div className="panel-body">
-                            {this.state.plan.how_to_get_there.international_airports.map((airport,num)=>{
-                                return (
-                                    <div className="panel panel-default" key={"airport_"+num}>
-                                        <div className="panel-heading">
-                                            international airport {num+1}
-                                        </div>
-                                        <div className="panel-body">
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <label className="control-label">international airport name</label>
-                                                </div>
-                                                <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={airport.airport_name} name={num} onChange={this.onChangeAirportName.bind(this)} required/>
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <label className="control-label">international airport latitude</label>
-                                                </div>
-                                                <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={airport.geo_location.lat} name={num} onChange={this.onChangeAirportLat.bind(this)} required/>
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <label className="control-label">international airport longitude</label>
-                                                </div>
-                                                <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={airport.geo_location.lon} name={num} onChange={this.onChangeAirportLon.bind(this)} required/>
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <label className="control-label">international airport website link</label>
-                                                </div>
-                                                <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={airport.airport_website_link} name={num} onChange={this.onChangeAirportWebsiteLink.bind(this)} required/>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-12">
-                                                <button className="btn btn-success btn-block" onClick={()=>this.removeAirport(num)}>Remove the international airport</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        )
-                            })}
-
-                            <div className="col-md-12">
-                                <button className="btn btn-success btn-block" onClick={this.addNewAirport.bind(this)}>Add a New international airport</button>
-                            </div>
+                        <div className="col-md-8">
+                            <input type="text" className="form-control" value={this.state.plan.how_to_get_there.international_airport_map_link} onChange={this.onChangeInternationalAirportMapLink.bind(this)} required/>
                         </div>
                     </div>
                     

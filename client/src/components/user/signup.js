@@ -20,6 +20,7 @@ class SignUp extends Component {
         const url = "http://"+host+":12000/signup";
         const username = this.refs.username.value;
         const password = this.refs.password.value;
+        console.log('username,password:',username,password);
         const confirm_password = this.refs.confirm_password.value;
         if (confirm_password!=password){
             this.setState({
@@ -30,7 +31,7 @@ class SignUp extends Component {
             axios.post(url,{username,password})
             .then(response=>{
                 if (response.data.success){
-                    //console.log(response.data);
+                    const token = response.data.token;
                     cookie.save('username', username, { path: '/' });
                     cookie.save('token',token,{path:'/'});
                     this.context.router.push('/');
@@ -44,6 +45,7 @@ class SignUp extends Component {
                 }
             })
             .catch(err=>{
+                console.log(err.toString());
                 this.setState({
                     errMsg:"invalid username or password",
                     isHiddenErrMsg:false
@@ -55,7 +57,7 @@ class SignUp extends Component {
         return(
             <div className="container user-sign-in">
                 <Header/>
-                <h3>User Sign In</h3>
+                <h3>User Sign Up</h3>
                 <hr/>
                 <form onSubmit={this.onUserSubmit.bind(this)}>
                     <div className="form-group">

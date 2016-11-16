@@ -11,11 +11,13 @@ class AdminPlanHome extends Component {
             plans:undefined,
             countries:undefined,
             errMsg:'',
-            isHiddenForm:true,
+            isHiddenNewForm:true,
+            isHiddenCopyForm:true,
             isHiddenCreateButton:false
         }
     }
     componentDidMount(){
+        console.log('did mount');
         const host = config.API_SERVER;
         const url = 'http://'+host+':12000/plans';
         axios.get(url)
@@ -47,14 +49,20 @@ class AdminPlanHome extends Component {
     }
     createButtonClick(){
         this.setState({
-            isHiddenForm:false,
+            isHiddenNewForm:false,
+            isHiddenCreateButton:true
+        });
+    }
+    createCopyButtonClick(){
+        this.setState({
+            isHiddenCopyForm:false,
             isHiddenCreateButton:true
         });
     }
     onNewPlanSubmit(event){
         event.preventDefault();
-        const name = this.refs.name.value;
-        const continent = this.refs.continent.value;
+        const name = this.refs.new_country_name.value;
+        const continent = this.refs.new_country_continent.value;
         const createdAt = Date();
         const updatedAt = Date();
         const status = "processing";
@@ -64,8 +72,48 @@ class AdminPlanHome extends Component {
         .then((response)=>{
             if (response.data.success){
                 console.log("id:",response.data.data._id);
-                const id = response.data.data._id;
-                this.context.router.push('/admin/plan/new/about/'+id);
+                const id = response.data.data._id; this.context.router.push('/admin/plan/new/about/'+id);
+            }else{
+                alert(response.data.errMsg);
+            }
+        })
+        .catch(err=>{
+            alert(err.toString());
+        })
+    }
+    onCopyPlanSubmit(event){
+        event.preventDefault();
+        const name = this.refs.copy_country_name.value;
+        const sourcename = this.refs.sourcename.value;
+        const continent = this.refs.copy_country_continent.value;
+        const createdAt = Date();
+        const updatedAt = Date();
+        const plans = this.state.plans;
+        let plan = plans.find(plan=>{
+            return plan.name == sourcename;
+        })
+        let sourcePlan = JSON.parse(JSON.stringify(plan))
+        const status = "committed";
+        sourcePlan.name = name;
+        sourcePlan.continent = continent;
+        sourcePlan.status = status;
+        sourcePlan.createdAt = createdAt;
+        sourcePlan.updatedAt = updatedAt;
+        delete sourcePlan['_id'];
+        const host = config.API_SERVER;
+        const url = 'http://'+host+':12000/plans';
+        console.log('sourcePlan:',sourcePlan);
+        axios.post(url,sourcePlan)
+        .then((response)=>{
+            if (response.data.success){
+                let newPlans = this.state.plans;
+                const newPlan = response.data.data;
+                newPlans.push(newPlan);
+                this.setState({
+                    plans:newPlans,
+                    isHiddenCopyForm:true,
+                    isHiddenCreateButton:false
+                })
             }else{
                 alert(response.data.errMsg);
             }
@@ -84,6 +132,7 @@ class AdminPlanHome extends Component {
                     return plan._id!=id;
                 })
                 this.setState({plans:newPlans});
+                console.log('3 state:',this.state.plans);
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
@@ -111,16 +160,21 @@ class AdminPlanHome extends Component {
                 <div className="container plan-home">
                     <h2>Admin Travel Plan</h2>
                     <div className={this.state.isHiddenCreateButton?'hidden':''}>
-                        <button type="button" className="btn btn-success btn-block" onClick={this.createButtonClick.bind(this)}>New One</button>
+                        <div className="col-md-6">
+                            <button type="button" className="btn btn-success btn-block" onClick={this.createButtonClick.bind(this)}>New One</button>
+                        </div>
+                        <div className="col-md-6">
+                            <button type="button" className="btn btn-success btn-block" onClick={this.createCopyButtonClick.bind(this)}>Copy One</button>
+                        </div>
                     </div>
-                    <div className={this.state.isHiddenForm?'hidden':''}>
+                    <div className={this.state.isHiddenNewForm?'hidden':''}>
                         <form className="form-horizontal" onSubmit={this.onNewPlanSubmit.bind(this)}>
                             <div className="form-group">
                                 <div className="col-md-4">
                                     <label className="control-label">Country Name(Area Name)</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <select className="form-control" ref="name" required>
+                                    <select className="form-control" ref="new_country_name" required>
                                         {this.state.countries.map((country)=>{
                                             return(
                                                 <option key={country.name}>{country.name}</option>
@@ -135,7 +189,7 @@ class AdminPlanHome extends Component {
                                     <label className="control-label">Continent Name</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <select className="form-control" ref="continent" required>
+                                    <select className="form-control" ref="new_country_continent" required>
                                         <option>Asia</option>
                                         <option>Europen</option>
                                         <option>North America</option>
@@ -150,7 +204,63 @@ class AdminPlanHome extends Component {
                                 <div className="col-md-offset-4 col-md-8">
                                     <button type="submit" className="btn btn-default">Submit</button>
                                     &nbsp;&nbsp;
-                                    <button type="reset" className="btn btn-default" onClick={()=>{this.setState({isHiddenForm:true, isHiddenCreateButton:false})}}>Cancel</button>
+                                    <button type="reset" className="btn btn-default" onClick={()=>{this.setState({isHiddenNewForm:true, isHiddenCreateButton:false})}}>Cancel</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                   
+                     <div className={this.state.isHiddenCopyForm?'hidden':''}>
+                        <form className="form-horizontal" onSubmit={this.onCopyPlanSubmit.bind(this)}>
+                            <div className="form-group">
+                                <div className="col-md-4">
+                                    <label className="control-label">Country Name(Area Name)</label>
+                                </div>
+                                <div className="col-md-8">
+                                    <select className="form-control" ref="copy_country_name" required>
+                                        {this.state.countries.map((country)=>{
+                                            return(
+                                                <option key={country.name}>{country.name}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className="col-md-4">
+                                    <label className="control-label">Continent Name</label>
+                                </div>
+                                <div className="col-md-8">
+                                    <select className="form-control" ref="copy_country_continent" required>
+                                        <option>Asia</option>
+                                        <option>Europen</option>
+                                        <option>North America</option>
+                                        <option>South America</option>
+                                        <option>Africa</option>
+                                        <option>Oceania</option>
+                                        <option>Antarctica</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className="col-md-4">
+                                    <label className="control-label">Copy Country From</label>
+                                </div>
+                                <div className="col-md-8">
+                                    <select className="form-control" ref="sourcename" required>
+                                        {this.state.countries.map((country)=>{
+                                            return(
+                                                <option key={country.name}>{country.name}</option>
+                                            )
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className="col-md-offset-4 col-md-8">
+                                    <button type="submit" className="btn btn-default">Submit</button>
+                                    &nbsp;&nbsp;
+                                    <button type="reset" className="btn btn-default" onClick={()=>{this.setState({isHiddenCopyForm:true, isHiddenCreateButton:false})}}>Cancel</button>
                                 </div>
                             </div>
                         </form>

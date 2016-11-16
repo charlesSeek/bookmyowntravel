@@ -59,19 +59,7 @@ class AdminPlanNewGetThereForm extends Component{
         event.preventDefault();
         
         //international_airports
-        let international_airports = [];
-        for (let i=1;i<=this.state.airport_list.length;i++){
-            const name = "international_airport_name_"+i;
-            const airport_name = this.refs[name].value;
-            const lat_name = "lat_"+i;
-            const lat = this.refs[lat_name].value;
-            const lon_name = "long_"+i;
-            const lon = this.refs[lon_name].value;
-            const geo_location = {lat,lon};
-            const airport_website_link_name = "international_airport_website_link_"+i;
-            const airport_website_link = this.refs[airport_website_link_name].value;
-            international_airports.push({airport_name,geo_location,airport_website_link});
-        }
+        const international_airport_map_link = this.refs.international_airport_map_link;
         
         //flights
         const full_service_airlines_image_link = this.refs.full_service_airlines_image_link.value;
@@ -124,7 +112,7 @@ class AdminPlanNewGetThereForm extends Component{
         const cruise_website = this.refs.cruise_extra_website_link.value;
         const cruise = {cruise_image_link,website_link,text,cruise_website};
         
-        const how_to_get_there = {international_airports,flights,cruise};
+        const how_to_get_there = {international_airport_map_link,flights,cruise};
         const id = this.props.id;
         const host = config.API_SERVER;
         const url = 'http://'+host+':12000/plans/'+id;
@@ -158,59 +146,13 @@ class AdminPlanNewGetThereForm extends Component{
             <div className="container new-plan-get-there">
                 <form className="form-horizontal" onSubmit={this.onNewPlanGetThereSubmit.bind(this)}>
             
-                    {/* international airport */}
-                    <div className="panel panel-default">
-                        <div className="panel-heading">
-                            {this.state.name} international airport
+                    {/* international airport map link */}
+                    <div className="form-group">
+                        <div className="col-md-4">
+                            <label className="control-label">International Airport Map Link</label>
                         </div>
-                        <div className="panel-body">
-                            {this.state.airport_list.map(num=>{
-                                return (
-                                    <div className="panel panel-default" key={"airport_"+num}>
-                                        <div className="panel-heading">
-                                            international airport {num}
-                                        </div>
-                                        <div className="panel-body">
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <label className="control-label">international airport name</label>
-                                                </div>
-                                                <div className="col-md-8">
-                                                    <input type="text" className="form-control" ref={"international_airport_name_"+num} placeholder="please input the international airport name" required/>
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <label className="control-label">international airport latitude</label>
-                                                </div>
-                                                <div className="col-md-8">
-                                                    <input type="text" className="form-control" ref={"lat_"+num} placeholder="please input the international airport location latitude" required/>
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <label className="control-label">international airport longitude</label>
-                                                </div>
-                                                <div className="col-md-8">
-                                                    <input type="text" className="form-control" ref={"long_"+num} placeholder="please input the international airport longitude" required/>
-                                                </div>
-                                            </div>
-                                            <div className="form-group">
-                                                <div className="col-md-4">
-                                                    <label className="control-label">international airport website link</label>
-                                                </div>
-                                                <div className="col-md-8">
-                                                    <input type="text" className="form-control" ref={"international_airport_website_link_"+num} placeholder="please input the international airport website link" required/>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                        )
-                            })}
-
-                            <div className="col-md-12">
-                                <button className="btn btn-success btn-block" onClick={this.onNewInternationalAirport.bind(this)}>Add a New international airport</button>
-                            </div>
+                        <div className="col-md-8">
+                            <input type="text" className="form-control" ref="international_airport_map_link" placeholder="please input the international airport map link" required/>
                         </div>
                     </div>
                     

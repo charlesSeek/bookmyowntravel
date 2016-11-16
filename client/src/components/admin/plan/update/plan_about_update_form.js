@@ -53,16 +53,10 @@ class PlanAboutUpdateForm extends Component{
         plan.about.about_image_link = about_image_link;
         this.setState({plan});
     }
-    onChangeLat(event){
-        const lat = event.target.value;
+    onChangeCountryMapLink(event){
+        const country_map_link = event.target.value;
         let plan = this.state.plan;
-        plan.about.map_geolocation.lat = lat;
-        this.setState({plan});
-    }
-    onChangeLon(event){
-        const lon = event.target.value;
-        let plan = this.state.plan;
-        plan.about.map_geolocation.lon = lon;
+        plan.about.country_map_link = country_map_link;
         this.setState({plan});
     }
     onChangeVideo1Name(event){
@@ -206,6 +200,7 @@ class PlanAboutUpdateForm extends Component{
                         </div>
                     </div>
                     
+                    
                     {/*country image link field*/}
                     <div className="form-group">
                         <div className="col-md-4">
@@ -215,29 +210,14 @@ class PlanAboutUpdateForm extends Component{
                             <input type="text" className="form-control" value={this.state.plan.about.about_image_link} onChange={this.onChangeAboutImageLink.bind(this)} required/>
                         </div>
                     </div>
-                                
-                    {/*country location coordinates*/}
-                    <div className="panel panel-default">
-                        <div className="panel-heading">
-                            Country Location Coordinates
+                    
+                    {/*country google map link*/}
+                    <div className="form-group">
+                        <div className="col-md-4">
+                            <label className="control-label">Country Map Link</label>
                         </div>
-                        <div className="panel-body">
-                            <div className="form-group">
-                                <div className="col-md-4">
-                                    <label className="control-label">Country Latitude</label>
-                                </div>
-                                <div className="col-md-8">
-                                    <input type="text" value={this.state.plan.about.map_geolocation.lat} onChange={this.onChangeLat.bind(this)} className="form-control"  required/>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="col-md-4">
-                                    <label className="control-label">Country Longitude</label>
-                                </div>
-                                <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.map_geolocation.lon} onChange={this.onChangeLon.bind(this)} required/>
-                                </div>
-                            </div>
+                        <div className="col-md-8">
+                            <input type="text" className="form-control" value = {this.state.plan.about.country_map_link} onChange={this.onChangeCountryMapLink.bind(this)} required/>
                         </div>
                     </div>
                     

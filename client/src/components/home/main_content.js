@@ -19,7 +19,6 @@ class MainContent extends Component{
         const url = 'http://'+host+':12000/plans';
         axios.get(url)
         .then((response)=>{
-            console.log(response)
             this.setState({plans:response.data.data});
         })
         .catch(err=>{

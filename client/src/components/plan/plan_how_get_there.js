@@ -45,7 +45,7 @@ class PlanHowGetThere extends Component {
             <div className="container planhowgothere">
                 <h2>Flying to {this.state.plan.name}</h2>
                 <h4>{this.state.plan.name} INTERNATIONAL AIRPORTS</h4>
-                <iframe width="600" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDi6rDt-Lec1EPgqReSXZJhNlCrlAZNSmo&q=japan,japan"></iframe>
+                <iframe width="600" height="450" src={this.state.plan.how_to_get_there.international_airport_map_link}></iframe>
                 
                 <div className="row ">
                     <h2>Airlines who fly to {this.state.plan.name}</h2>

@@ -65,8 +65,7 @@ class AdminPlanNewAboutForm extends Component{
         const video3_name = this.refs.about_video3_name.value;
         const video3_link = this.refs.about_video3_link.value;
         const about_extra_videos = this.refs.about_extra_videos.value;
-        const lat = this.refs.lat.value;
-        const lon = this.refs.lon.value;
+        const country_map_link = this.refs.country_map_link.value;
         const tourism_office_image_link = this.refs.tourism_office_image_link.value;
         const tourism_office_website_link = this.refs.tourism_office_website_link.value;
         const entry_requirements_image_link = this.refs.entry_requirements_image_link.value;
@@ -83,9 +82,8 @@ class AdminPlanNewAboutForm extends Component{
         tourism_office = {tourism_office_image_link,tourism_office_website_link};
         entry_requirements = {entry_requirements_image_link,entry_requirements_website_link};
         top_blogs = {image_link:top_blogs_image_link,website_link:top_blogs_website_link};
-        about = {about_description,about_image_link,about_video_1,about_video_2,about_video_3,about_extra_videos,map_geolocation,tourism_office,entry_requirements,top_blogs};
+        about = {about_description,about_image_link,about_video_1,about_video_2,about_video_3,about_extra_videos,country_map_link,tourism_office,entry_requirements,top_blogs};
         const plan = {about};
-        console.log("plan:",plan);
         const id = this.props.id;
         const host = config.API_SERVER;
         const url = 'http://'+host+':12000/plans/'+id;
@@ -147,28 +145,13 @@ class AdminPlanNewAboutForm extends Component{
                         </div>
                     </div>
                                 
-                    {/*country location coordinates*/}
-                    <div className="panel panel-default">
-                        <div className="panel-heading">
-                            Country Location Coordinates
+                    {/*country google map link*/}
+                    <div className="form-group">
+                        <div className="col-md-4">
+                            <label className="control-label">Country Google Map Link</label>
                         </div>
-                        <div className="panel-body">
-                            <div className="form-group">
-                                <div className="col-md-4">
-                                    <label className="control-label">Country Latitude</label>
-                                </div>
-                                <div className="col-md-8">
-                                    <input type="text" className="form-control" ref="lat" placeholder="please input the country latitude" required/>
-                                </div>
-                            </div>
-                            <div className="form-group">
-                                <div className="col-md-4">
-                                    <label className="control-label">Country Longitude</label>
-                                </div>
-                                <div className="col-md-8">
-                                    <input type="text" className="form-control" ref="lon" placeholder="please input the country langitude" required/>
-                                </div>
-                            </div>
+                        <div className="col-md-8">
+                            <input type="text" className="form-control" ref="country_map_link" placeholder="please input the country google map link" required/>
                         </div>
                     </div>
                     

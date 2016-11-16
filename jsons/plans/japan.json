@@ -17,10 +17,7 @@
                 "video_link":"https://www.youtube.com/embed/E4AnUYV-ZaM"
             },
             "about_extra_videos":"https://www.youtube.com/channel/UCyeG12Sa3lGIv3oPlsxnQbQ",
-            "map_geolocation":{
-                "lat":36.20,
-                "lon":138.25
-            },
+            "country_map_link":"https://www.google.com/maps/embed/v1/place?q=japan&key=AIzaSyDzyFbQ_-VsGCsmZObb8Ga_ZspPMGnqNjY",
             "tourism_office":{
                 "tourism_office_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477275317/tourist_bureau_p5id4g.jpg",
                 "tourism_office_website_link":"https://www.jnto.org.au"
@@ -347,48 +344,7 @@
             "check_prices_website_link":"https://www.numbeo.com/travel-prices/"
         },
         "how_to_get_there":{
-            "international_airports":[
-                {
-                    "airport_name":"Fukuoka Airport",
-                    "geo_location":{
-                        "lat":33.59,
-                        "lon":130.45
-                    },
-                    "airport_website_link":"www.fuk-ab.co.jp"
-                },
-                {
-                    "airport_name":"Osaka Kansai International Airport",
-                    "geo_location":{
-                        "lat":34.43,
-                        "lon":135.23
-                    },
-                    "airport_website_link":"www.fuk-ab.co.jp"
-                },
-                {
-                    "airport_name":"Nagoya Chubu Centrair International Airport",
-                    "geo_location":{
-                        "lat":34.86,
-                        "lon":136.81
-                    },
-                    "airport_website_link":"www.centrair.jp"
-                },
-                {
-                    "airport_name":"Tokyo Haneda Airport",
-                    "geo_location":{
-                        "lat":35.55,
-                        "lon":139.78
-                    },
-                    "airport_website_link":"www.tokyo-airport-bldg.co.jp"
-                },
-                {
-                    "airport_name":"Sapporo New Chitose Airport",
-                    "geo_location":{
-                        "lat":42.79,
-                        "lon":141.67
-                    },
-                    "airport_website_link":"www.new-chitose-airport.jp"
-                }
-            ],
+            "international_airport_map_link":"https://www.google.com/maps/embed/v1/place?q=japan&key=AIzaSyDzyFbQ_-VsGCsmZObb8Ga_ZspPMGnqNjY",
             "flights":{
                 "full_service_airlines":{
                         "full_service_airlines_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477283609/full_service_airline_rjwim5.jpg",

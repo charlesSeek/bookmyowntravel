@@ -58,7 +58,7 @@ class PlanAbout extends Component{
                 </div>
                 <p><a href="#">More videos at Book My Own Travel You Tube Channel</a></p>
                 <h1 className="aboutmap">Map of {this.state.plan.name}</h1>
-                <iframe width="600" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDi6rDt-Lec1EPgqReSXZJhNlCrlAZNSmo&q=japan,japan"></iframe>
+                <iframe width="600" height="450" src={this.state.plan.about.country_map_link}></iframe>
                 <div className="row">
                     <div className="col-md-4 col-sm-6">
                         <h3>Tourism Office</h3>
