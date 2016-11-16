@@ -6,6 +6,11 @@ var continentController = require('./app/controllers/continent');
 var countryController = require('./app/controllers/country');
 var planController = require('./app/controllers/plan');
 var imageController = require('./app/controllers/image');
+var userController = require('./app/controllers/user');
+const passportService = require('./app/services/passport');
+const passport = require('passport');
+const requireAuth  = passport.authenticate('jwt',{session:false});
+const requireSignin = passport.authenticate('local', { session: false });
 
 var app = express();
 
@@ -26,13 +31,13 @@ var dbUrl = 'mongodb://127.0.0.1/bookmyowntravel';
 mongoose.connect(dbUrl);
 
 //use body-parser middleware to parse data
-app.use(bodyParser.urlencoded({extended:true}));
+//app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json({type:'*/*'}));
 
 var port = process.env.PORT||12000;
 
 //GET APIs welcome message
-app.get('/',function(req,res){
+app.get('/',requireAuth,function(req,res){
     res.json({"message":"welcome to use book my own travel"});
 })
 
@@ -73,8 +78,11 @@ app.post('/amazon-s3-get-url',imageController.getAmazonS3getObjectUrl);
 app.post('/images',imageController.createNewImageInfo);
 
 /*
-    get Amazon S3 file put url
+    user CURD
 */
+app.get('/users',userController.getAllUsers);
+app.post('/signin',requireSignin,userController.signin);
+app.post('/signup',userController.signup);
 
 
 app.listen(port,function(){

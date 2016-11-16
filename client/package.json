@@ -6,10 +6,10 @@
   "repository": "git@github.com:StephenGrider/ReduxSimpleStarter.git",
   "scripts": {
     "webpack": "node_modules/.bin/webpack",
-    "webpack:watch":"npm run webpack -- --watch",
+    "webpack:watch": "npm run webpack -- --watch",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
-    "webpack-dev-server":"node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080"
+    "webpack-dev-server": "node_modules/.bin/webpack-dev-server --host 0.0.0.0 --port 8080"
   },
   "author": "",
   "license": "ISC",
@@ -27,17 +27,18 @@
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
-  "babel":{
-      "presets":[
-          "es2015",
-          "react"
-      ]
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
   },
   "dependencies": {
     "axios": "^0.15.2",
     "babel-preset-stage-1": "^6.1.18",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
+    "react-cookie": "^0.4.8",
     "react-dom": "^0.14.3",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",

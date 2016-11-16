@@ -83,15 +83,17 @@ class PlanWhereToStayUpdateForm extends Component{
     onChangeSelfContainedText(event){
         const text = event.target.value;
         const index = event.target.name.substring(15);
+        console.log("index:",index)
         let plan = this.state.plan;
-        plan.where_to_stay.self_contained_website_list[index].text = text;
+        plan.where_to_stay.self_contained_apartment_website_list[index].text = text;
         this.setState({plan});
     }
     onChangeSelfContainedWebsiteLink(event){
         const website_link = event.target.value;
         const index = event.target.name.substring(15);
+        console.log("index:",index);
         let plan = this.state.plan;
-        plan.where_to_stay.self_contained_website_list[index].website_link = website_link;
+        plan.where_to_stay.self_contained_apartment_website_list[index].website_link = website_link;
         this.setState({plan});
     }
     onChangeVillasText(event){
