@@ -1,15 +1,14 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config';
+import Popup from 'react-popup';
 
 class PlanImportantInfoUpdateForm extends Component{
     componentWillMount(){
         this.state = {
             countries: undefined,
             errMsg:'',
-            plan:undefined,
-            isHiddenErrMsg:true,
-            isHiddenSuccessMsg:true
+            plan:undefined
         }
     }
     componentDidMount(){
@@ -53,10 +52,22 @@ class PlanImportantInfoUpdateForm extends Component{
         plan.important_information.security_and_safe.text = text;
         this.setState({plan});
     }
-    onChangeSecurityAndSafeWebsiteLink(event){
+    onChangeSecurityAndSafeWebsiteLinkAU(event){
         const website_link = event.target.value;
         let plan = this.state.plan;
-        plan.important_information.security_and_safe.website_link = website_link;
+        plan.important_information.security_and_safe.website_link_au = website_link;
+        this.setState({plan});
+    }
+    onChangeSecurityAndSafeWebsiteLinkUK(event){
+        const website_link = event.target.value;
+        let plan = this.state.plan;
+        plan.important_information.security_and_safe.website_link_uk = website_link;
+        this.setState({plan});
+    }
+    onChangeSecurityAndSafeWebsiteLinkUS(event){
+        const website_link = event.target.value;
+        let plan = this.state.plan;
+        plan.important_information.security_and_safe.website_link_us = website_link;
         this.setState({plan});
     }
     onChangeHealthAndVaccinationText(event){
@@ -148,21 +159,21 @@ class PlanImportantInfoUpdateForm extends Component{
         const id = this.props.id;
         const host = config.API_SERVER;
         const url = 'http://'+host+':12000/plans/'+id;
-        axios.put(url,this.state.plan)
+        const plan = {};
+        plan.important_information = this.state.plan.important_information;
+        axios.put(url,plan)
         .then(response=>{
             if (response.data.success){
-                this.setState({isHiddenSuccessMsg:false});
+                Popup.alert('plan important information is successfully updated');
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                this.setState({isHiddenErrMsg:false});
-                //alert(errMsg)
+                Popup.alert('plan important information update failed:'+errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            this.setState({isHiddenErrMsg:false});
-            //alert(err.toString());
+            Popup.alert('plan important information update failed:'+this.state.errMsg);
         })
     }
     render(){
@@ -196,10 +207,26 @@ class PlanImportantInfoUpdateForm extends Component{
                         </div>
                         <div className="form-group">
                             <div className="col-md-4">
-                                <label className="control-label">website link</label>
+                                <label className="control-label">website link for AU</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.security_and_safe.website_link} onChange={this.onChangeSecurityAndSafeWebsiteLink.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.security_and_safe.website_link_au||''} onChange={this.onChangeSecurityAndSafeWebsiteLinkAU.bind(this)} required/>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="col-md-4">
+                                <label className="control-label">website link for UK</label>
+                            </div>
+                            <div className="col-md-8">
+                                <input type="text" className="form-control" value={this.state.plan.important_information.security_and_safe.website_link_uk||''} onChange={this.onChangeSecurityAndSafeWebsiteLinkUK.bind(this)} required/>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="col-md-4">
+                                <label className="control-label">website link for US</label>
+                            </div>
+                            <div className="col-md-8">
+                                <input type="text" className="form-control" value={this.state.plan.important_information.security_and_safe.website_link_us} onChange={this.onChangeSecurityAndSafeWebsiteLinkUS.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -379,26 +406,14 @@ class PlanImportantInfoUpdateForm extends Component{
                         </div>
                     </div>
                 </div>
-                                
-                {/*Message field*/}
-                <div className={this.state.isHiddenErrMsg?'hidden':''}>
-                    <div className="col-md-12">
-                        <h4 className="error-msg">{this.state.errMsg}</h4>
-                    </div>
-                </div>
-                <div className={this.state.isHiddenSuccessMsg?'hidden':''}>
-                    <div className="col-md-12">
-                        <h4 className="success-msg">The plan info has successfully updated</h4>
-                    </div>
-                </div>
-                        
+                
                 <div className="form-group">
                     <div className="col-md-8">
                         <button type="submit" className="btn btn-success">Update and Save</button>&nbsp;&nbsp;
-                        <button type="reset" className="btn btn-danger">Cancel</button>
                     </div>
                 </div>
                 </form>
+                <Popup/>
             </div>
         )
     }

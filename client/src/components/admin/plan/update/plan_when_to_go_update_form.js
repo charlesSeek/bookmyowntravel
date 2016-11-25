@@ -1,46 +1,48 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+import Popup from 'react-popup';
+import config from '../../../../config';
 
 class PlanWhenToGoUpdateForm extends Component{
     componentWillMount(){
         this.state = {
             countries: undefined,
             errMsg:'',
-            plan:undefined,
-            isHiddenErrMsg:true,
-            isHiddenSuccessMsg:true
+            plan:undefined
         }
     }
     componentDidMount(){
         const id = this.props.id;
-        axios.get("http://localhost:12000/countries")
+        const host = config.API_SERVER;
+        const country_url = "http://"+host+":12000/countries";
+        axios.get(country_url)
         .then((response)=>{
             if (response.data.success){
                 const countries = response.data.data;
                 this.setState({countries});
             }else{
-                alert(resposnse.data.errMsg);
+                Popup.alert(resposnse.data.errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()})
-            alert(err.toString);
+            Popup.alert(err.toString);
         });
-        axios.get("http://localhost:12000/plans/"+id)
+        const plan_url = "http://"+host+":12000/plans/"+id;
+        axios.get(plan_url)
         .then((response)=>{
             if (response.data.success){
-                //console.log("data:",response.data.data);
                 const plan = response.data.data;
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                alert(errMsg);
+                Popup.alert(errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            alert(err.toString());
+            Popup.alert(err.toString());
         })
     }
     onChangeBestTimeToGoText(event){
@@ -106,20 +108,23 @@ class PlanWhenToGoUpdateForm extends Component{
     onUpdatePlanWhenToGoSubmit(event){
         event.preventDefault();
         const id = this.props.id;
-        axios.put("http://localhost:12000/plans/"+id,this.state.plan)
+        const host = config.API_SERVER;
+        const plan_url = "http://"+host+":12000/plans/"+id;
+        const plan = {};
+        plan.when_to_go = this.state.plan.when_to_go;
+        axios.put(plan_url,plan)
         .then(response=>{
             if (response.data.success){
-                this.setState({isHiddenSuccessMsg:false});
+                Popup.alert('plan when to go info update successfully');
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                this.setState({isHiddenErrMsg:false});
-                //alert(errMsg)
+                Popup.alert('plan when to go info update failed:'+errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            this.setState({isHiddenErrMsg:false});
+            Popup.alert('plan when to go info update failed:'+this.state.errMsg);
         })
     }
     render(){
@@ -247,26 +252,14 @@ class PlanWhenToGoUpdateForm extends Component{
                             <input className="form-control" type="text" value={this.state.plan.when_to_go.public_holiday_website_link} onChange={this.onChangePublicHolidayWebsiteLink.bind(this)} required/>
                         </div>
                     </div>
-                    
-                    {/*Message field*/}
-                    <div className={this.state.isHiddenErrMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="error-msg">{this.state.errMsg}</h4>
-                        </div>
-                    </div>
-                    <div className={this.state.isHiddenSuccessMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="success-msg">The plan info has successfully updated</h4>
-                        </div>
-                    </div>
 
                     <div className="form-group">
                         <div className="col-md-8">
                             <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
-                            <button type="reset" className="btn btn-danger">Cancel</button>
                         </div>
                     </div>
                 </form>
+                <Popup/>
             </div>
         )
     }

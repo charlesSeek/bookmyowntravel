@@ -47,13 +47,13 @@ class PlanAbout extends Component{
                 <h1 className="aboutvideo">See the Sites of {this.state.plan.name}</h1>
                 <div className="row">
                     <div className="col-md-4 col-sm-6">
-                        <iframe src={this.state.plan.about.about_video_1.video_link}></iframe>
+                        <iframe src={this.state.plan.about.about_video_1.video_link} frameBorder="0" allowFullScreen></iframe>
                     </div>
                     <div className="col-md-4 col-sm-6">
-                        <iframe src={this.state.plan.about.about_video_2.video_link}></iframe>
+                        <iframe src={this.state.plan.about.about_video_2.video_link} frameBorder="0" allowFullScreen></iframe>
                     </div>
                     <div className="col-md-4 col-sm-6">
-                        <iframe src={this.state.plan.about.about_video_3.video_link}></iframe>
+                        <iframe src={this.state.plan.about.about_video_3.video_link} frameBorder="0" allowFullScreen></iframe>
                     </div>
                 </div>
                 <p><a href="#">More videos at Book My Own Travel You Tube Channel</a></p>

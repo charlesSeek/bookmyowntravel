@@ -1,15 +1,14 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config'
+import Popup from 'react-popup';
 
 class PlanSeeAndDoUpdateForm extends Component{
     componentWillMount(){
         this.state = {
             countries: undefined,
             errMsg:'',
-            plan:undefined,
-            isHiddenErrMsg:true,
-            isHiddenSuccessMsg:true
+            plan:undefined
         }
     }
     componentDidMount(){
@@ -88,6 +87,13 @@ class PlanSeeAndDoUpdateForm extends Component{
         plan.what_to_see_and_do.top_places[index].top_place_name = top_place_name;
         this.setState({plan});
     }
+    onChangeTopPlaceDescription(event){
+        const top_place_description = event.target.value;
+        let plan = this.state.plan;
+        const index = event.target.name.substring(11);
+        plan.what_to_see_and_do.top_places[index].top_place_description = top_place_description;
+        this.setState({plan});
+    }
     onChangeTopPlaceImageLink(event){
         const top_place_image_link = event.target.value;
         let plan = this.state.plan;
@@ -123,25 +129,24 @@ class PlanSeeAndDoUpdateForm extends Component{
     }
     onUpdateSeeAndDoSubmit(event){
         event.preventDefault();
-        const plan = this.state.plan;
+        const plan = {};
         const id = this.props.id;
         const host = config.API_SERVER;
         const url = "http://"+host+":12000/plans/"+id;
+        plan.what_to_see_and_do = this.state.plan.what_to_see_and_do;
         axios.put(url,plan)
         .then(response=>{
             if (response.data.success){
-                this.setState({isHiddenSuccessMsg:false});
+                Popup.alert('plan see and do info is successfully updated');
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                this.setState({isHiddenErrMsg:false});
-                //alert(errMsg)
+                Popup.alert('plan see and do info update failed:'+errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            this.setState({isHiddenErrMsg:false});
-            //alert(err.toString());
+            Popup.alert('plan see and do info update failed:'+this.state.errMsg);
         })
         
     }
@@ -239,10 +244,18 @@ class PlanSeeAndDoUpdateForm extends Component{
                                 <div className="panel-body">
                                     <div className="form-group">
                                         <div className="col-md-4">
-                                            <label className="control-label">top places name</label>
+                                            <label className="control-label">top places Alt Tag</label>
                                         </div>
                                         <div className="col-md-8">
                                             <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do.top_places[num].top_place_name} onChange={this.onChangeTopPlaceName.bind(this)} required/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <div className="col-md-4">
+                                            <label className="control-label">top places description</label>
+                                        </div>
+                                        <div className="col-md-8">
+                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do.top_places[num].top_place_description||''} onChange={this.onChangeTopPlaceDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -277,24 +290,14 @@ class PlanSeeAndDoUpdateForm extends Component{
                     </div>
                              
                     {/*Message field*/}
-                    <div className={this.state.isHiddenErrMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="error-msg">{this.state.errMsg}</h4>
-                        </div>
-                    </div>
-                    <div className={this.state.isHiddenSuccessMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="success-msg">The plan info has successfully updated</h4>
-                        </div>
-                    </div>
                     
                     <div className="form-group">
                         <div className="col-md-8">
                             <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
-                            <button type="reset" className="btn btn-danger">Cancel</button>
                         </div>
                     </div>
                 </form>
+                <Popup/>
             </div>
         )
     }

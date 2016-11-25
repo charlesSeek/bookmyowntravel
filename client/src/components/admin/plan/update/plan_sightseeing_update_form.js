@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config'
+import Popup from 'react-popup';
 
 class PlanSightseeingUpdateForm extends Component{
     componentWillMount(){
@@ -140,14 +141,14 @@ class PlanSightseeingUpdateForm extends Component{
         const text = event.target.value;
         const index = event.target.name.substring(25);
         let plan = this.state.plan;
-        plan.sightseeing_touring_options.organised_day_tours.organised_extended_tours_extra_website_link_list[index].text = text;
+        plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_extra_website_link_list[index].text = text;
         this.setState({plan});
     }
     onChangeOrganisedExtendedToursExtraWebsiteLinkListWebsiteLink(event){
         const website_link = event.target.value;
         const index = event.target.name.substring(25);
         let plan = this.state.plan;
-        plan.sightseeing_touring_options.organised_day_tours.organised_extended_tours_extra_website_link_list[index].website_link = website_link;
+        plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_extra_website_link_list[index].website_link = website_link;
         this.setState({plan});
     }
     onChangeFreeActivitiesImageLink(event){
@@ -166,14 +167,14 @@ class PlanSightseeingUpdateForm extends Component{
         const text = event.target.value;
         const index = event.target.name.substring(16);
         let plan = this.state.plan;
-        plan.sightseeing_touring_options.organised_day_tours.free_activities.extra_website_link_list[index].text = text;
+        plan.sightseeing_touring_options.free_activities.free_activities_extra_website_link_list[index].text = text;
         this.setState({plan});
     }
     onChangeFreeActivitiesExtraWebsiteLinkListWebsiteLink(event){
         const website_link = event.target.value;
         const index = event.target.name.substring(16);
         let plan = this.state.plan;
-        plan.sightseeing_touring_options.organised_day_tours.free_activities.extra_website_link_list[index].website_link = website_link;
+        plan.sightseeing_touring_options.free_activities.free_activities_extra_website_link_list[index].website_link = website_link;
         this.setState({plan});
     }
     onChangeVolunteerImageLink(event){
@@ -291,22 +292,21 @@ class PlanSightseeingUpdateForm extends Component{
         const id = this.props.id;
         const host = config.API_SERVER;
         const url = "http://"+host+":12000/plans/"+id;
-        const plan = this.state.plan;
+        const plan = {};
+        plan.sightseeing_touring_options = this.state.plan.sightseeing_touring_options;
         axios.put(url,plan)
         .then(response=>{
             if (response.data.success){
-                this.setState({isHiddenSuccessMsg:false});
+                Popup.alert('plan sightseeing info is successfully updated');
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                this.setState({isHiddenErrMsg:false});
-                //alert(errMsg)
+                Popup.alert('plan sightseeing info update failed:'+errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            this.setState({isHiddenErrMsg:false});
-            //alert(err.toString());
+            Popup.alert('plan sightseeing info update failed:'+this.state.errMsg);
         })
     }
     render(){
@@ -701,26 +701,16 @@ class PlanSightseeingUpdateForm extends Component{
                             </div>
                         </div>        
                     </div>
-                    {/*Message field*/}
-                    <div className={this.state.isHiddenErrMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="error-msg">{this.state.errMsg}</h4>
-                        </div>
-                    </div>
-                    <div className={this.state.isHiddenSuccessMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="success-msg">The plan info has successfully updated</h4>
-                        </div>
-                    </div>
+                    
 
                     <div className="form-group">
                         <div className="col-md-8">
                             <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
-                            <button type="reset" className="btn btn-danger">Cancel</button>
                         </div>
                     </div>
                         
                 </form>
+                <Popup/>
             </div>
         )
     }

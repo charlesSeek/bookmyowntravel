@@ -1,15 +1,14 @@
 import React,{Component,PropTypes} from 'react';
 import axios from 'axios';
 import config from '../../../../config';
+import Popup from 'react-popup'
 
 class PlanAboutUpdateForm extends Component{
     componentWillMount(){
         this.state = {
             countries: undefined,
             errMsg:'',
-            plan:undefined,
-            isHiddenErrMsg:true,
-            isHiddenSuccessMsg:true
+            plan:undefined
         }
     }
     componentDidMount(){
@@ -22,29 +21,28 @@ class PlanAboutUpdateForm extends Component{
                 const countries = response.data.data;
                 this.setState({countries});
             }else{
-                alert(resposnse.data.errMsg);
+                Popup.alert(resposnse.data.errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()})
-            alert(err.toString);
+            Popup.alert(err.toString);
         });
         const plan_url = 'http://'+host+':12000/plans/'+id;
         axios.get(plan_url)
         .then((response)=>{
             if (response.data.success){
-                //console.log("data:",response.data.data);
                 const plan = response.data.data;
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                alert(errMsg);
+                Popup.alert(errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            alert(err.toString());
+            Popup.alert(err.toString());
         })
     }
     onChangeAboutImageLink(event){
@@ -148,23 +146,24 @@ class PlanAboutUpdateForm extends Component{
         const id = this.props.id;
         const host = config.API_SERVER;
         const url = 'http://'+host+':12000/plans/'+id;
-        axios.put(url,this.state.plan)
+        const plan = {};
+        plan.about = this.state.plan.about;
+        axios.put(url,plan)
         .then(response=>{
             if (response.data.success){
-                this.setState({isHiddenSuccessMsg:false});
+                Popup.alert('plan about info is successfully updated');
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                this.setState({isHiddenErrMsg:false});
-                //alert(errMsg)
+                Popup.alert('plan about info update fail:'+errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            this.setState({isHiddenErrMsg:false});
-            //alert(err.toString());
+            Popup.alert('plan about info update fail:'+this.state.errMsg);
         })
     }
+   
     render(){
         if (this.state.errMsg){
             return(
@@ -391,26 +390,14 @@ class PlanAboutUpdateForm extends Component{
                             <textarea className="form-control" rows="5" value={this.state.plan.about.about_description} onChange={this.onChangeDescription.bind(this)} required></textarea>
                         </div>
                     </div>
-                    
-                    {/*Message field*/}
-                    <div className={this.state.isHiddenErrMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="error-msg">{this.state.errMsg}</h4>
-                        </div>
-                    </div>
-                    <div className={this.state.isHiddenSuccessMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="success-msg">The plan info has successfully updated</h4>
-                        </div>
-                    </div>
 
                     <div className="form-group">
                         <div className="col-md-8">
                             <button type="submit" className="btn btn-success">Update and Save</button>&nbsp;&nbsp;
-                            <button type="reset" className="btn btn-danger">Cancel</button>
                         </div>
                     </div>
                 </form>
+                <Popup/>
             </div>
         )
     }

@@ -1,15 +1,14 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config';
+import Popup from 'react-popup';
 
 class PlanGetAroundUpdateForm extends Component{
     componentWillMount(){
         this.state = {
             countries: undefined,
             errMsg:'',
-            plan:undefined,
-            isHiddenErrMsg:true,
-            isHiddenSuccessMsg:true
+            plan:undefined
         }
     }
     componentDidMount(){
@@ -33,7 +32,6 @@ class PlanGetAroundUpdateForm extends Component{
         axios.get(plan_url)
         .then((response)=>{
             if (response.data.success){
-                //console.log("data:",response.data.data);
                 const plan = response.data.data;
                 this.setState({plan});
             }else{
@@ -129,8 +127,7 @@ class PlanGetAroundUpdateForm extends Component{
         const arr = name.split("_");
         const index1 = arr[0];
         const index2 = arr[1];
-        let plan = this.state.plan;
-        plan.how_to_get_around.travelling_options[index1].options_extra_website_link_list[index2].website_link = website_link;
+        let plan = this.state.plan; plan.how_to_get_around.travelling_options[index1].options_extra_website_link_list[index2].website_link = website_link;
         this.setState({plan});
     }
     onUpdateGetAroundSubmit(event){
@@ -138,21 +135,21 @@ class PlanGetAroundUpdateForm extends Component{
         const id = this.props.id;
         const host = config.API_SERVER;
         const url = 'http://'+host+':12000/plans/'+id;
-        axios.put(url,this.state.plan)
+        const plan = {};
+        plan.how_to_get_around = this.state.plan.how_to_get_around;
+        axios.put(url,plan)
         .then(response=>{
             if (response.data.success){
-                this.setState({isHiddenSuccessMsg:false});
+                Popup.alert('plan how to get around info is successfully updated');
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                this.setState({isHiddenErrMsg:false});
-                //alert(errMsg)
+                Popup.alert('plan how to get around info update failed:'+errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            this.setState({isHiddenErrMsg:false});
-            //alert(err.toString());
+            Popup.alert('plan how to get around info update failed:'+this.state.errMsg);
         })
     }
     render(){
@@ -258,27 +255,15 @@ class PlanGetAroundUpdateForm extends Component{
                         <div className="col-md-12">
                             <button className="btn btn-success btn-block" onClick={this.onAddNewOption.bind(this)}>Add A New option</button>
                         </div>
-                    </div>
-                            
-                    {/*Message field*/}
-                    <div className={this.state.isHiddenErrMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="error-msg">{this.state.errMsg}</h4>
-                        </div>
-                    </div>
-                    <div className={this.state.isHiddenSuccessMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="success-msg">The plan info has successfully updated</h4>
-                        </div>
-                    </div>        
+                    </div>     
                             
                     <div className="form-group">
                         <div className="col-md-8">
                             <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
-                            <button type="reset" className="btn btn-danger">Cancel</button>
                         </div>
                     </div>
                 </form>
+                <Popup/>
             </div>
         )
     }

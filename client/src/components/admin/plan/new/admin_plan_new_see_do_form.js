@@ -75,12 +75,14 @@ class AdminPlanNewSeeDoForm extends Component{
             let top_places = [];
             for (let i=1;i<=this.state.top_places_list.length;i++){
                 const name = "top_places_"+i+"_name";
+                const description = "top_places_"+i+"_description";
                 const image_link = "top_places_"+i+"_image_link";
                 const website_link = "top_places_"+i+"_website_link";
                 const top_place_name = this.refs[name].value;
+                const top_place_description = this.refs[description].value;
                 const top_place_image_link = this.refs[image_link].value;
                 const top_place_website_link = this.refs[website_link].value;
-                top_places.push({top_place_name,top_place_image_link,top_place_website_link});  
+                top_places.push({top_place_name,top_place_description,top_place_image_link,top_place_website_link});  
             }
             const seeDo = {
                 best_activities_1,
@@ -209,10 +211,18 @@ class AdminPlanNewSeeDoForm extends Component{
                                 <div className="panel-body">
                                     <div className="form-group">
                                         <div className="col-md-4">
-                                            <label className="control-label">top places name</label>
+                                            <label className="control-label">top places Alt Tag</label>
                                         </div>
                                         <div className="col-md-8">
                                             <input className="form-control" type="text" ref={"top_places_"+num+"_name"} placeholder="please input the name of top places" required/>
+                                        </div>
+                                    </div>
+                                    <div className="form-group">
+                                        <div className="col-md-4">
+                                            <label className="control-label">top places description</label>
+                                        </div>
+                                        <div className="col-md-8">
+                                            <input className="form-control" type="text" ref={"top_places_"+num+"_description"} placeholder="please input the description of top places" required/>
                                         </div>
                                     </div>
                                     <div className="form-group">

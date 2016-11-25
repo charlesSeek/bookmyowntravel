@@ -35,10 +35,14 @@ class AdminPlanNewImportantInfoForm extends Component{
         event.preventDefault();
         //security_and_safe
         const security_and_safe_text = this.refs.security_and_safe_text.value;
-        const security_and_safe_website_link = this.refs.security_and_safe_website_link.value;
+        const security_and_safe_website_link_au = this.refs.security_and_safe_website_link_au.value;
+        const security_and_safe_website_link_uk = this.refs.security_and_safe_website_link_uk.value;
+        const security_and_safe_website_link_us = this.refs.security_and_safe_website_link_us.value;
         const security_and_safe = {
             text:security_and_safe_text,
-            website_link:security_and_safe_website_link
+            website_link:security_and_safe_website_link_au,
+            website_link:security_and_safe_website_link_uk,
+            website_link:security_and_safe_website_link_us
         }
         //health_and_vaccination
         const health_and_vaccination_text = this.refs.health_and_vaccination_text.value;
@@ -139,12 +143,29 @@ class AdminPlanNewImportantInfoForm extends Component{
                         </div>
                         <div className="form-group">
                             <div className="col-md-4">
-                                <label className="control-label">website link</label>
+                                <label className="control-label">website link for AU</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" ref="security_and_safe_website_link" placeholder="please input security and safe info website link" required/>
+                                <input type="text" className="form-control" ref="security_and_safe_website_link_au" placeholder="please input security and safe info website link for au" required/>
                             </div>
                         </div>
+                        <div className="form-group">
+                            <div className="col-md-4">
+                                <label className="control-label">website link for UK</label>
+                            </div>
+                            <div className="col-md-8">
+                                <input type="text" className="form-control" ref="security_and_safe_website_link_uk" placeholder="please input security and safe info website link for uk" required/>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <div className="col-md-4">
+                                <label className="control-label">website link for US</label>
+                            </div>
+                            <div className="col-md-8">
+                                <input type="text" className="form-control" ref="security_and_safe_website_link_us" placeholder="please input security and safe info website link for us" required/>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
             

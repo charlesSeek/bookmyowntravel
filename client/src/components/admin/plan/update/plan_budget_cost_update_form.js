@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config';
+import Popup from 'react-popup';
 
 class PlanBudgetCostUpdateForm extends Component{
     componentWillMount(){
@@ -211,22 +212,21 @@ class PlanBudgetCostUpdateForm extends Component{
         const id = this.props.id;
         const host = config.API_SERVER;
         const url = "http://"+host+":12000/plans/"+id;
-        const plan = this.state.plan;
+        const plan = {};
+        plan.budget_and_costs = this.state.plan.budget_and_costs;
         axios.put(url,plan)
         .then(response=>{
             if (response.data.success){
-                this.setState({isHiddenSuccessMsg:false});
+                Popup.alert('plan cost and budget info is successfully updated');
             }else{
                 const errMsg = response.data.errMsg;
                 this.setState({errMsg});
-                this.setState({isHiddenErrMsg:false});
-                //alert(errMsg)
+                Popup.alert('plan cost and budget info update failed:'+errMsg);
             }
         })
         .catch(err=>{
             this.setState({errMsg:err.toString()});
-            this.setState({isHiddenErrMsg:false});
-            //alert(err.toString());
+            Popup.alert('plan cost and budget info update failed:'+this.state.errMsg);
         })
     }
     render(){
@@ -566,25 +566,13 @@ class PlanBudgetCostUpdateForm extends Component{
                         </div>
                     </div>
                     
-                    {/*Message field*/}
-                    <div className={this.state.isHiddenErrMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="error-msg">{this.state.errMsg}</h4>
-                        </div>
-                    </div>
-                    <div className={this.state.isHiddenSuccessMsg?'hidden':''}>
-                        <div className="col-md-12">
-                            <h4 className="success-msg">The plan info has successfully updated</h4>
-                        </div>
-                    </div>
-                            
                     <div className="form-group">
                         <div className="col-md-8">
                             <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
-                            <button type="reset" className="btn btn-danger">Cancel</button>
                         </div>
                     </div>
                 </form>
+                <Popup/>
             </div>
         )
     }
