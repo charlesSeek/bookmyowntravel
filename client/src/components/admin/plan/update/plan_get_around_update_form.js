@@ -3,6 +3,23 @@ import axios from 'axios';
 import config from '../../../../config';
 import Popup from 'react-popup';
 
+const how_to_get_around = {
+    travelling_options:[
+        {
+            options_name:'',
+            options_image_link:'',
+            options_website_link:'',
+            options_description:'',
+            options_extra_website_link_list:[
+                {
+                    text:'',
+                    website_link:''
+                }
+            ]
+        }
+    ]
+}
+
 class PlanGetAroundUpdateForm extends Component{
     componentWillMount(){
         this.state = {
@@ -33,6 +50,9 @@ class PlanGetAroundUpdateForm extends Component{
         .then((response)=>{
             if (response.data.success){
                 const plan = response.data.data;
+                if (!plan.how_to_get_around){
+                    plan.how_to_get_around = how_to_get_around;
+                }
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
@@ -52,9 +72,9 @@ class PlanGetAroundUpdateForm extends Component{
             "options_image_link":"",
             "options_website_link":"",
             "options_description":"",
-            "options_extra_website_link_list":[
+            "options_extra_website_link_list":[{
                 "text":"",
-                "website_link":""
+                "website_link":""}
             ]
         }
         plan.how_to_get_around.travelling_options.push(option);
@@ -180,7 +200,7 @@ class PlanGetAroundUpdateForm extends Component{
                                                 <label className="control-label">Option name</label>
                                             </div>
                                             <div className="col-md-8">
-                                                <input type="text" className="form-control" name={option_index} value={option.options_name} onChange={this.onChangeOptionName.bind(this)} required/>
+                                                <input type="text" className="form-control" name={option_index} value={option.options_name||''} onChange={this.onChangeOptionName.bind(this)} required/>
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -188,7 +208,7 @@ class PlanGetAroundUpdateForm extends Component{
                                                 <label className="control-label">Option image link</label>
                                             </div>
                                             <div className="col-md-8">
-                                                <input type="text" className="form-control" value={option.options_image_link}  name={option_index} onChange={this.onChangeOptionImageLink.bind(this)} required/>
+                                                <input type="text" className="form-control" value={option.options_image_link||''}  name={option_index} onChange={this.onChangeOptionImageLink.bind(this)} required/>
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -196,7 +216,7 @@ class PlanGetAroundUpdateForm extends Component{
                                                 <label className="control-label">Option website link</label>
                                             </div>
                                             <div className="col-md-8">
-                                                <input type="text" className="form-control" value={option.options_website_link} name={option_index} onChange={this.onChangeOptionWebsiteLink.bind(this)} required/>
+                                                <input type="text" className="form-control" value={option.options_website_link||''} name={option_index} onChange={this.onChangeOptionWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -204,7 +224,7 @@ class PlanGetAroundUpdateForm extends Component{
                                                 <label className="control-label">Option description</label>
                                             </div>
                                             <div className="col-md-8">
-                                                <textarea rows="5" type="text" className="form-control" value={option.options_description} name={option_index} onChange={this.onChangeOptionDescription.bind(this)} required></textarea>
+                                                <textarea rows="5" type="text" className="form-control" value={option.options_description||''} name={option_index} onChange={this.onChangeOptionDescription.bind(this)} required></textarea>
                                             </div>
                                         </div>
                                         {option.options_extra_website_link_list.map((website,num)=>{
@@ -220,7 +240,7 @@ class PlanGetAroundUpdateForm extends Component{
                                                                 <label className="control-label">option extra website name </label>
                                                             </div>
                                                             <div className="col-md-8">
-                                                                <input type="text" className="form-control" value={website.text} name={option_index+"_"+num} onChange={this.onChangeWebsiteText.bind(this)} required/>
+                                                                <input type="text" className="form-control" value={website.text||''} name={option_index+"_"+num} onChange={this.onChangeWebsiteText.bind(this)} required/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
@@ -228,7 +248,7 @@ class PlanGetAroundUpdateForm extends Component{
                                                                 <label className="control-label">option extra website link </label>
                                                             </div>
                                                             <div className="col-md-8">
-                                                                <input type="text" className="form-control" value={website.website_link} name={option_index+"_"+num} onChange={this.onChangeWebsiteWebsiteLink.bind(this)} required/>
+                                                                <input type="text" className="form-control" value={website.website_link||''} name={option_index+"_"+num} onChange={this.onChangeWebsiteWebsiteLink.bind(this)} required/>
                                                             </div>
                                                         </div>
                                                         <div className="form-group">
@@ -259,7 +279,7 @@ class PlanGetAroundUpdateForm extends Component{
                             
                     <div className="form-group">
                         <div className="col-md-8">
-                            <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-success">Update</button>
                         </div>
                     </div>
                 </form>

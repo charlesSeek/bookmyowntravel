@@ -2,6 +2,64 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config';
 import Popup from 'react-popup';
+const budget_and_costs = {
+    cost_description:'',
+    average_prices_and_costs:{
+        flight_indication:[
+            {
+                From:'',
+                description:''
+            }
+        ],
+        accomodation_indication:{
+            hotel:{
+                name:'',
+                description:''
+            },
+            mid_range_hotel:{
+                name:'',
+                description:''
+            },
+            budget_hotel:{
+                name:'',
+                description:''
+            },
+            luxury_hotel:{
+                name:'',
+                description:''
+            }
+        },
+        transport_indication:{
+            day_tour:{
+                name:'',
+                description:''
+            },
+            day_rail_pass:{
+                name:'',
+                description:''
+            }
+        },
+        meal_indication:{
+            breakfast:{
+                name:'',
+                description:''
+            },
+            lunch:{
+                name:'',
+                description:''
+            },
+            dinner:{
+                name:'',
+                description:''
+            }
+        }
+    },
+    currency:{
+        currency_text:'',
+        currency_website_link:''
+    },
+    check_prices_website_link:''
+}
 
 class PlanBudgetCostUpdateForm extends Component{
     componentWillMount(){
@@ -35,6 +93,9 @@ class PlanBudgetCostUpdateForm extends Component{
         .then((response)=>{
             if (response.data.success){
                 const plan = response.data.data;
+                if (!plan.budget_and_costs){
+                    plan.budget_and_costs = budget_and_costs;
+                }
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
@@ -48,9 +109,9 @@ class PlanBudgetCostUpdateForm extends Component{
         })
     }
     onChangeCostsDescription(event){
-        const costs_description = event.target.value;
+        const cost_description = event.target.value;
         let plan = this.state.plan;
-        plan.budget_and_costs.costs_description = costs_description;
+        plan.budget_and_costs.cost_description = cost_description;
         this.setState({plan});
     }
     onChangeCurrencyText(event){
@@ -250,7 +311,7 @@ class PlanBudgetCostUpdateForm extends Component{
                             <label className="control-label">{this.state.name} Cost Description</label>
                         </div>
                         <div className="col-md-8">
-                            <textarea rows="5" type="text" className="form-control" value={this.state.plan.budget_and_costs.costs_description} onChange={this.onChangeCostsDescription.bind(this)} required></textarea>
+                            <textarea rows="5" type="text" className="form-control" value={this.state.plan.budget_and_costs.cost_description||''} onChange={this.onChangeCostsDescription.bind(this)} required></textarea>
                         </div>
                     </div>
                             
@@ -265,7 +326,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                     <label className="control-label">currency text</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.budget_and_costs.currency.currency_text} onChange={this.onChangeCurrencyText.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.budget_and_costs.currency.currency_text||''} onChange={this.onChangeCurrencyText.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -273,7 +334,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                     <label className="control-label">currency website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.budget_and_costs.currency.currency_website_link} onChange={this.onChangeCurrencyWebsiteLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.budget_and_costs.currency.currency_website_link||''} onChange={this.onChangeCurrencyWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -298,7 +359,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                                     <label className="control-label">From </label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={flight.From} name={name} onChange={this.onChangeFlightIndicationFrom.bind(this)} required/>
+                                                    <input type="text" className="form-control" value={flight.From||''} name={name} onChange={this.onChangeFlightIndicationFrom.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -306,7 +367,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                                     <label className="control-label">cost description</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={flight.description} name={name} onChange={this.onChangeFlightIndicationDescription.bind(this)} required/>
+                                                    <input type="text" className="form-control" value={flight.description||''} name={name} onChange={this.onChangeFlightIndicationDescription.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="col-md-12">
@@ -338,7 +399,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.hotel.name} onChange={this.onChangeAccomodationIndicationHotelName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.hotel.name||''} onChange={this.onChangeAccomodationIndicationHotelName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -346,7 +407,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.hotel.description} onChange={this.onChangeAccomodationIndicationHotelDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.hotel.description||''} onChange={this.onChangeAccomodationIndicationHotelDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -361,7 +422,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.mid_range_hotel.name} onChange={this.onChangeAccomodationIndicationMigRangeHotelName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.mid_range_hotel.name||''} onChange={this.onChangeAccomodationIndicationMigRangeHotelName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -369,7 +430,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.mid_range_hotel.description} onChange={this.onChangeAccomodationIndicationMigRangeHotelDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.mid_range_hotel.description||''} onChange={this.onChangeAccomodationIndicationMigRangeHotelDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -384,7 +445,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.budget_hotel.name} onChange={this.onChangeAccomodationIndicationBudgetHotelName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.budget_hotel.name||''} onChange={this.onChangeAccomodationIndicationBudgetHotelName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -392,7 +453,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.budget_hotel.description} onChange={this.onChangeAccomodationIndicationBudgetHotelDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.budget_hotel.description||''} onChange={this.onChangeAccomodationIndicationBudgetHotelDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -407,7 +468,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.luxury_hotel.name} onChange={this.onChangeAccomodationIndicationLuxuryHotelName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.luxury_hotel.name||''} onChange={this.onChangeAccomodationIndicationLuxuryHotelName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -415,7 +476,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.luxury_hotel.description} onChange={this.onChangeAccomodationIndicationLuxuryHotelDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.accomodation_indication.luxury_hotel.description||''} onChange={this.onChangeAccomodationIndicationLuxuryHotelDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -439,7 +500,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.transport_indication.day_tour.name} onChange={this.onChangeTransportIndicationDayTourName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.transport_indication.day_tour.name||''} onChange={this.onChangeTransportIndicationDayTourName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -447,7 +508,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.transport_indication.day_tour.description} onChange={this.onChangeTransportIndicationDayTourDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.transport_indication.day_tour.description||''} onChange={this.onChangeTransportIndicationDayTourDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -462,7 +523,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.transport_indication.day_rail_pass.name} onChange={this.onChangeTransportIndicationDayRailPassName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.transport_indication.day_rail_pass.name||''} onChange={this.onChangeTransportIndicationDayRailPassName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -470,7 +531,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.transport_indication.day_rail_pass.description} onChange={this.onChangeTransportIndicationDayRailPassDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.transport_indication.day_rail_pass.description||''} onChange={this.onChangeTransportIndicationDayRailPassDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -494,7 +555,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.breakfast.name} onChange={this.onChangeMealIndicationBreakfastName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.breakfast.name||''} onChange={this.onChangeMealIndicationBreakfastName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -502,7 +563,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.breakfast.description} onChange={this.onChangeMealIndicationBreakfastDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.breakfast.description||''} onChange={this.onChangeMealIndicationBreakfastDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -517,7 +578,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.lunch.name} onChange={this.onChangeMealIndicationLunchName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.lunch.name||''} onChange={this.onChangeMealIndicationLunchName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -525,7 +586,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.lunch.description} onChange={this.onChangeMealIndicationLunchDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.lunch.description||''} onChange={this.onChangeMealIndicationLunchDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -540,7 +601,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">Name </label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.dinner.name} onChange={this.onChangeMealIndicationDinnerName.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.dinner.name||''} onChange={this.onChangeMealIndicationDinnerName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -548,7 +609,7 @@ class PlanBudgetCostUpdateForm extends Component{
                                             <label className="control-label">cost description</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.dinner.description} onChange={this.onChangeMealIndicationDinnerDescription.bind(this)} required/>
+                                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.average_prices_and_costs.meal_indication.dinner.description||''} onChange={this.onChangeMealIndicationDinnerDescription.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -562,13 +623,13 @@ class PlanBudgetCostUpdateForm extends Component{
                             <label className="control-label">check prices website link</label>
                         </div>
                         <div className="col-md-8">
-                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.check_prices_website_link} onChange={this.onChangeCheckPricesWebsiteLink.bind(this)} required/>
+                            <input type="text" className="form-control" value={this.state.plan.budget_and_costs.check_prices_website_link||''} onChange={this.onChangeCheckPricesWebsiteLink.bind(this)} required/>
                         </div>
                     </div>
                     
                     <div className="form-group">
                         <div className="col-md-8">
-                            <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-success">Update</button>
                         </div>
                     </div>
                 </form>

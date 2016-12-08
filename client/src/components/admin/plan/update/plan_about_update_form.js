@@ -3,6 +3,36 @@ import axios from 'axios';
 import config from '../../../../config';
 import Popup from 'react-popup'
 
+const about = {
+    about_description:'',
+    about_image_link:'',
+    about_video_1:{
+        video_name:'',
+        video_link:''
+    },
+    about_video_2:{
+        video_name:'',
+        video_link:''
+    },
+    about_video_3:{
+        video_name:'',
+        video_link:''
+    },
+    about_extra_videos:'',
+    country_map_link:'',
+    tourism_office:{
+        tourism_office_image_link:'',
+        tourism_office_website_link:''
+    },
+    entry_requirements:{
+        entry_requirements_image_link:'',
+        entry_requirements_website_link:''
+    },
+    top_blogs:{
+        image_link:'',
+        website_link:''
+    }
+}
 class PlanAboutUpdateForm extends Component{
     componentWillMount(){
         this.state = {
@@ -33,6 +63,9 @@ class PlanAboutUpdateForm extends Component{
         .then((response)=>{
             if (response.data.success){
                 const plan = response.data.data;
+                if (!plan.about){
+                    plan.about = about;
+                }
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
@@ -206,7 +239,7 @@ class PlanAboutUpdateForm extends Component{
                             <label className="control-label">Country About Image Link</label>
                         </div>
                         <div className="col-md-8">
-                            <input type="text" className="form-control" value={this.state.plan.about.about_image_link} onChange={this.onChangeAboutImageLink.bind(this)} required/>
+                            <input type="text" className="form-control" value={this.state.plan.about.about_image_link||''} onChange={this.onChangeAboutImageLink.bind(this)} required/>
                         </div>
                     </div>
                     
@@ -216,7 +249,7 @@ class PlanAboutUpdateForm extends Component{
                             <label className="control-label">Country Map Link</label>
                         </div>
                         <div className="col-md-8">
-                            <input type="text" className="form-control" value = {this.state.plan.about.country_map_link} onChange={this.onChangeCountryMapLink.bind(this)} required/>
+                            <input type="text" className="form-control" value = {this.state.plan.about.country_map_link||''} onChange={this.onChangeCountryMapLink.bind(this)} required/>
                         </div>
                     </div>
                     
@@ -231,7 +264,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Video Name</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_1.video_name} onChange={this.onChangeVideo1Name.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_1.video_name||''} onChange={this.onChangeVideo1Name.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -239,7 +272,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Video Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_1.video_link} onChange={this.onChangeVideo1Link.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_1.video_link||''} onChange={this.onChangeVideo1Link.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -256,7 +289,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Video Name</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_2.video_name} onChange={this.onChangeVideo2Name.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_2.video_name||''} onChange={this.onChangeVideo2Name.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -264,7 +297,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Video Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_2.video_link} onChange={this.onChangeVideo2Link.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_2.video_link||''} onChange={this.onChangeVideo2Link.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +314,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Video Name</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_3.video_name} onChange={this.onChangeVideo3Name.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_3.video_name||''} onChange={this.onChangeVideo3Name.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -289,7 +322,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Video Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_3.video_link} onChange={this.onChangeVideo3Link.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.about_video_3.video_link||''} onChange={this.onChangeVideo3Link.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -301,7 +334,7 @@ class PlanAboutUpdateForm extends Component{
                             <label className="control-label">Country extra videos Channel</label>
                         </div>
                         <div className="col-md-8">
-                            <input type="text" className="form-control" value={this.state.plan.about.about_extra_videos} onChange={this.onChangeAboutExtraVideos.bind(this)} required/>
+                            <input type="text" className="form-control" value={this.state.plan.about.about_extra_videos||''} onChange={this.onChangeAboutExtraVideos.bind(this)} required/>
                         </div>
                     </div>
                     
@@ -317,7 +350,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Tourism Office Image Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.tourism_office.tourism_office_image_link} onChange={this.onChangeTourismOfficeImageLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.tourism_office.tourism_office_image_link||''} onChange={this.onChangeTourismOfficeImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -325,7 +358,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Tourism Office Website Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.tourism_office.tourism_office_website_link} onChange={this.onChangeTourismOfficeWebsiteLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.tourism_office.tourism_office_website_link||''} onChange={this.onChangeTourismOfficeWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -342,7 +375,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Entry Requirements Image Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.entry_requirements.entry_requirements_image_link} onChange={this.onChangeEntryRequirementsImageLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.entry_requirements.entry_requirements_image_link||''} onChange={this.onChangeEntryRequirementsImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -350,7 +383,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Entry Requirements Website Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.entry_requirements.entry_requirements_website_link} onChange={this.onChangeEntryRequirementsWebsiteLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.entry_requirements.entry_requirements_website_link||''} onChange={this.onChangeEntryRequirementsWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -367,7 +400,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Top Blogs Image Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.top_blogs.image_link} onChange={this.onChangeTopBlogImageLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.top_blogs.image_link||''} onChange={this.onChangeTopBlogImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -375,7 +408,7 @@ class PlanAboutUpdateForm extends Component{
                                     <label className="control-label">Top Blogs Website Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.about.top_blogs.website_link} onChange={this.onChangeTopBlogWebsiteLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.about.top_blogs.website_link||''} onChange={this.onChangeTopBlogWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -387,13 +420,13 @@ class PlanAboutUpdateForm extends Component{
                             <label className="control-label">Country Description</label>
                         </div>
                         <div className="col-md-8">
-                            <textarea className="form-control" rows="5" value={this.state.plan.about.about_description} onChange={this.onChangeDescription.bind(this)} required></textarea>
+                            <textarea className="form-control" rows="5" value={this.state.plan.about.about_description||''} onChange={this.onChangeDescription.bind(this)} required></textarea>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div className="col-md-8">
-                            <button type="submit" className="btn btn-success">Update and Save</button>&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-success">Update</button>
                         </div>
                     </div>
                 </form>

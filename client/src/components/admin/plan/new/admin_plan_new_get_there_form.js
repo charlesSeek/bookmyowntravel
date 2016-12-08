@@ -59,7 +59,7 @@ class AdminPlanNewGetThereForm extends Component{
         event.preventDefault();
         
         //international_airports
-        const international_airport_map_link = this.refs.international_airport_map_link;
+        const international_airport_map_link = this.refs.international_airport_map_link.value;
         
         //flights
         const full_service_airlines_image_link = this.refs.full_service_airlines_image_link.value;

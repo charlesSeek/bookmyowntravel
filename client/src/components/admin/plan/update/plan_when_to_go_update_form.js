@@ -3,6 +3,25 @@ import axios from 'axios';
 import Popup from 'react-popup';
 import config from '../../../../config';
 
+const when_to_go ={
+    best_time_to_go:{
+        text:'',
+        website_link:''
+    },
+    high_seasons:{
+        high_seasons_1:'',
+        high_seasons_2:'',
+        high_seasons_3:''
+    },
+    low_seasons:{
+        low_seasons_1:'',
+        low_seasons_2:'',
+        low_seasons_3:''
+    },
+    average_temperature_website_link:'',
+    public_holiday_website_link:''
+}
+
 class PlanWhenToGoUpdateForm extends Component{
     componentWillMount(){
         this.state = {
@@ -33,6 +52,9 @@ class PlanWhenToGoUpdateForm extends Component{
         .then((response)=>{
             if (response.data.success){
                 const plan = response.data.data;
+                if (!plan.when_to_go){
+                    plan.when_to_go = when_to_go;
+                }
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
@@ -153,7 +175,7 @@ class PlanWhenToGoUpdateForm extends Component{
                                     <label className="control-label">description</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <textarea rows="5" className="form-control" type="text" value={this.state.plan.when_to_go.best_time_to_go.text} onChange={this.onChangeBestTimeToGoText.bind(this)} required></textarea>
+                                    <textarea rows="5" className="form-control" type="text" value={this.state.plan.when_to_go.best_time_to_go.text||''} onChange={this.onChangeBestTimeToGoText.bind(this)} required></textarea>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -161,7 +183,7 @@ class PlanWhenToGoUpdateForm extends Component{
                                     <label className="control-label">Website Link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.best_time_to_go.website_link} onChange={this.onChangeBestTimeToGoWebsiteLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.best_time_to_go.website_link||''} onChange={this.onChangeBestTimeToGoWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +200,7 @@ class PlanWhenToGoUpdateForm extends Component{
                                     <label className="control-label">high seasons 1</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.high_seasons.high_seasons_1} onChange={this.onChangeHighSeasons1.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.high_seasons.high_seasons_1||''} onChange={this.onChangeHighSeasons1.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -186,7 +208,7 @@ class PlanWhenToGoUpdateForm extends Component{
                                     <label className="control-label">high seasons 2</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.high_seasons.high_seasons_2} onChange={this.onChangeHighSeasons2.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.high_seasons.high_seasons_2||''} onChange={this.onChangeHighSeasons2.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -194,7 +216,7 @@ class PlanWhenToGoUpdateForm extends Component{
                                     <label className="control-label">high seasons 3</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.high_seasons.high_seasons_3} onChange={this.onChangeHighSeasons3.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.high_seasons.high_seasons_3||''} onChange={this.onChangeHighSeasons3.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -211,7 +233,7 @@ class PlanWhenToGoUpdateForm extends Component{
                                     <label className="control-label">low seasons 1</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.low_seasons.low_seasons_1} onChange={this.onChangeLowSeasons1.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.low_seasons.low_seasons_1||''} onChange={this.onChangeLowSeasons1.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -219,7 +241,7 @@ class PlanWhenToGoUpdateForm extends Component{
                                     <label className="control-label">low seasons 2</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.low_seasons.low_seasons_2} onChange={this.onChangeLowSeasons2.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.low_seasons.low_seasons_2||''} onChange={this.onChangeLowSeasons2.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -227,7 +249,7 @@ class PlanWhenToGoUpdateForm extends Component{
                                     <label className="control-label">low seasons 3</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.low_seasons.low_seasons_3} onChange={this.onChangeLowSeasons3.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.when_to_go.low_seasons.low_seasons_3||''} onChange={this.onChangeLowSeasons3.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -239,7 +261,7 @@ class PlanWhenToGoUpdateForm extends Component{
                             <label className="control-label">average temperature website link</label>
                         </div>
                         <div className="col-md-8">
-                            <input className="form-control" type="text" value={this.state.plan.when_to_go.average_temperature_website_link} onChange={this.onChangeAverageTemperatureWebsiteLink.bind(this)} required/>
+                            <input className="form-control" type="text" value={this.state.plan.when_to_go.average_temperature_website_link||''} onChange={this.onChangeAverageTemperatureWebsiteLink.bind(this)} required/>
                         </div>
                     </div>
                     
@@ -249,13 +271,13 @@ class PlanWhenToGoUpdateForm extends Component{
                             <label className="control-label">public holiday website link</label>
                         </div>
                         <div className="col-md-8">
-                            <input className="form-control" type="text" value={this.state.plan.when_to_go.public_holiday_website_link} onChange={this.onChangePublicHolidayWebsiteLink.bind(this)} required/>
+                            <input className="form-control" type="text" value={this.state.plan.when_to_go.public_holiday_website_link||''} onChange={this.onChangePublicHolidayWebsiteLink.bind(this)} required/>
                         </div>
                     </div>
 
                     <div className="form-group">
                         <div className="col-md-8">
-                            <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-success">Update</button>
                         </div>
                     </div>
                 </form>

@@ -40,9 +40,9 @@ class AdminPlanNewImportantInfoForm extends Component{
         const security_and_safe_website_link_us = this.refs.security_and_safe_website_link_us.value;
         const security_and_safe = {
             text:security_and_safe_text,
-            website_link:security_and_safe_website_link_au,
-            website_link:security_and_safe_website_link_uk,
-            website_link:security_and_safe_website_link_us
+            website_link_au:security_and_safe_website_link_au,
+            website_link_uk:security_and_safe_website_link_uk,
+            website_link_us:security_and_safe_website_link_us
         }
         //health_and_vaccination
         const health_and_vaccination_text = this.refs.health_and_vaccination_text.value;

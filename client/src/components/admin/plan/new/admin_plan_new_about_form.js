@@ -78,7 +78,6 @@ class AdminPlanNewAboutForm extends Component{
         about_video_2.video_link = video2_link;
         about_video_3.video_name = video3_name;
         about_video_3.video_link = video3_link;
-        map_geolocation = {lat,lon};
         tourism_office = {tourism_office_image_link,tourism_office_website_link};
         entry_requirements = {entry_requirements_image_link,entry_requirements_website_link};
         top_blogs = {image_link:top_blogs_image_link,website_link:top_blogs_website_link};

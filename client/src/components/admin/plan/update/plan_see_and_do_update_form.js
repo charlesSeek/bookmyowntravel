@@ -2,7 +2,31 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config'
 import Popup from 'react-popup';
+const what_to_see_and_do = {};
+function initialize(){
+    for (let i=1;i<=10;i++){
+        const name = "best_activities_"+i;
+        what_to_see_and_do[name]={
+            activity_name:'',
+            activity_website_link:''
+        }
+    }
+    for (let j=1;j<=4;j++){
+        const name = "suggested_itineraries_"+j;
+        what_to_see_and_do[name]={
+            itineraries_name:'',
+            itineraries_image_link:'',
+            itineraries_website_link:''
+        }
 
+    }
+    what_to_see_and_do.top_places = [{
+        top_place_name:'',
+        top_place_description:'',
+        top_place_image_link:'',
+        top_place_website_link:''
+    }]
+}
 class PlanSeeAndDoUpdateForm extends Component{
     componentWillMount(){
         this.state = {
@@ -33,6 +57,10 @@ class PlanSeeAndDoUpdateForm extends Component{
         .then((response)=>{
             if (response.data.success){
                 const plan = response.data.data;
+                if (!plan.what_to_see_and_do){
+                    initialize();
+                    plan.what_to_see_and_do = what_to_see_and_do;
+                }
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
@@ -63,21 +91,21 @@ class PlanSeeAndDoUpdateForm extends Component{
         const itinerary_name = event.target.value;
         const field = event.target.name;
         let plan = this.state.plan;
-        plan.what_to_see_and_do[field].itinerary_name = itinerary_name;
+        plan.what_to_see_and_do[field].itineraries_name = itinerary_name;
         this.setState({plan});
     }
     onChangeSuggestedItinerariesImageLink(event){
         const itinerary_image_link = event.target.value;
         const field = event.target.name;
         let plan = this.state.plan;
-        plan.what_to_see_and_do[field].itinerary_image_link = itinerary_image_link;
+        plan.what_to_see_and_do[field].itineraries_image_link = itinerary_image_link;
         this.setState({plan});
     }
     onChangeSuggestedItinerariesWebsiteLink(event){
         const itinerary_website_link = event.target.value;
         const field = event.target.name;
         let plan = this.state.plan;
-        plan.what_to_see_and_do[field].itinerary_website_link = itinerary_website_link;
+        plan.what_to_see_and_do[field].itineraries_website_link = itinerary_website_link;
         this.setState({plan});
     }
     onChangeTopPlaceName(event){
@@ -179,7 +207,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                                                 <label className="control-label">activity name</label>
                                             </div>
                                             <div className="col-md-8">
-                                                <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].activity_name} onChange={this.onChangeActivityName.bind(this)}/>
+                                                <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].activity_name||''} onChange={this.onChangeActivityName.bind(this)}/>
                                             </div>
                                         </div>
                                         <div className="form-group">
@@ -187,7 +215,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                                                 <label className="control-label">Website Link</label>
                                             </div>
                                             <div className="col-md-8">
-                                                <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].activity_website_link} onChange={this.onChangeActivityWebsiteLink.bind(this)} required/>
+                                                <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].activity_website_link||''} onChange={this.onChangeActivityWebsiteLink.bind(this)} required/>
                                             </div>
                                         </div>
                                     </div>
@@ -209,7 +237,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                                             <label className="control-label">itinerary name</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].itinerary_name} onChange={this.onChangeSuggestedItinerariesName.bind(this)} required/>
+                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].itineraries_name||''} onChange={this.onChangeSuggestedItinerariesName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -217,7 +245,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                                             <label className="control-label">image Link</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].itinerary_image_link} onChange={this.onChangeSuggestedItinerariesImageLink.bind(this)} required/>
+                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].itineraries_image_link||''} onChange={this.onChangeSuggestedItinerariesImageLink.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -225,7 +253,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                                             <label className="control-label">Website Link</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].itinerary_website_link} onChange={this.onChangeSuggestedItinerariesWebsiteLink.bind(this)} required/>
+                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do[name].itineraries_website_link||''} onChange={this.onChangeSuggestedItinerariesWebsiteLink.bind(this)} required/>
                                         </div>
                                     </div>
                                 </div>
@@ -247,7 +275,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                                             <label className="control-label">top places Alt Tag</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do.top_places[num].top_place_name} onChange={this.onChangeTopPlaceName.bind(this)} required/>
+                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do.top_places[num].top_place_name||''} onChange={this.onChangeTopPlaceName.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -263,7 +291,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                                             <label className="control-label">top places image Link</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do.top_places[num].top_place_image_link} onChange={this.onChangeTopPlaceImageLink.bind(this)} required/>
+                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do.top_places[num].top_place_image_link||''} onChange={this.onChangeTopPlaceImageLink.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">
@@ -271,7 +299,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                                             <label className="control-label">Website Link</label>
                                         </div>
                                         <div className="col-md-8">
-                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do.top_places[num].top_place_website_link} onChange={this.onChangeTopPlaceWebsiteLink.bind(this)} required/>
+                                            <input className="form-control" type="text" name={name} value={this.state.plan.what_to_see_and_do.top_places[num].top_place_website_link||''} onChange={this.onChangeTopPlaceWebsiteLink.bind(this)} required/>
                                         </div>
                                     </div>
                                     <div className="form-group">    
@@ -293,7 +321,7 @@ class PlanSeeAndDoUpdateForm extends Component{
                     
                     <div className="form-group">
                         <div className="col-md-8">
-                            <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-success">Update</button>
                         </div>
                     </div>
                 </form>

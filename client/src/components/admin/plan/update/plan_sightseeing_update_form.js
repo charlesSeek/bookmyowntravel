@@ -2,7 +2,68 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config'
 import Popup from 'react-popup';
-
+const sightseeing_touring_options = {
+    sightseeing:{
+        sightseeing_image_link:'',
+        sightseeing_website_link:'',
+        sightseeing_extra_website_link_list:[
+            {
+                text:'',
+                website_link:''
+            }
+        ]
+    },
+    independent_touring:{
+        independent_touring_image_link:'',
+        independent_touring_website_link:'',
+        independent_touring_extra_website_link_list:[
+            {
+                text:'',
+                website_link:''
+            }
+        ]
+    },
+    organised_day_tours:{
+        organised_day_tours_image_link:'',
+        organised_day_tours_website_link:'',
+        organised_day_tours_extra_website_link_list:[
+            {
+                text:'',
+                website_link:''
+            }
+        ]
+    },
+    organised_extended_tours:{
+        organised_extended_tours_image_link:'',
+        organised_extended_tours_website_link:'',
+        organised_extended_tours_extra_website_link_list:[
+            {
+                text:'',
+                website_link:''
+            }
+        ]
+    },
+    free_activities:{
+        free_activities_image_link:'',
+        free_activities_website_link:'',
+        free_activities_extra_website_link_list:[
+            {
+                text:'',
+                website_link:''
+            }
+        ]
+    },
+    volunteer:{
+        volunteer_image_link:'',
+        volunteer_website_link:'',
+        volunteer_extra_website_link_list:[
+            {
+                text:'',
+                website_link:''
+            }
+        ]
+    }
+}
 class PlanSightseeingUpdateForm extends Component{
     componentWillMount(){
         this.state = {
@@ -35,6 +96,9 @@ class PlanSightseeingUpdateForm extends Component{
         .then((response)=>{
             if (response.data.success){
                 const plan = response.data.data;
+                if (!plan.sightseeing_touring_options){
+                    plan.sightseeing_touring_options = sightseeing_touring_options;
+                }
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
@@ -125,7 +189,7 @@ class PlanSightseeingUpdateForm extends Component{
         plan.sightseeing_touring_options.organised_day_tours.organised_day_tours_extra_website_link_list[index].website_link = website_link;
         this.setState({plan});
     }
-    onChangeOrganisedExtendedToursImageLink(evnet){
+    onChangeOrganisedExtendedToursImageLink(event){
         const organised_extended_tours_image_link = event.target.value;
         let plan = this.state.plan;
         plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_image_link = organised_extended_tours_image_link;
@@ -184,7 +248,7 @@ class PlanSightseeingUpdateForm extends Component{
         this.setState({plan});
     }
     onChangeVolunteerWebsiteLink(event){
-        const volunteer_image_link = event.target.value;
+        const volunteer_website_link = event.target.value;
         let plan = this.state.plan;
         plan.sightseeing_touring_options.volunteer.volunteer_website_link = volunteer_website_link;
         this.setState({plan});
@@ -335,7 +399,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">sightseeing image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.sightseeing.sightseeing_image_link} onChange={this.onChangeSightseeingSightseeingImageLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.sightseeing.sightseeing_image_link||''} onChange={this.onChangeSightseeingSightseeingImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -343,7 +407,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">sightseeing website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.sightseeing.sightseeing_website_link} onChange={this.onChangeSightseeingSightseeingWebsiteLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.sightseeing.sightseeing_website_link||''} onChange={this.onChangeSightseeingSightseeingWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             {this.state.plan.sightseeing_touring_options.sightseeing.sightseeing_extra_website_link_list.map((website,num)=>{
@@ -359,7 +423,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">text</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.text} name={name} onChange={this.onChangeSightseeingExtraWebsiteLinkListText.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.text||''} name={name} onChange={this.onChangeSightseeingExtraWebsiteLinkListText.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -367,7 +431,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text"  value={website.website_link} name={name} onChange={this.onChangeSightseeingExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
+                                                    <input className="form-control" type="text"  value={website.website_link||''} name={name} onChange={this.onChangeSightseeingExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -398,7 +462,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">independent touring image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.independent_touring.independent_touring_image_link} onChange={this.onChangeIndependentTouringImageLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.independent_touring.independent_touring_image_link||''} onChange={this.onChangeIndependentTouringImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -406,7 +470,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">independent touring website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.independent_touring.independent_touring_website_link} onChange={this.onChangeIndependentTouringWebsiteLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.independent_touring.independent_touring_website_link||''} onChange={this.onChangeIndependentTouringWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             {this.state.plan.sightseeing_touring_options.independent_touring.independent_touring_extra_website_link_list.map((website,num)=>{
@@ -422,7 +486,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">text</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.text} name={name} onChange={this.onChangeIndependentTouringExtraWebsiteLinkListText.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.text||''} name={name} onChange={this.onChangeIndependentTouringExtraWebsiteLinkListText.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -430,7 +494,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text"  value={website.website_link} name={name} onChange={this.onChangeIndependentTouringExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
+                                                    <input className="form-control" type="text"  value={website.website_link||''} name={name} onChange={this.onChangeIndependentTouringExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -461,7 +525,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">organised day tours image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.organised_day_tours.organised_day_tours_image_link} onChange={this.onChangeOrganisedDayToursImageLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.organised_day_tours.organised_day_tours_image_link||''} onChange={this.onChangeOrganisedDayToursImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -469,7 +533,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">independent touring website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.organised_day_tours.organised_day_tours_website_link} onChange={this.onChangeOrganisedDayToursWebsiteLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.organised_day_tours.organised_day_tours_website_link||''} onChange={this.onChangeOrganisedDayToursWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             {this.state.plan.sightseeing_touring_options.organised_day_tours.organised_day_tours_extra_website_link_list.map((website,num)=>{
@@ -485,7 +549,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">text</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.text} name={name} onChange={this.onChangeOrganisedDayToursExtraWebsiteLinkListText.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.text||''} name={name} onChange={this.onChangeOrganisedDayToursExtraWebsiteLinkListText.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -493,7 +557,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.website_link} name={name} onChange={this.onChangeOrganisedDayToursExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.website_link||''} name={name} onChange={this.onChangeOrganisedDayToursExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -524,7 +588,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">organised extended tours image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_image_link} onChange={this.onChangeOrganisedExtendedToursImageLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_image_link||''} onChange={this.onChangeOrganisedExtendedToursImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -532,7 +596,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">organised extended tours website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_website_link} onChange={this.onChangeOrganisedExtendedToursWebsiteLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_website_link||''} onChange={this.onChangeOrganisedExtendedToursWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             {this.state.plan.sightseeing_touring_options.organised_extended_tours.organised_extended_tours_extra_website_link_list.map((website,num)=>{
@@ -548,7 +612,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">text</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.text} name={name} onChange={this.onChangeOrganisedExtendedToursExtraWebsiteLinkListText.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.text||''} name={name} onChange={this.onChangeOrganisedExtendedToursExtraWebsiteLinkListText.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -556,7 +620,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.website_link} name={name} onChange={this.onChangeOrganisedExtendedToursExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.website_link||''} name={name} onChange={this.onChangeOrganisedExtendedToursExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -587,7 +651,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">free activities image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.free_activities.free_activities_image_link} onChange={this.onChangeFreeActivitiesImageLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.free_activities.free_activities_image_link||''} onChange={this.onChangeFreeActivitiesImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -595,7 +659,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">free activities website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.free_activities.free_activities_website_link} onChange={this.onChangeFreeActivitiesWebsiteLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.free_activities.free_activities_website_link||''} onChange={this.onChangeFreeActivitiesWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             {this.state.plan.sightseeing_touring_options.free_activities.free_activities_extra_website_link_list.map((website,num)=>{
@@ -611,7 +675,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">text</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.text} name={name} onChange={this.onChangeFreeActivitiesExtraWebsiteLinkListText.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.text||''} name={name} onChange={this.onChangeFreeActivitiesExtraWebsiteLinkListText.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -619,7 +683,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.website_link} name={name} onChange={this.onChangeFreeActivitiesExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.website_link||''} name={name} onChange={this.onChangeFreeActivitiesExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -650,7 +714,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">volunteer image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.volunteer.volunteer_image_link} onChange={this.onChangeVolunteerImageLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.volunteer.volunteer_image_link||''} onChange={this.onChangeVolunteerImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -658,7 +722,7 @@ class PlanSightseeingUpdateForm extends Component{
                                     <label className="control-label">volunteer website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.volunteer.volunteer_website_link} onChange={this.onChangeVolunteerWebsiteLink.bind(this)} required/>
+                                    <input className="form-control" type="text" value={this.state.plan.sightseeing_touring_options.volunteer.volunteer_website_link||''} onChange={this.onChangeVolunteerWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             {this.state.plan.sightseeing_touring_options.volunteer.volunteer_extra_website_link_list.map((website,num)=>{
@@ -674,7 +738,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">text</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.text} name={name} onChange={this.onChangeVolunteerExtraWebsiteLinkListText.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.text||''} name={name} onChange={this.onChangeVolunteerExtraWebsiteLinkListText.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -682,7 +746,7 @@ class PlanSightseeingUpdateForm extends Component{
                                                     <label className="control-label">website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input className="form-control" type="text" value={website.website_link} name={name} onChange={this.onChangeVolunteerExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
+                                                    <input className="form-control" type="text" value={website.website_link||''} name={name} onChange={this.onChangeVolunteerExtraWebsiteLinkListWebsiteLink.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -705,7 +769,7 @@ class PlanSightseeingUpdateForm extends Component{
 
                     <div className="form-group">
                         <div className="col-md-8">
-                            <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-success">Update</button>
                         </div>
                     </div>
                         

@@ -2,7 +2,39 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config';
 import Popup from 'react-popup';
-
+const how_to_get_there = {
+    international_airport_map_link:'',
+    flights:{
+        full_service_airlines:{
+            full_service_airlines_image_link:'',
+            website_link:'',
+            text:'',
+            full_service_airline_list_website:[
+                {
+                    name:'',
+                    website_link:''
+                }
+            ]
+        },
+        budget_airlines:{
+            budget_airlines_image_link:'',
+            website_link:'',
+            text:'',
+            budget_airlines_list_website:[
+                {
+                    name:'',
+                    website_link:''
+                }
+            ]
+        }
+    },
+    cruise:{
+        cruise_image_link:'',
+        website_link:'',
+        text:'',
+        cruise_website:''
+    }
+}
 class PlanGetThereUpdateForm extends Component{
     componentWillMount(){
         this.state = {
@@ -33,6 +65,9 @@ class PlanGetThereUpdateForm extends Component{
         .then((response)=>{
             if (response.data.success){
                 const plan = response.data.data;
+                if (!plan.how_to_get_there){
+                    plan.how_to_get_there = how_to_get_there;
+                }
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
@@ -76,7 +111,7 @@ class PlanGetThereUpdateForm extends Component{
         plan.how_to_get_there.flights.full_service_airlines.full_service_airline_list_website[index].name = name;
         this.setState({plan});
     }
-    onChangeFullServiceAirlinesWebsiteLink(event){
+    onChangeFullServiceAirlinesListWebsiteLink(event){
         const website_link = event.target.value;
         const index = event.target.name;
         let plan = this.state.plan;
@@ -216,7 +251,7 @@ class PlanGetThereUpdateForm extends Component{
                             <label className="control-label">international airport map link</label>
                         </div>
                         <div className="col-md-8">
-                            <input type="text" className="form-control" value={this.state.plan.how_to_get_there.international_airport_map_link} onChange={this.onChangeInternationalAirportMapLink.bind(this)} required/>
+                            <input type="text" className="form-control" value={this.state.plan.how_to_get_there.international_airport_map_link||''} onChange={this.onChangeInternationalAirportMapLink.bind(this)} required/>
                         </div>
                     </div>
                     
@@ -231,7 +266,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">full service airlines image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.full_service_airlines.full_service_airlines_image_link} onChange={this.onChangeFullServiceAirlinesImageLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.full_service_airlines.full_service_airlines_image_link||''} onChange={this.onChangeFullServiceAirlinesImageLink.bind(this)} required/>
                                 </div>
                                 
                             </div>
@@ -240,7 +275,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">full service airlines website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.full_service_airlines.website_link} onChange={this.onChangeFullServiceAirlinesWebsiteLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.full_service_airlines.website_link||''} onChange={this.onChangeFullServiceAirlinesWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -248,7 +283,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">full service airlines text</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.full_service_airlines.text} onChange={this.onChangeFullServiceAirlinesText.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.full_service_airlines.text||''} onChange={this.onChangeFullServiceAirlinesText.bind(this)} required/>
                                 </div>
                             </div>
                             {this.state.plan.how_to_get_there.flights.full_service_airlines.full_service_airline_list_website.map((website,num)=>{
@@ -263,7 +298,7 @@ class PlanGetThereUpdateForm extends Component{
                                                     <label className="control-label">airline name</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={website.name} name={num} onChange={this.onChangeFullServiceAirlineListWebsiteName.bind(this)} required/>
+                                                    <input type="text" className="form-control" value={website.name||''} name={num} onChange={this.onChangeFullServiceAirlineListWebsiteName.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -271,7 +306,7 @@ class PlanGetThereUpdateForm extends Component{
                                                     <label className="control-label">airline website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={website.website_link} name={num} onChange={this.onChangeFullServiceAirlinesWebsiteLink.bind(this)} required/>
+                                                    <input type="text" className="form-control" value={website.website_link||''} name={num} onChange={this.onChangeFullServiceAirlinesListWebsiteLink.bind(this)} required/>
                                                 </div>
                                             </div> 
                                             <div className="col-md-12">
@@ -298,7 +333,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">budget airlines image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.budget_airlines.budget_airlines_image_link} onChange={this.onChangeBudgetAirlinesImageLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.budget_airlines.budget_airlines_image_link||''} onChange={this.onChangeBudgetAirlinesImageLink.bind(this)} required/>
                                 </div>
                                 
                             </div>
@@ -307,7 +342,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">budget airlines website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.budget_airlines.website_link} onChange={this.onChangeBudgetAirlinesWebsiteLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.budget_airlines.website_link||''} onChange={this.onChangeBudgetAirlinesWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -315,7 +350,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">budget airlines text</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.budget_airlines.text} onChange={this.onChangeBudgetAirlinesText.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.flights.budget_airlines.text||''} onChange={this.onChangeBudgetAirlinesText.bind(this)} required/>
                                 </div>
                             </div>
                             {this.state.plan.how_to_get_there.flights.budget_airlines.budget_airlines_list_website.map((website,num)=>{
@@ -330,7 +365,7 @@ class PlanGetThereUpdateForm extends Component{
                                                     <label className="control-label">airline name</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={website.name} name={num} onChange={this.onChangeBudgetAirlinesListWebsiteName.bind(this)} required/>
+                                                    <input type="text" className="form-control" value={website.name||''} name={num} onChange={this.onChangeBudgetAirlinesListWebsiteName.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="form-group">
@@ -338,7 +373,7 @@ class PlanGetThereUpdateForm extends Component{
                                                     <label className="control-label">airline website link</label>
                                                 </div>
                                                 <div className="col-md-8">
-                                                    <input type="text" className="form-control" value={website.website_link} name={num} onChange={this.onChangeBudgetAirlinesListWebsiteWebsiteLink.bind(this)} required/>
+                                                    <input type="text" className="form-control" value={website.website_link||''} name={num} onChange={this.onChangeBudgetAirlinesListWebsiteWebsiteLink.bind(this)} required/>
                                                 </div>
                                             </div>
                                             <div className="col-md-12">
@@ -365,7 +400,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">cruise image link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.cruise.cruise_image_link} onChange={this.onChangeCuriseImageLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.cruise.cruise_image_link||''} onChange={this.onChangeCuriseImageLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -373,7 +408,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">cruise website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.cruise.website_link} onChange={this.onChangeCuriseWebsiteLink.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.cruise.website_link||''} onChange={this.onChangeCuriseWebsiteLink.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -381,7 +416,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">cruise text</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.cruise.text} onChange={this.onChangeCuriseText.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.cruise.text||''} onChange={this.onChangeCuriseText.bind(this)} required/>
                                 </div>
                             </div>
                             <div className="form-group">
@@ -389,7 +424,7 @@ class PlanGetThereUpdateForm extends Component{
                                     <label className="control-label">cruise extra website link</label>
                                 </div>
                                 <div className="col-md-8">
-                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.cruise.cruise_website} onChange={this.onChangeCuriseCruiseWebsite.bind(this)} required/>
+                                    <input type="text" className="form-control" value={this.state.plan.how_to_get_there.cruise.cruise_website||''} onChange={this.onChangeCuriseCruiseWebsite.bind(this)} required/>
                                 </div>
                             </div>
                         </div>
@@ -397,7 +432,7 @@ class PlanGetThereUpdateForm extends Component{
                                     
                     <div className="form-group">
                         <div className="col-md-8">
-                            <button type="submit" className="btn btn-success">Save and Continued</button>&nbsp;&nbsp;
+                            <button type="submit" className="btn btn-success">Update</button>
                         </div>
                     </div>
                 </form>

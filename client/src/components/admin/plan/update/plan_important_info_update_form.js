@@ -2,6 +2,43 @@ import React,{Component} from 'react';
 import axios from 'axios';
 import config from '../../../../config';
 import Popup from 'react-popup';
+const important_information = {
+    security_and_safe:{
+        text:'',
+        website_link:'',
+        website_link_au:'',
+        website_link_uk:'',
+        website_link_us:''
+    },
+    health_and_vaccination:{
+        text:'',
+        website_link:''
+    },
+    telphone_and_internet:{
+        text:'',
+        website_link:''
+    },
+    electrical:{
+        text:'',
+        website_link:''
+    },
+    language:{
+        text:'',
+        website_link:''
+    },
+    passport_visa:{
+        text:'',
+        website_link:''
+    },
+    duty_free:{
+        text:'',
+        website_link:''
+    },
+    local_time:{
+        text:'',
+        website_link:''
+    }
+}
 
 class PlanImportantInfoUpdateForm extends Component{
     componentWillMount(){
@@ -34,6 +71,9 @@ class PlanImportantInfoUpdateForm extends Component{
             if (response.data.success){
                 //console.log("data:",response.data.data);
                 const plan = response.data.data;
+                if (!plan.important_information){
+                    plan.important_information = important_information;
+                }
                 this.setState({plan});
             }else{
                 const errMsg = response.data.errMsg;
@@ -202,7 +242,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.security_and_safe.text} onChange={this.onChangeSecurityAndSafeText.bind(this)} required></textarea>
+                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.security_and_safe.text||''} onChange={this.onChangeSecurityAndSafeText.bind(this)} required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -226,7 +266,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">website link for US</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.security_and_safe.website_link_us} onChange={this.onChangeSecurityAndSafeWebsiteLinkUS.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.security_and_safe.website_link_us||''} onChange={this.onChangeSecurityAndSafeWebsiteLinkUS.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -243,7 +283,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.health_and_vaccination.text} onChange={this.onChangeHealthAndVaccinationText.bind(this)} required></textarea>
+                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.health_and_vaccination.text||''} onChange={this.onChangeHealthAndVaccinationText.bind(this)} required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -251,7 +291,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">website link</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.health_and_vaccination.website_link} onChange={this.onChangeHealthAndVaccinationWebsiteLink.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.health_and_vaccination.website_link||''} onChange={this.onChangeHealthAndVaccinationWebsiteLink.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -268,7 +308,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.telphone_and_internet.text} onChange={this.onChangeTelphoneAndInternetText.bind(this)} required></textarea>
+                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.telphone_and_internet.text||''} onChange={this.onChangeTelphoneAndInternetText.bind(this)} required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -276,7 +316,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">website link</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.telphone_and_internet.website_link} onChange={this.onChangeTelphoneAndInternetWebsiteLink.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.telphone_and_internet.website_link||''} onChange={this.onChangeTelphoneAndInternetWebsiteLink.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -293,7 +333,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.electrical.text} onChange={this.onChangeElectricalText.bind(this)} required></textarea>
+                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.electrical.text||''} onChange={this.onChangeElectricalText.bind(this)} required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -301,7 +341,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">website link</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.electrical.website_link} onChange={this.onChangeElectricalWebsiteLink.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.electrical.website_link||''} onChange={this.onChangeElectricalWebsiteLink.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -318,7 +358,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.language.text} onChange={this.onChangeLanguageText.bind(this)} required></textarea>
+                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.language.text||''} onChange={this.onChangeLanguageText.bind(this)} required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -326,7 +366,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">website link</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.language.website_link} onChange={this.onChangeLanguageWebsiteLink.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.language.website_link||''} onChange={this.onChangeLanguageWebsiteLink.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -343,7 +383,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.passport_visa.text} onChange={this.onChangePassportVisaText.bind(this)} required/>
+                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.passport_visa.text||''} onChange={this.onChangePassportVisaText.bind(this)} required/>
                             </div>
                         </div>
                         <div className="form-group">
@@ -351,7 +391,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">website link</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.passport_visa.website_link} onChange={this.onChangePassportVisaWebsiteLink.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.passport_visa.website_link||''} onChange={this.onChangePassportVisaWebsiteLink.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -368,7 +408,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.duty_free.text} onChange={this.onChangeDutyFreeText.bind(this)} required></textarea>
+                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.duty_free.text||''} onChange={this.onChangeDutyFreeText.bind(this)} required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -376,7 +416,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">website link</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.duty_free.website_link} onChange={this.onChangeDutyFreeWebsiteLink.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.duty_free.website_link||''} onChange={this.onChangeDutyFreeWebsiteLink.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -393,7 +433,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">text</label>
                             </div>
                             <div className="col-md-8">
-                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.local_time.text} onChange={this.onChangeLocalTimeText.bind(this)} required></textarea>
+                                <textarea rows="5" type="text" className="form-control" value={this.state.plan.important_information.local_time.text||''} onChange={this.onChangeLocalTimeText.bind(this)} required></textarea>
                             </div>
                         </div>
                         <div className="form-group">
@@ -401,7 +441,7 @@ class PlanImportantInfoUpdateForm extends Component{
                                 <label className="control-label">website link</label>
                             </div>
                             <div className="col-md-8">
-                                <input type="text" className="form-control" value={this.state.plan.important_information.local_time.website_link} onChange={this.onChangeLocalTimeWebsiteLink.bind(this)} required/>
+                                <input type="text" className="form-control" value={this.state.plan.important_information.local_time.website_link||''} onChange={this.onChangeLocalTimeWebsiteLink.bind(this)} required/>
                             </div>
                         </div>
                     </div>
@@ -409,7 +449,7 @@ class PlanImportantInfoUpdateForm extends Component{
                 
                 <div className="form-group">
                     <div className="col-md-8">
-                        <button type="submit" className="btn btn-success">Update and Save</button>&nbsp;&nbsp;
+                        <button type="submit" className="btn btn-success">Update</button>
                     </div>
                 </div>
                 </form>
