@@ -1,624 +1,509 @@
 {
-        "name":"Japan",
-        "continent":"Asia",
-        "about":{
-            "about_description":"Japan is quirky! This vibrant and diverse country will suit the traveller who likes the latest gizmos, history and traditional culture.There is plenty to enjoy with sights, culinary delights, interesting people, nature, shopping and nightlife.",
-             "about_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477275234/japn_a2wvyz.jpg",
-            "about_video_1":{
-              "video_name":"Moments in Kyoto",
-              "video_link":"https://www.youtube.com/embed/E4AnUYV-ZaM"
+    "_id": "5849d8d6498c2e7a04871e7b",
+    "name": "Japan",
+    "continent": "Asia",
+    "status": "committed",
+    "__v": 0,
+    "about": {
+        "about_description": "Japan is quirky! This vibrant and diverse country will suit the traveller who likes the latest gizmos, history and traditional culture.There is plenty to enjoy with sights, culinary delights, interesting people, nature, shopping and nightlife.",
+        "about_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Japan_travel_destination.jpg",
+        "about_video_1": {
+            "video_name": "Moments in Koyto",
+            "video_link": "https://www.youtube.com/embed/ulVRwaxwqgo"
+        },
+        "about_video_2": {
+            "video_name": "Japan 10 days highlights",
+            "video_link": "https://www.youtube.com/embed/dMyTdpPa0g0"
+        },
+        "about_video_3": {
+            "video_name": "6 minutes in Tokyo",
+            "video_link": "https://www.youtube.com/embed/zhp0qui73cc"
+        },
+        "about_extra_videos": "https://www.youtube.com/playlist?list=PLtT_RDMAHNUtYvwoKwjv9AnTqVr6bLA52",
+        "country_map_link": "https://www.google.com/maps/d/embed?mid=1jSh4KKohgg_y1etZnSIol7j7a3I",
+        "tourism_office": {
+            "tourism_office_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Travel_information_Japan.png",
+            "tourism_office_website_link": "https://www.jnto.org.au"
+        },
+        "entry_requirements": {
+            "entry_requirements_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Visa_and_Passport_Japan.png",
+            "entry_requirements_website_link": "http://www.projectvisa.com/visainformation/Japan"
+        },
+        "top_blogs": {
+            "image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Top_Blogs_Japan.png",
+            "website_link": "http://japaneseup.com/best-japan-blogs/"
+        }
+    },
+    "when_to_go": {
+        "best_time_to_go": {
+            "text": "Suggested Best time to go is Spring when the cherry blossoms are blooming, this is late March through to May (avoid late April, early May due to the National holiday). Alternatively October, November - when the weather is dry and there is a better chance of seeing Mount Fuji,  you will also see the incredible Autumn colours. Otherwise you can enjoy Japan at anytime... there is still plenty to see and do and experience all times of year!",
+            "website_link": "http://www.insiderjourneys.co.uk/blog/when-to-travel-to-japan"
+        },
+        "high_seasons": {
+            "high_seasons_1": "Summer July - August also includes School Holidays",
+            "high_seasons_2": "Golden Week End of April - Early May (National Holidays)",
+            "high_seasons_3": "New Year Late December - Early January"
+        },
+        "low_seasons": {
+            "low_seasons_1": "Late November - Mid December",
+            "low_seasons_2": "Mid January - February (Winter and short days)",
+            "low_seasons_3": "Typhoon season is generally August - September  (Raining, humid and storms)"
+        },
+        "average_temperature_website_link": "http://www.japan-guide.com/e/e2273.html",
+        "public_holiday_website_link": "http://www.officeholidays.com/countries/japan/"
+    },
+    "what_to_see_and_do": {
+        "best_activities_1": {
+            "activity_name": "Kyoto's famous Temples and Gardens",
+            "activity_website_link": "http://www.insidekyoto.com/best-temples-in-kyoto"
+        },
+        "best_activities_2": {
+            "activity_name": "Mount Fuji  - best time is Summer or Spring",
+            "activity_website_link": "http://www.japan-guide.com/e/e2172.html"
+        },
+        "best_activities_3": {
+            "activity_name": "Cherry Blossoms   - best time is April",
+            "activity_website_link": "http://www.seejapan.co.uk/jnto_consumer/experience/outdoor/enjoying-japans-seasons/where-to-see-cherry-blossoms"
+        },
+        "best_activities_4": {
+            "activity_name": "Tokyo's Tsukiji (Fish) Market - very early morning",
+            "activity_website_link": "http://www.japan-guide.com/e/e3021.html"
+        },
+        "best_activities_5": {
+            "activity_name": "Hiroshima Peace Park",
+            "activity_website_link": "http://www.japan-guide.com/e/e3400.html"
+        },
+        "best_activities_6": {
+            "activity_name": "Nara's Todai-ji & Daibutsu  - Great Buddha",
+            "activity_website_link": "https://www.jnto.go.jp/eng/spot/shritemp/kamakuradaibutsu.html"
+        },
+        "best_activities_7": {
+            "activity_name": "Toyota Museum Nagoya",
+            "activity_website_link": "http://www.japan-guide.com/e/e3308.html"
+        },
+        "best_activities_8": {
+            "activity_name": "Onsen Hot Springs",
+            "activity_website_link": "https://www.jnto.org.au/experience/onsen/"
+        },
+        "best_activities_9": {
+            "activity_name": "Stay in a traditional Ryokan",
+            "activity_website_link": "http://www.ryokan.or.jp/english/#"
+        },
+        "best_activities_10": {
+            "activity_name": "Experience a bullet train, the cuisine, see a Geisha, visit a castle and so much more",
+            "activity_website_link": "http://www.japan-guide.com/e/e2018.html"
+        },
+        "suggested_itineraries_1": {
+            "itineraries_name": "Tokyo - Kyoto 9 - 14 days",
+            "itineraries_image_link": "http://www.japan-guide.com/g7/2400_map_7.gif",
+            "itineraries_website_link": "http://www.japan-guide.com/e/e2400_tokyo_7.html"
+        },
+        "suggested_itineraries_2": {
+            "itineraries_name": "Tokyo, Kyoto, Hiroshima, Osaka 8 - 14 days",
+            "itineraries_image_link": "https://www.goway.com/media/uploads/maps/asia/highlights_of_japan.jpg",
+            "itineraries_website_link": "https://www.goway.com/trip/asia/highlights-japan/"
+        },
+        "suggested_itineraries_3": {
+            "itineraries_name": "Tokyo - Kanazawa - Hiroshima  17 - 25 days",
+            "itineraries_image_link": "http://www.japan-guide.com/g7/2400_map_15.gif",
+            "itineraries_website_link": "http://www.japan-guide.com/e/e2400_tokyo_15.html"
+        },
+        "suggested_itineraries_4": {
+            "itineraries_name": "Hokkaido (Sapporo) in Winter  12 - 18 days",
+            "itineraries_image_link": "http://www.japan-guide.com/g9/2400_hokkaido12_map.gif",
+            "itineraries_website_link": "http://www.japan-guide.com/e/e2400_hokkaido_winter.html"
+        },
+        "top_places": [
+            {
+                "top_place_name": "Plan a trip to Tokyo ",
+                "top_place_description": "Busy, bustling, vibrant and friendly",
+                "top_place_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Tokyo.png",
+                "top_place_website_link": "https://www.gotokyo.org/en/"
             },
-            "about_video_2":{
-                "video_name":"Moments in kyoto 2",
-                "video_link":"https://www.youtube.com/embed/E4AnUYV-ZaM"
+            {
+                "top_place_name": "Plan a trip to Kyoto",
+                "top_place_description": "Ancient history, inspiring culture",
+                "top_place_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Kyoto.png",
+                "top_place_website_link": "http://kyoto.travel/en"
             },
-            "about_video_3":{
-                "video_name":"Moments in kyoto 3",
-                "video_link":"https://www.youtube.com/embed/E4AnUYV-ZaM"
+            {
+                "top_place_name": "Plan a trip to Mt Fuji (Hakone)",
+                "top_place_description": "Majestic and mystical ",
+                "top_place_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Mount_Fuji.png",
+                "top_place_website_link": "http://www.yamanashi-kankou.jp/english/"
             },
-            "about_extra_videos":"https://www.youtube.com/channel/UCyeG12Sa3lGIv3oPlsxnQbQ",
-            "country_map_link":"https://www.google.com/maps/embed/v1/place?q=japan&key=AIzaSyDzyFbQ_-VsGCsmZObb8Ga_ZspPMGnqNjY",
-            "tourism_office":{
-                "tourism_office_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477275317/tourist_bureau_p5id4g.jpg",
-                "tourism_office_website_link":"https://www.jnto.org.au"
+            {
+                "top_place_name": "Plan a trip to Hiroshima",
+                "top_place_description": "History, shrines and monuments",
+                "top_place_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Hiroshima.png",
+                "top_place_website_link": "http://www.japan-guide.com/e/e2160.html"
             },
-            "entry_requirements":{
-                "entry_requirements_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477275461/immigration_hjvpag.jpg",
-                "entry_requirements_website_link":"www.immi-moj.go.jp/english"
-
+            {
+                "top_place_name": "Plan a trip to Nagasaki",
+                "top_place_description": "Gardens, trams and scenic",
+                "top_place_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Nagasaki.png",
+                "top_place_website_link": "http://visit-nagasaki.com/"
             },
-            "top_blogs":{
-                "image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477368106/top_blog_wjcgvq.jpg",
-                "website_link":"http://japaneseup.com/best-japan-blogs/"
-                
+            {
+                "top_place_name": "Plan a trip to Yamadera",
+                "top_place_description": "Mountain Shrines, Lakes and hot springs",
+                "top_place_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Yamadera.png",
+                "top_place_website_link": "http://www.japan-guide.com/e/e7940.html"
+            },
+            {
+                "top_place_name": "Plan a trip to Okinawa",
+                "top_place_description": "Islands, Coral Reefs, Marine wildlife",
+                "top_place_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Okinawa.png",
+                "top_place_website_link": "http://www.japan-guide.com/list/e1247.html"
+            },
+            {
+                "top_place_name": "Plan a trip to Hokkaido and Sapporo",
+                "top_place_description": "Snow, Skiing, Hot Springs",
+                "top_place_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Hokkaido.png",
+                "top_place_website_link": "https://en.visit-hokkaido.jp/"
             }
-            
-        },
-        "when_to_go":{
-            "best_time_to_go":{
-                "text":"Suggested Best time to go is Spring when the cherry blossoms are blooming, this is late March through to May (avoid late April, early May due to the National holiday).Alternatively October, November - when the weather is dry and there is a better chance of seeing Mount Fiji,  you will also see the incredible Autumn colours.Otherwise you can enjoy Japan at anytime... there is still plenty to see and do and experience all times of year!",
-                "website_link":"http://www.japan-guide.com/e/e2273.html"
-            },
-            "high_seasons":{
-                "high_seasons_1":"Summer July - August also includes School Holidays",
-                "high_seasons_2":"Golden Week End of April - Early May (National Holidays)",
-                "high_seasons_3":"New Year Late December - Early January"
-            },
-            "low_seasons":{
-                "low_seasons_1":"Late November - Mid December",
-                "low_seasons_2":"Mid January - February (Winter and short days)",
-                "low_seasons_3":"Typhoon season is generally August - September  (Raining, humid and storms)"
-            },
-            "average_temperature_website_link":"http://www.japan-guide.com/e/e2273.html",
-            "public_holiday_website_link":"http://www.officeholidays.com/countries/japan/"
-        },
-        "what_to_see_and_do":{
-            "best_activities_1":{
-                "activity_name":"Kyoto's famous Temples and Gardens",
-                "activity_website_link":"http://www.insidekyoto.com/best-temples-in-kyoto"
-            },
-            "best_activities_2":{
-                "activity_name":"Mount Fiji  - best time is Summer or Spring",
-                "activity_website_link":"http://www.insidekyoto.com/best-temples-in-kyoto"
-            },
-            "best_activities_3":{
-                "activity_name":"Cherry Blossoms   - best time is April",
-                "activity_website_link":"http://www.seejapan.co.uk/jnto_consumer/experience/outdoor/enjoying-japans-seasons/where-to-see-cherry-blossoms"
-            },
-            "best_activities_4":{
-                "activity_name":"Tokyo's Tsukiji (Fish) Market - very early morning",
-                "activity_website_link":"http://www.japan-guide.com/e/e3021.html"
-            },
-            "best_activities_5":{
-                "activity_name":"Hiroshima Peace Park",
-                "activity_website_link":"http://www.japan-guide.com/e/e3400.html"
-            },
-            "best_activities_6":{
-                "activity_name":"Nara's Todai-ji & Daibutsu  - Great Buddha",
-                "activity_website_link":"https://www.jnto.go.jp/eng/spot/shritemp/kamakuradaibutsu.html"
-            },
-            "best_activities_7":{
-                "activity_name":"Toyota Museum Nagoya",
-                "activity_website_link":"http://www.japan-guide.com/e/e3308.html"
-            },
-            "best_activities_8":{
-                "activity_name":"Onsen Hot Springs",
-                "activity_website_link":"https://www.jnto.org.au/experience/onsen/"
-            },
-            "best_activities_9":{
-                "activity_name":"Stay in a traditional Ryokan",
-                "activity_website_link":"http://www.insidekyoto.com/best-temples-in-kyoto"
-            },
-            "best_activities_10":{
-                "activity_name":"Experience a bullet train, the cuisine, see a Geisha, visit a castle and so much more",
-                "activity_website_link":"http://www.japan-guide.com/e/e2018.html"
-            },
-            "top_places":[                      
+        ]
+    },
+    "sightseeing_touring_options": {
+        "sightseeing": {
+            "sightseeing_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Sightseeing_ideas_Japan.png",
+            "sightseeing_website_link": "http://duncansensei.com/2015/10/top-things-to-do-in-japan/",
+            "sightseeing_extra_website_link_list": [
                 {
-                    "top_place_name":"Kanto Region",
-                    "top_place_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477276725/kanto_twyaor.jpg",
-                    "top_place_website_link":"https://www.gotokyo.org/en/"
+                    "text": "30 most popular things for foreigners",
+                    "website_link": "https://www.tsunagujapan.com/30-most-popular-japan-sightseeing-spots-for-foreigners/"
                 },
                 {
-                    "top_place_name":"Kinki (Kansai) Region",
-                    "top_place_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477276812/kinki_qwdsog.jpg",
-                    "top_place_website_link":"http://www.japan-guide.com/e/e2158.html"
-                },
-                {
-                   "top_place_name":"Chubu Region",
-                    "top_place_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477276927/chubu_e2qlyx.jpg",
-                    "top_place_website_link":"http://www.yamanashi-kankou.jp/english/"
-                },
-                {
-                   "top_place_name":"Chugoku Region",
-                    "top_place_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477277104/chugoku_glvs3u.jpg",
-                    "top_place_website_link":"http://www.japan-guide.com/e/e2160.html"
-                },
-                {
-                   "top_place_name":"Kyushu Region",
-                    "top_place_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477277167/kyuchu_vwasiy.jpg",
-                    "top_place_website_link":"http://visit-nagasaki.com/"
-                },
-                {
-                   "top_place_name":"Tohoku Region",
-                    "top_place_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477277282/tohoku_cu2lbi.jpg",
-                    "top_place_website_link":"http://www.japan-guide.com/e/e7940.html"
-                },
-                {
-                   "top_place_name":"Okinawa Region",
-                    "top_place_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477277350/oki_rgfx36.jpg",
-                    "top_place_website_link":"http://www.jnto.go.jp/eng/location/regional/okinawa/"
-                },
-                {
-                    "top_place_name":"Hokkaido Region",
-                    "top_place_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477277489/hok_eeoovu.jpg",
-                    "top_place_website_link":"https://en.visit-hokkaido.jp/"
-                }
-            ],
-            "suggested_itineraries_1":{
-                "itinerary_name":"Tokyo - Kyoto 9-14 days",
-                "itinerary_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/c_scale,h_200,w_200/v1477277633/iternary1_kmhtiz.gif",
-                "itinerary_website_link":"http://www.japan-guide.com/e/e2400_tokyo_7.html"
-            },
-            "suggested_itineraries_2":{
-                "itinerary_name":"Tokyo, Kyoto, Hiroshima, Osaka 8 - 14 days",
-                "itinerary_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/c_scale,w_200/v1477277702/iternary2_iubsgm.jpg",
-                "itinerary_website_link":"https://www.goway.com/trip/asia/highlights-japan/"
-            },
-            "suggested_itineraries_3":{
-                "itinerary_name":"Tokyo - Kanazawa - Hiroshima 17 - 25 days",
-                "itinerary_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/c_scale,h_200,w_200/v1477277763/iternary3_p38gek.gif",
-                "itinerary_website_link":"http://www.japan-guide.com/e/e2400_tokyo_15.html"
-            },
-            "suggested_itineraries_4":{
-                "itinerary_name":"Hokkaido (Sapporo) in Winter 12 - 18 days",
-                "itinerary_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/c_scale,h_200,w_200/v1477277822/iternary4_ljrhji.gif",
-                "itinerary_website_link":"http://www.japan-guide.com/e/e2400_hokkaido_winter.html"
-            }
-        },
-        "sightseeing_touring_options":{
-                "sightseeing":{
-                    "sightseeing_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477278384/sightseeing_i8evs4.jpg",
-                    "sightseeing_website_link":"https://www.tsunagujapan.com/30-most-popular-japan-sightseeing-spots-for-foreigners/",
-                    "sightseeing_extra_website_link_list":[
-                        {
-                            "text":"Lonely Planet's Top 10 things to do in Japan",
-                            "website_link":"http://www.lonelyplanet.com/japan/things-to-do/top-things-to-do-in-japan"
-                        },
-                        {
-                            "text":"​Japan Guide Sightseeing Guide",
-                            "website_link":"http://www.japan-guide.com/e/e623a.html"
-                        },
-                        {
-                            "text":"Your Guide to Japan (PDF)",
-                            "website_link":"http://www.jnto.go.jp/eng/pdf/viewer.html?file=yourguide/eng.pdf"
-                        },
-                        {
-                            "text":"Japan National Tourism Brochures",
-                            "website_link":"https://www.jnto.org.au/brochures/"
-                        }
-                    ]
-                },
-                "independent_touring":{
-                    "independent_touring_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477278491/independent_tour_umiwcs.jpg",
-                    "independent_touring_website_link":"http://www.travelindependent.info/asia-northern.htm#Japan",
-                    "independent_touring_extra_website_link_list":[
-                        {
-                            "text":"Japan independently",
-                            "website_link":"http://www.travelindependent.info/asia-northern.htm#Japan"
-                        },
-                        {
-                            "text":"Self Guided options",
-                            "website_link":"http://www.uniquejapantours.com/self~guided-tours"
-                            
-                        }
-                    ]
-                },
-                "organised_day_tours":{
-                    "organised_day_tours_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477278591/day_tours_l1wlh7.jpg",
-                    "organised_day_tours_website_link":"https://www.viator.com/Japan/d16-ttd",
-                    "organised_day_tours_extra_website_link_list":[
-                        {
-                            "text":"Viator",
-                            "website_link":"https://www.viator.com/"
-                        },
-                        {
-                            "text":"JTB Sunrise Tours",
-                            "website_link":"http://www.jtb-sunrisetours.jp/"
-                        },
-                        {
-                            "text":"Grayline Japan",
-                            "website_link":"http://www.jgl.co.jp/inbound/"
-                        }
-                    ]
-                },
-                "organised_extended_tours":{
-                    "organised_extended_tours_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477278830/extended_tours_xkbsnp.jpg",
-                    "organised_extended_tours_website_link":"http://www.tourradar.com/d/japan",
-                    "organised_extended_tours_extra_website_link_list":[
-                        {
-                            "text":"All Japan Tours, JTB sunrise Tours",
-                            "website_link":"http://www.jtb-sunrisetours.jp/"
-                        },
-                        {
-                            "text":"Adventures, Intrepid, Scenic tours",
-                            "website_link":"https://www.scenic.com.au/"
-                        },
-                        {
-                            "text":"Wendy Wu",
-                            "website_link":"https://www.wendywutours.com.au/"
-                        }
-                    ]
-                },
-                "free_activities":{
-                   "free_activities_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477278765/free-activities_he2p76.jpg",
-                    "free_activities_website_link":"http://www.seejapan.co.uk/jnto_consumer/media/press-releases/press-release-detail/11-07-13/15-free-things-to-do-in-tokyo",
-                    "free_activities_extra_website_link_list":[
-                        {
-                            "text":"Lonely Planet's suggestions",
-                            "website_link":"https://www.lonelyplanet.com/japan/tokyo/travel-tips-and-articles/77715"
-                        },
-                        {
-                            "text":"Timeout Tokyo for Free",
-                            "website_link":"http://www.timeout.com/tokyo/things-to-do/30-free-things-to-do-in-tokyo"
-                        },
-                        {
-                            "text":"Free things to do in Tokyo",
-                            "website_link":"http://travel.nationalgeographic.com.au/travel/city-guides/free-tokyo-traveler/"
-                        }
-                    ]
-                },
-                "volunteer":{
-                   "volunteer_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477278910/volunteer_q1i1mb.jpg",
-                    "volunteer_website_link":"http://www.jnto.go.jp/eng/arrange/travel/guide/list_volunteerGuides.php",
-                    "volunteer_extra_website_link_list":[
-                        {
-                            "text":"Foreign Volunteers (Japan)",
-                            "website_link":"http://foreignvolunteers.org/about-fvj/get-involved/"
-                        },
-                        {
-                            "text":"Smile Kids Japan",
-                            "website_link":"http://www.smilekidsjapan.org/"
-                        },
-                        {
-                            "text":"Workaway",
-                            "website_link":"https://www.workaway.info/hostlist-JP.html"
-                        },
-                        {
-                            "text":"HelpX",
-                            "website_link":"http://www.helpx.net/findhosts.asp?network=9"
-                        }
-                    ]
-                }
-        },
-        "budget_and_costs":{
-            "costs_description":"Japanese still use Cash so have some on you when you travel. Credit Cards are accepted in most of the country. Tipping is not customary.Prices can vary considerably dependent on where in Japan you wish to travel to and the season",
-            "average_prices_and_costs":{
-                "flight_indication":[
-                        {
-                            "From":"ASIA(singpore)",
-                            "description":"USD $200 - $600 return (Economy)"
-
-                        },
-                        {
-                            "From":"Australia",
-                            "description":"USD $450 - $900 return  (Economy)"
-                        },
-                        {
-                            "From":"Europe(London)",
-                            "description":"USD $500 - $1000 return (Economy)"
-                        },
-                        {
-                            "From":"North America(US)",
-                            "description":"$450 - $1000 return (Economy)"
-                        }
-
-                ],
-                "accomodation_indication":{
-                        "hotel":{
-                            "name":"Hostels",
-                            "description":"USD $30 - $50"
-                        },
-                        "mid_range_hotel":{
-                            "name":"Mid Range Motel (Ryokan Inn)",
-                            "description":"USD $90 - $200"
-                        },
-                        "budget_hotel":{
-                            "name":"Hotels - Budget (Minshuku) B&B",
-                            "description":"USD $70 - $180"
-                        },
-                        "luxury_hotel":{
-                            "name":"Hotels - Luxury",
-                            "description":"USD $350 - $800"
-                        }
-                },
-                "transport_indication":{
-                        "day_tour":{
-                            "name":"Day Tour",
-                            "description":"$40-$80 USD"
-                        },
-                        "day_rail_pass":{
-                            "name":"7 day ordinary rail pass",
-                            "description":"$250 - $300 USD"
-                        }
-                },
-                "meal_indication":{
-                        "breakfast":{
-                            "name":"Breakfast",
-                            "description":"USD $4 - $10"
-                        },
-                        "lunch":{
-                            "name":"Lunch",
-                            "description":"USD $8 - $20"
-                        },
-                        "dinner":{
-                            "name":"Dinner",
-                            "description":"USD $25 - $50"
-                        }
-                }
-            },
-            "currency":{
-                "currency_text":"Japaness YEN",
-                "currency_website_link":"http://www.japan-guide.com/e/e2196.html"
-            },
-            "check_prices_website_link":"https://www.numbeo.com/travel-prices/"
-        },
-        "how_to_get_there":{
-            "international_airport_map_link":"https://www.google.com/maps/embed/v1/place?q=japan&key=AIzaSyDzyFbQ_-VsGCsmZObb8Ga_ZspPMGnqNjY",
-            "flights":{
-                "full_service_airlines":{
-                        "full_service_airlines_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477283609/full_service_airline_rjwim5.jpg",
-                        "website_link":"https://www.skyscanner.net/flights-to/jp/airlines-that-fly-to-japan.html",
-                        "text":"International Japanese airlines with flights to/from Japan",
-                        "full_service_airline_list_website":[
-                            {
-                                "name":"Japan Airlines (JAL)",
-                                "website_link":"http://www.jal.co.jp/en/"
-                            },
-                            {
-                                "name":"All Nippon (ANA)",
-                                "website_link":"https://www.ana.co.jp/asw/index.jsp?type=de"
-
-                            }
-                        ]
-                },
-                "budget_airlines":{
-                        "budget_airlines_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477284538/budget_airline_vuuaao.jpg",
-                        "website_link":"http://www.bookmyowntravel.com/airlines-worldwide-official-websites.html",
-                        "text":"Budget airlines who operate to/from Japan",
-                        "budget_airlines_list_website":[
-                            {
-                                "name":"Air Asia operate",
-                                "website_link":"http://www.airasia.com/au/en/where-we-fly/route-map.page"
-                            },
-                            {
-                                "name":"Jetstar operates services",
-                                "website_link":"http://www.jetstar.com/au/en/planning-and-booking/where-we-go/route-map"
-                            }
-                        ]
-                }
-            },
-            "cruise":{
-                "cruise_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477285497/cruise_h6ztxm.jpg",
-                "website_link":"http://www.cruisecompete.com/vacations/visits/japan/1",
-                "text":"There are several Cruise lines that visit Japan, click the image for details.Ferries operate between Japan and China, Korea and Russia",
-                "cruise_website":"http://www.seejapan.co.uk/jnto_consumer/plan-your-trip/transportation/international-ferries"
-            }
-        },
-        "how_to_get_around":{
-            travelling_options:[
-                {
-                    "options_name":"Flying",
-                    "options_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477283609/full_service_airline_rjwim5.jpg",
-                    "options_website_link":"http://www.japan-guide.com/e/e2365.html",
-                    "options_description":"For full details of all airlines click the image above",
-                    "options_extra_website_link_list":[
-                        {
-                            "text":"Full service airlines Japan Airlines (JAL)",
-                            "website_link":"http://www.jal.co.jp/en/"
-                        },
-                        {
-                            "text":"Full service airlines All Nippon (ANA)",
-                            "website_link":"https://www.ana.co.jp/asw/index.jsp?type=de"
-                        },
-                        {
-                            "text":"Budget airlines Skymark Aviation",
-                            "website_link":"http://www.skymark.jp/en/"
-                        },
-                        {
-                            "text":"Budget airlines Peach Aviation",
-                            "website_link":"http://www.flypeach.com/pc/en"
-                        },
-                        {
-                            "text":"Budget airlines Jetstar Japan",
-                            "website_link":"http://www.jetstar.com/jp/en/home"
-                        }
-                    ]
-                },
-                {
-                    "options_name":"Driving",
-                    "options_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477350711/driving_x6dlaz.jpg",
-                    "options_website_link":"http://www.japan-guide.com/e/e2024.html",
-                    "options_description":"Driving in Japan is an option but not advisable in the larger cities. Car hire, RV and Motorhome hire is available. Major rental companies include Toyota Rentacar, Nippon Rentacar.  For full details on driving click the image above",
-                    "options_extra_website_link_list":[
-                        {
-                            "text":"Car rental in Japan",
-                            "website_link":"http://www.japan-guide.com/e/e2024.html"
-                        }
-                    ]
-                },
-                {
-                    "options_name":"Cruise",
-                    "options_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477285497/cruise_h6ztxm.jpg",
-                    "options_website_link":"http://www.cruisecompete.com/vacations/visits/japan/1",
-                    "options_description":"Limited cruise ship cruise Japan, Princess cruises operate cruises around Japan and Asia. Ferries also operate extensively throughout. Japan.",
-                    "options_extra_website_link_list":[
-                        {
-                            "text":"Princess cruises",
-                            "website_link":"http://www.princess.com/learn/cruise-destinations/asia-cruises/japan/"
-                        },
-                        {
-                            "text":"Ferries in Japan",
-                            "website_link":"http://www.japan-guide.com/e/e2355.html"
-                        }
-                    ]
-                },
-                {
-                    "options_name":"Train",
-                    "options_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477350701/train_zeefcc.jpg",
-                    "options_website_link":"http://www.seejapan.co.uk/jnto_consumer/plan-your-trip/transportation",
-                    "options_description":"There is a comprehensive train network in Japan using high speed rail.A train pass is available to foreign travellers and is an economical way to see the country.Hyperdia offer timetable information in English.",
-                    "options_extra_website_link_list":[
-                        {
-                            "text":"Train network in Japan",
-                            "website_link":"http://www.seejapan.co.uk/jnto_consumer/plan-your-trip/transportation/japan-rail-pass"
-                        },
-                        {
-                            "text":"Train pass",
-                            "website_link":"http://www.japanrailpass.net/en/"
-                        },
-                        {
-                            "text":"​Hyperdia in Japan",
-                            "website_link":"http://www.hyperdia.com/"
-                        }
-                    ]
-                },
-                {
-                    "options_name":"public transport",
-                    "options_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477350727/public_transport_xhrgdi.jpg",
-                    "options_website_link":"http://www.seejapan.co.uk/jnto_consumer/plan-your-trip/transportation",
-                    "options_description":"Airport to central city transport is provided by train, buses, taxi's and private vehicle.It is possible to hire a Motorbike in Japan.Pushbike hire is also a good option to get around.",
-                    "options_extra_website_link_list":[
-                        {
-                            "text":"Local transport",
-                            "website_link":"http://www.jnto.go.jp/eng/arrange/transportation/"
-                        },
-                        {
-                            "text":"Motorbike in Japan",
-                            "website_link":"https://japanbikerentals.com/"
-                        },
-                        {
-                            "text":"Pushbike",
-                            "website_link":"http://www.japan-guide.com/e/e2210.html"
-                        }
-                    ]
-                },
-                {
-                    "options_name":"walk",
-                    "options_image_link":"http://res.cloudinary.com/dbzhzl8c8/image/upload/v1477350721/tours_laobis.jpg",
-                    "options_website_link":"http://www.jnto.go.jp/eng/pdf/travelguide.html",
-                    "options_description":"There are a number of walks within major cities and regional areas.The tourist bureau provides a number of excellent travel guides for independent travellers",
-                    "options_extra_website_link_list":[
-                        {
-                            "text":"excellent travel guides",
-                            "website_link":"http://www.jnto.go.jp/eng/pdf/travelguide.html"
-                        }
-                    ]
+                    "text": "​Sightseeing Guide for Japan",
+                    "website_link": "http://www.japan-guide.com/e/e623a.html"
                 }
             ]
         },
-        "where_to_stay":{
-            "description":"Japan has an amazing array of accommodation options from luxurious resorts, comfortable hotels, traditional Ryokans",
-            "hotel_compare_website_list":[
+        "independent_touring": {
+            "independent_touring_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Independent_travel_Japan.png",
+            "independent_touring_website_link": "http://www.travelindependent.info/asia-northern.htm#Japan",
+            "independent_touring_extra_website_link_list": [
                 {
-                    "text":"Booking.com",
-                    "website_link":"www.booking.com"
+                    "text": "Suggested itineraries for independent travel",
+                    "website_link": "https://www.jtbtravel.com.au/japan-tours/independent/"
                 },
                 {
-                    "text":"Trivago.com",
-                    "website_link":"www.trivago.com"
-                },
-                {
-                    "text":"Expedia.com",
-                    "website_link":"www.expedia.com"
-                },
-                {
-                    "text":"Agoda.com",
-                    "website_link":"www.agoda.com"
-                }
-            ],
-            "hotel_direct_website_list":[
-                {
-                    "text":"Luxury Hotels of the World",
-                    "website_link":"http://www.slh.com/"
-                },
-                {
-                    "text":"Accor Group",
-                    "website_link":"http://www.accorhotels.com/gb/australia/index.shtml"
-                }
-            ],
-            "self_contained_apartment_website_list":[
-                {
-                    "text":"Homeaway",
-                    "website_link":"https://www.homeaway.com.au/holiday-rentals/japan/r1109"
-                }
-            ],
-            "villas_website_list":[
-                {
-                    "text":"Hoshino Resorts",
-                    "website_link":"http://www.hoshinoresorts.com/en/resortsandhotels/#map"
-                }
-            ],
-            "bed_website_list":[
-                {
-                    "text":"Japanese Guest Houses",
-                    "website_link":"http://japaneseguesthouses.com/"
-                },
-                {
-                    "text":"Air BNB.com",
-                    "website_link":"https://www.airbnb.com.au/s/Japan"
-                }
-            ],
-            "holiday_houses_website_list":[
-                {
-                    "text":"Japan Experience",
-                    "website_link":"https://www.japan-experience.com/rent-a-house-in-japan"
-                }
-            ],
-            "house_share_website_list":[
-                {
-                    "text":"Air BNB.com",
-                    "website_link":"www.airbnb.com.au/s/Japan"
-                }
-            ],
-            "motor_home_website_list":[
-                {
-                    "text":"Japan Campers",
-                    "website_link":"http://www.japancampers.com/"
-                }
-            ],
-            "backpacker_website_list":[
-                {
-                    "text":"YHA",
-                    "website_link":"https://www.yha.com.au/travel-and-tours/travel-the-world/"
-                }
-            ],
-            "couch_surfing_website_list":[
-                {
-                    "text":"Couch Surfing.com",
-                    "website_link":"https://www.couchsurfing.com/places/Africa"
-                }
-            ],
-            "unusual_places_website_list":[
-                {
-                    "text":"Capsule Hotels",
-                    "website_link":"https://www.lonelyplanet.com/japan/tokyo/travel-tips-and-articles/77098"
+                    "text": "Self Guided Tours Japan",
+                    "website_link": "http://www.uniquejapantours.com/self~guided-tours"
                 }
             ]
         },
-        "important_information":{
-            "security_and_safe":{
-                "text":"Check the latest security advice for Japan.Travellers information for Australia, UK, US Citizens, these can be used as a guide for any travellers.Travel Insurance is highly recommended for travel to Japan.  Ensure travel insurance is comprehensive and includes (without limitation), cover for medical expenses, loss of luggage, cruise and land content any airfare charges due to cancellation, disruption, loss of deposits or strikes.",
-                "website_link":"https://travel.state.gov/content/passports/en/country.html"
+        "organised_day_tours": {
+            "organised_day_tours_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Day_tours_Japan.png",
+            "organised_day_tours_website_link": "http://duncansensei.com/2015/10/top-things-to-do-in-japan/",
+            "organised_day_tours_extra_website_link_list": [
+                {
+                    "text": "JTB Sunrise Tours",
+                    "website_link": "http://www.jtb-sunrisetours.jp/"
+                },
+                {
+                    "text": "Grayline Japan",
+                    "website_link": "http://www.jgl.co.jp/inbound/"
+                }
+            ]
+        },
+        "organised_extended_tours": {
+            "organised_extended_tours_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Extended_tours_Japan.png",
+            "organised_extended_tours_website_link": "http://www.tourradar.com/d/japan",
+            "organised_extended_tours_extra_website_link_list": [
+                {
+                    "text": "All Japan Tours",
+                    "website_link": "https://www.alljapantours.com"
+                },
+                {
+                    "text": "List of Japan Tour Operators",
+                    "website_link": "http://www.japan-guide.com/e/e2275.html"
+                }
+            ]
+        },
+        "free_activities": {
+            "free_activities_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Free_activities_Japan.png",
+            "free_activities_website_link": "http://www.japan-guide.com/e/e2028_sightseeing.html",
+            "free_activities_extra_website_link_list": [
+                {
+                    "text": "Volunteer Guides offering Free Tours",
+                    "website_link": "http://www.jnto.go.jp/eng/arrange/travel/guide/list_volunteerGuides.php"
+                },
+                {
+                    "text": "30 Free things to do in Tokyo",
+                    "website_link": "http://www.timeout.com/tokyo/things-to-do/30-free-things-to-do-in-tokyo"
+                }
+            ]
+        },
+        "volunteer": {
+            "volunteer_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Volunteering_Japan.png",
+            "volunteer_website_link": "https://www.gooverseas.com/volunteer-abroad/japan",
+            "volunteer_extra_website_link_list": [
+                {
+                    "text": "Cultural Exchange Volunteering",
+                    "website_link": "https://www.workaway.info/hostlist-JP.html"
+                },
+                {
+                    "text": "Volunteering in Tokyo",
+                    "website_link": "http://www.tvac.or.jp/page/english_getinvolved.html"
+                }
+            ]
+        }
+    },
+    "budget_and_costs": {
+        "cost_description": "Japanese still use Cash so have some on you when you travel. Credit Cards are accepted in most of the country. Tipping is not customary. Prices can vary considerably depending on where in Japan you wish to travel to and the season. Use as a guide only",
+        "average_prices_and_costs": {
+            "flight_indication": [
+                {
+                    "From": "Asia  (Singapore) to/from Tokyo",
+                    "description": "USD $200 - $600 return (Economy)"
+                },
+                {
+                    "From": "Australia (Sydney)  to/from Tokyo",
+                    "description": "USD $450 - $900 return (Economy)"
+                },
+                {
+                    "From": "Europe (London) to/from Tokyo",
+                    "description": "USD $500 - $1000 return (Economy)"
+                },
+                {
+                    "From": "North America (Los Angeles) to/from Tokyo",
+                    "description": "USD $450  - $1000 return (Economy)"
+                }
+            ],
+            "accomodation_indication": {
+                "hotel": {
+                    "name": "Hostel  (Basic)",
+                    "description": "USD $30 - $50 per night"
+                },
+                "mid_range_hotel": {
+                    "name": "Mid Range Motel  (Ryokan Inn) ",
+                    "description": "USD $90 - $200 per night"
+                },
+                "budget_hotel": {
+                    "name": "Hotel Budget (Minshuku) B&B",
+                    "description": "USD $70 - $180 per night"
+                },
+                "luxury_hotel": {
+                    "name": "Hotel - Luxury 4-5 Star",
+                    "description": "USD $350 - $800 per night"
+                }
             },
-            "health_and_vaccination":{
-                "text":"You can check the Vaccinations you may need for Japan.Trekking or hiking can be strenuous, check with your health practitioner/doctor at least eight weeks prior to travel to confirm you are fit to travel.It is also recommended to have a dental check up prior to your trip.",
-                "website_link":"http://health.gov.au/internet/main/publishing.nsf/Content/health-pubhlth-strateg-quaranti-index.htm"
+            "transport_indication": {
+                "day_tour": {
+                    "name": "Day Tour - full day",
+                    "description": "USD $40 - $80"
+                },
+                "day_rail_pass": {
+                    "name": "7 day national rail pass",
+                    "description": "USD $250 - $350 "
+                }
             },
-            "telphone_and_internet":{
-                "text":"Mobile Access in Japan is available in majority of areas.Mobile roaming is expensive, alternatively purchase a sim card on arrival.Internet is readily available via Wifi.",
-                "website_link":"https://www.japan-rail-pass.com/services/pocket-wifi"
-            },
-            "electrical":{
-                "text":"The voltage in Japan is 100 Volt, which is different from North America (120V), Central Europe (230V) and most other regions of the world. Japanese electrical plugs have two, non-polarized pins, as shown above. They fit into North American outlets",
-                "website_link":"https://www.tripadvisor.com.au/ShowTopic-g298184-i861-k2335733-Power_adaptors_from_Australia_to_Japan-Tokyo_Tokyo_Prefecture_Kanto.html"
-            },
-            "language":{
-                "text":"The language spoken in Japan is Japanese",
-                "website_link":"https://en.wikipedia.org/wiki/Japanese_language"
-            },
-            "passport_visa":{
-                "text":"A valid passport with a minimum of 6 months validity from the date of return is required for all foreign travellers to Japan.A number of Asian and Indian Sub Continent countries do require visitors to obtain a Visa (an entry stamp). Regardless of your nationality it is also advisable to contact the relevant Embassy or Consulate for the most up to date information.",
-                "website_link":"http://www.melbourne.au.emb-japan.go.jp/consular/visa/faq.html"
-            },
-            "duty_free":{
-              "text":"In Japan, displaying your passport at any store that offers tax exemption will allow you to purchase goods without the 8% consumption tax.",
-              "website_link":"https://duty-free-japan.jp/en/"
-            },
-            "local_time":{
-                "text":"Japan Standard Time (JST) is 9 hours ahead of Coordinated Universal Time",
-                "website_link":"https://www.timeanddate.com/time/zones/jst"
+            "meal_indication": {
+                "breakfast": {
+                    "name": "Breakfast",
+                    "description": "USD $4 - $10"
+                },
+                "lunch": {
+                    "name": "Lunch",
+                    "description": "USD $8 - $20"
+                },
+                "dinner": {
+                    "name": "Dinner",
+                    "description": "USD $25 - $50"
+                }
             }
         },
-        "status":"committed"
+        "currency": {
+            "currency_text": "Japanese Yen",
+            "currency_website_link": "http://www.japan-guide.com/e/e2196.html"
+        },
+        "check_prices_website_link": "https://www.numbeo.com/travel-prices/"
+    },
+    "how_to_get_there": {
+        "international_airport_map_link": "https://www.google.com/maps/embed/v1/place?q=japan&key=AIzaSyDzyFbQ_-VsGCsmZObb8Ga_ZspPMGnqNjY",
+        "flights": {
+            "full_service_airlines": {
+                "full_service_airlines_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Full_service_airlines_Japan.png",
+                "website_link": "http://www.bookmyowntravel.com/airlines-international-flights.html",
+                "text": "List of Full Service Airlines with flights to/from Japan",
+                "full_service_airline_list_website": [
+                    {
+                        "name": "Japan Airlines (JAL)",
+                        "website_link": "http://www.jal.co.jp/en/"
+                    },
+                    {
+                        "name": "All Nippon (ANA)",
+                        "website_link": "https://www.ana.co.jp/asw/index.jsp?type=de"
+                    }
+                ]
+            },
+            "budget_airlines": {
+                "budget_airlines_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Budget_airlines_Japan.png",
+                "website_link": "http://www.bookmyowntravel.com/budget-airlines.html",
+                "text": "List of Budget airlines with flights to/from Japan",
+                "budget_airlines_list_website": [
+                    {
+                        "name": "Jetstar Japan",
+                        "website_link": "http://www.jetstar.com/jp/en/home"
+                    },
+                    {
+                        "name": "Air Asia",
+                        "website_link": "http://www.airasia.com/"
+                    }
+                ]
+            }
+        },
+        "cruise": {
+            "cruise_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Cruise_to_Japan.png",
+            "website_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Cruise_to_Japan.png",
+            "text": "Cruises that visit Japan",
+            "cruise_website": "http://www.seejapan.co.uk/jnto_consumer/plan-your-trip/transportation/international-ferries"
+        }
+    },
+    "how_to_get_around": {
+        "travelling_options": [
+            {
+                "options_name": "Flying",
+                "options_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Flying_in_Japan.png",
+                "options_website_link": "http://www.bookmyowntravel.com/airlines-worldwide-official-websites.html",
+                "options_description": "There is an extensive airline network in Japan including full service and budget airlines.",
+                "options_extra_website_link_list": [
+                    {
+                        "text": "An outline of Domestic Airlines in Japan",
+                        "website_link": "http://www.japan-guide.com/e/e2365.html"
+                    }
+                ]
+            },
+            {
+                "options_name": "Driving",
+                "options_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Driving_Japan.png",
+                "options_website_link": "http://www.japan-guide.com/e/e2024.html",
+                "options_description": "Driving in Japan is possible and enjoyable but not advisable in the larger cities.",
+                "options_extra_website_link_list": [
+                    {
+                        "text": "Car Hire in Japan",
+                        "website_link": "https://www.nrgroup-global.com/en/"
+                    }
+                ]
+            },
+            {
+                "options_name": "Cruising",
+                "options_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Cruising_Japan.png",
+                "options_website_link": "http://www.cruisecompete.com/vacations/visits/japan/1",
+                "options_description": "Japan is a ideal for cruising with a number of cruise companies including cruises in their itineraries.",
+                "options_extra_website_link_list": [
+                    {
+                        "text": "Cruising around Japan",
+                        "website_link": "http://www.princess.com/learn/cruise-destinations/asia-cruises/japan/"
+                    }
+                ]
+            },
+            {
+                "options_name": "Train Travel",
+                "options_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Train_Travel_Japan.png",
+                "options_website_link": "http://www.seejapan.co.uk/jnto_consumer/plan-your-trip/transportation/trains",
+                "options_description": "The rail network in Japan covers most of the country. Rail passes are available for international travellers. ",
+                "options_extra_website_link_list": [
+                    {
+                        "text": "Rail pass information",
+                        "website_link": "http://japanrailpass.net/en/"
+                    },
+                    {
+                        "text": "Timetable information for Japan rail",
+                        "website_link": "http://www.hyperdia.com"
+                    }
+                ]
+            },
+            {
+                "options_name": "Tours",
+                "options_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Touring_in_Japan.png",
+                "options_website_link": "http://www.tourradar.com/d/japan",
+                "options_description": "Tours are offered throughout Japan.  More details can be found in the sightseeing and touring section. For a more personalised tour try a local tour.",
+                "options_extra_website_link_list": [
+                    {
+                        "text": "Local Touring",
+                        "website_link": "https://www.toursbylocals.com"
+                    }
+                ]
+            },
+            {
+                "options_name": "Public Transport",
+                "options_image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Public_Transport_Japan.png",
+                "options_website_link": "http://www.seejapan.co.uk/jnto_consumer/plan-your-trip/transportation",
+                "options_description": "Public Transport is operated via train, bus and ferries. Other alternative options are pushbike hire, walking or carpooling. ",
+                "options_extra_website_link_list": [
+                    {
+                        "text": "Bus, Ferries Information",
+                        "website_link": "http://www.japan-guide.com/e/e627.html"
+                    },
+                    {
+                        "text": "Walking Tours",
+                        "website_link": "http://www.telegraph.co.uk/travel/tours/the-best-japan-walking-holidays/"
+                    }
+                ]
+            }
+        ]
+    },
+    "where_to_stay": {
+        "description": "Japan has an amazing array of accommodation options from luxurious resorts, comfortable hotels,bed and breakfast to traditional Ryokans",
+        "where_to_stay_accommodation": {
+            "text": "Japan offers accommodation options from hotels, hostels, bed and breakfast, house stays and more, to get ideas use these links.",
+            "image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Where_to_Stay_Japan.png",
+            "website_link": "http://www.bookmyowntravel.com/accommodation-options.html"
+        },
+        "accommodation_options": {
+            "text": "Japan Accommodation ",
+            "image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Accommodation_Options_Japan.png",
+            "website_link": "http://www.japan-guide.com/e/e2025.html"
+        },
+        "traditional_accommodation": {
+            "text": "Ryokan Accommodation (Guest Houses) Japan",
+            "image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Traditional_Accommodation_Japan.png",
+            "website_link": "http://www.ryokan.or.jp/english/"
+        },
+        "unique_accommodation": {
+            "text": "Unique Villas Japan",
+            "image_link": "https://s3-us-west-2.amazonaws.com/bookmyowntravel/Japan/Unique_Accommodation_Japan.png",
+            "website_link": "http://www.hoshinoresorts.com/en/resortsandhotels/#map"
+        }
+    },
+    "important_information": {
+        "security_and_safe": {
+            "text": "It is recommended to check the latest security advice. Travel Insurance is highly recommended. Ensure travel insurance is comprehensive and includes (without limitation), cover for medical expenses, loss of luggage, cruise and land content any airfare charges due to cancellation, disruption, loss of deposits or strikes.",
+            "website_link_au": "http://smartraveller.gov.au/countries/Pages/default.aspx",
+            "website_link_uk": "https://www.gov.uk/foreign-travel-advice",
+            "website_link_us": "http://travel.state.gov/content/passports/en/country.html"
+        },
+        "health_and_vaccination": {
+            "text": "Check the Vaccinations you may need. If you are planning to go Trekking or hiking, this can be strenuous, check with your health practitioner/doctor at least eight weeks prior to travel to confirm you are fit to travel. It is also recommended to have a dental check up prior to your trip.",
+            "website_link": "http://www.traveldoctor.com.au/TravelHealthPlanner"
+        },
+        "telphone_and_internet": {
+            "text": "Mobile Access in Japan is available in majority of areas. Mobile roaming is expensive, alternatively purchase a sim card on arrival. Internet is readily available via Wifi. Pocket Wifi's can be hired from major airports on arrival.   Free Wifi is available to Tourists ",
+            "website_link": "http://japan-magazine.jnto.go.jp/en/special_ntteast.html"
+        },
+        "electrical": {
+            "text": "The voltage in Japan is 100 Volt, which is different from North America (120V), Central Europe (230V) and most other regions of the world. Japanese electrical plugs have two, non-polarized pins, as shown above. They fit into North American outlets",
+            "website_link": "http://www.worldstandards.eu/electricity/plug-voltage-by-country/"
+        },
+        "language": {
+            "text": "The language spoken in Japan is Japanese, it is suggested to learn some helpful words in Japanese",
+            "website_link": "https://www.jnto.go.jp/eng/basic-info/japan-overview/japan-overview.html"
+        },
+        "passport_visa": {
+            "text": "A valid passport with a minimum of 6 months validity from the date of return is required for all foreign travellers. Regardless of your nationality it is advisable to check with the Embassy or Consulate well in advance of your arrival if you require a visa (an entry stamp in your passport).",
+            "website_link": "http://www.embassy-worldwide.com"
+        },
+        "duty_free": {
+            "text": "Duty Free Allowances",
+            "website_link": "http://www.worlddutyfree.ca/en/plan-your-visit/customs-allowances/"
+        },
+        "local_time": {
+            "text": "Local Time ",
+            "website_link": "https://www.timeanddate.com/worldclock/japan"
+        }
+    },
+    "updatedAt": "2016-12-08T22:04:06.000Z",
+    "createdAt": "2016-12-08T22:04:06.000Z"
 }
