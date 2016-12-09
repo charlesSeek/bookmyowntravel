@@ -73,35 +73,35 @@ class PlanSeeAndDo extends Component{
                     <p>Days given are an indication of what is achievable in that time frame.</p>
                     <div className="row">
                         <div className="col-md-3 col-sm-6">
-                            <h4>{this.state.plan.what_to_see_and_do.suggested_itineraries_1.itinerary_name}</h4>
-                            <a href={this.state.plan.what_to_see_and_do.suggested_itineraries_1.itinerary_website_link}>
-                                <img src={this.state.plan.what_to_see_and_do.suggested_itineraries_1.itinerary_image_link}/>
+                            <h4>{this.state.plan.what_to_see_and_do.suggested_itineraries_1.itineraries_name}</h4>
+                            <a href={this.state.plan.what_to_see_and_do.suggested_itineraries_1.itineraries_website_link}>
+                                <img src={this.state.plan.what_to_see_and_do.suggested_itineraries_1.itineraries_image_link} width="200" height="200"/>
                             </a>
                         </div>
                         <div className="col-md-3 col-sm-6">
-                            <h4>{this.state.plan.what_to_see_and_do.suggested_itineraries_2.itinerary_name}</h4>
-                            <a href={this.state.plan.what_to_see_and_do.suggested_itineraries_2.itinerary_website_link}>
-                                <img src={this.state.plan.what_to_see_and_do.suggested_itineraries_2.itinerary_image_link}/>
+                            <h4>{this.state.plan.what_to_see_and_do.suggested_itineraries_2.itineraries_name}</h4>
+                            <a href={this.state.plan.what_to_see_and_do.suggested_itineraries_2.itineraries_website_link}>
+                                <img src={this.state.plan.what_to_see_and_do.suggested_itineraries_2.itineraries_image_link}  width="200" height="200"/>
                             </a>
                         </div>
                         <div className="col-md-3 col-sm-6">
-                            <h4>{this.state.plan.what_to_see_and_do.suggested_itineraries_3.itinerary_name}</h4>
-                            <a href={this.state.plan.what_to_see_and_do.suggested_itineraries_3.itinerary_website_link}>
-                                <img src={this.state.plan.what_to_see_and_do.suggested_itineraries_3.itinerary_image_link}/>
+                            <h4>{this.state.plan.what_to_see_and_do.suggested_itineraries_3.itineraries_name}</h4>
+                            <a href={this.state.plan.what_to_see_and_do.suggested_itineraries_3.itineraries_website_link}>
+                                <img src={this.state.plan.what_to_see_and_do.suggested_itineraries_3.itineraries_image_link}  width="200" height="200"/>
                             </a>
                         </div>
                         <div className="col-md-3 col-sm-6">
-                            <h4>{this.state.plan.what_to_see_and_do.suggested_itineraries_4.itinerary_name}</h4>
-                            <a href={this.state.plan.what_to_see_and_do.suggested_itineraries_4.itinerary_website_link}>
-                                <img src={this.state.plan.what_to_see_and_do.suggested_itineraries_4.itinerary_image_link}/>
+                            <h4>{this.state.plan.what_to_see_and_do.suggested_itineraries_4.itineraries_name}</h4>
+                            <a href={this.state.plan.what_to_see_and_do.suggested_itineraries_4.itineraries_website_link}>
+                                <img src={this.state.plan.what_to_see_and_do.suggested_itineraries_4.itineraries_image_link}  width="200" height="200"/>
                             </a>
                         </div>
                     </div>
                     <hr/>
-                    <div className="container topplaces">
+                    <div className="container">
                         <h2>Top 8 places to visit in {this.state.plan.name}</h2>
                         <p>For the most popular destinations</p>
-                        <div className="row">
+                        <div className="row topplaces">
                             {this.state.plan.what_to_see_and_do.top_places.map((place)=>{
                                 return(
                                     <div className="col-md-3 col-sm-6" key={place.top_place_name}>

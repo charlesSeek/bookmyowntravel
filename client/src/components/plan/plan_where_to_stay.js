@@ -41,119 +41,36 @@ class PlanWhereToStay extends Component{
         if (!this.state.plan.hasOwnProperty('where_to_stay')){
             return(<div>No data</div>)
         }
+        const { where_to_stay } = this.state.plan; 
         return(
             <div className="container planwheretostay">
                 <h2>Where to stay in {this.state.plan.name}</h2>
-                <p>{this.state.plan.where_to_stay.description}</p>
-                <div className="container">
-                    <h4>Hotel Compare Websites</h4>
-                    {this.state.plan.where_to_stay.hotel_compare_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Hotel Direct Websites</h4>
-                    {this.state.plan.where_to_stay.hotel_direct_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Self Contained Apartments</h4>
-                    {this.state.plan.where_to_stay.self_contained_apartment_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Villas, Resorts, Chalets, Lodges</h4>
-                    {this.state.plan.where_to_stay.villas_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Bed and Breakfast, Guest Houses</h4>
-                    {this.state.plan.where_to_stay.bed_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Holiday Houses</h4>
-                    {this.state.plan.where_to_stay.holiday_houses_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>House Swap, House Sit, House Share</h4>
-                    {this.state.plan.where_to_stay.house_share_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Motorhome, Caravan, Tourist Parks</h4>
-                    {this.state.plan.where_to_stay.motor_home_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Backpackers, Hostels</h4>
-                    {this.state.plan.where_to_stay.backpacker_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Couch Surfing</h4>
-                    {this.state.plan.where_to_stay.couch_surfing_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
-                </div>
-                <div className="container">
-                    <h4>Unusual Places</h4>
-                    {this.state.plan.where_to_stay.unusual_places_website_list.map((website)=>{
-                        return(
-                            <p key={website.website_link}>
-                                <a href={website.website_link}>{website.text}</a>
-                            </p>
-                        )
-                    })}
+                <p>{where_to_stay.description}</p>
+                <div className="row stayrow">
+                    <div className="col-md-3 col-sm-6">
+                        <a href={where_to_stay.where_to_stay_accommodation.website_link}>
+                            <img src={where_to_stay.where_to_stay_accommodation.image_link}/>
+                        </a>
+                        <h4>{where_to_stay.where_to_stay_accommodation.text}</h4>
+                    </div>
+                    <div className="col-md-3 col-sm-6">
+                        <a href={where_to_stay.accommodation_options.website_link}>
+                            <img src={where_to_stay.accommodation_options.image_link}/>
+                        </a>
+                        <h4>{where_to_stay.accommodation_options.text}</h4>
+                    </div>
+                    <div className="col-md-3 col-sm-6">
+                        <a href={where_to_stay.traditional_accommodation.website_link}>
+                            <img src={where_to_stay.traditional_accommodation.image_link}/>
+                        </a>
+                        <h4>{where_to_stay.traditional_accommodation.text}</h4>
+                    </div>
+                    <div className="col-md-3 col-sm-6">
+                        <a href={where_to_stay.unique_accommodation.website_link}>
+                            <img src={where_to_stay.unique_accommodation.image_link}/>
+                        </a>
+                        <h4>{where_to_stay.unique_accommodation.text}</h4>
+                    </div>
                 </div>
             </div>
         )
